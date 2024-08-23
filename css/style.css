@@ -2,3 +2,41 @@
     margin: 0;
     padding: 0;
 }
+
+
+/* Navbar */
+.navbar .nav-link {
+    color: white !important;
+  }
+
+nav img {
+    width: 45px;
+}
+
+#logo {
+    margin-right: 1%;
+}
+
+.d-flex img {
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center !important;
+    gap: 5% !important;
+}
+
+.modal-body button {
+    font-weight: 550; 
+    border-width: 1.9px;
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-content {
+    background: linear-gradient(to left, #b40000d6, #0052ced1); 
+    border-color: rgba(0, 0, 0, 0.488);
+}
