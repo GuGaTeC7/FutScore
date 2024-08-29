@@ -59,7 +59,20 @@ nav img {
 }
 
 .classificacao {
-    margin-left: 120px;
+    margin-left: -24%;
+}
+
+.camp-logo {
+    width: 45px;
+}
+
+.cabecalho-tabela {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.ult-jogos {
+    margin-left: 8%;
 }
 
 article h1:nth-child(1) {
@@ -110,9 +123,8 @@ th, td {
     font-size: 1rem;
 }
 
-td img {
-    width: 25px; 
-    height: 25px;
+img {
+    width: 30px; 
 }
 
 article h1 {
