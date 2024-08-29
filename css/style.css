@@ -58,6 +58,10 @@ nav img {
     flex-direction: column;
 }
 
+.classificacao {
+    margin-left: 120px;
+}
+
 article h1:nth-child(1) {
     color: black;
     margin-left: 1%;
