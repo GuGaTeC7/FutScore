@@ -1,13 +1,5 @@
 const url = 'https://v3.football.api-sports.io';
 
-const options = {
-  method: 'GET',
-  headers: {
-  "x-rapidapi-host": "v3.football.api-sports.io",
-	"x-rapidapi-key": "1abdb0ebf3673c3fbc22f0000eb4f35b"
-  }
-}
-
 async function montaTabela() {
   const endpoint = '/standings'
   const params = {
@@ -69,7 +61,7 @@ async function montaTabela() {
         organizaSetas(setas)
         exibeCampLogo(data.response[0].league.logo)
 
-        console
+        console.log(data)
 
         
     } catch (error) {
