@@ -2,15 +2,27 @@ const url = 'https://v3.football.api-sports.io';
 
 async function montaTabela() {
   const endpoint = '/standings'
+  const endpointRodada = '/fixtures/rounds'
+
+  const liga = 71
+
   const params = {
-    league: 71,
+    league: liga,
     season: 2024
   }
+  const paramsRodada = {
+    league: liga,
+    season: 2024,
+    current: true
+  }
   const searchParams = new URLSearchParams(params)
+  const searchParamsRodada = new URLSearchParams(paramsRodada)
 
     try {
         const res = await fetch(url + endpoint + '?' + searchParams, options);
         const data = await res.json();
+        const resRodada = await fetch(url + endpointRodada + '?' + searchParamsRodada, options);
+        const dataRodada = await resRodada.json();
 
         // Erro de resposta HTTP
         if (!res.ok) {
@@ -20,6 +32,16 @@ async function montaTabela() {
             throw new Error('Erro interno do servidor (500).');
             } else {
             throw new Error(`Erro HTTP! status: ${res.status}`);
+            }
+        }
+
+        if (!resRodada.ok) {
+            if (resRodada.status === 404) {
+            throw new Error('Recurso não encontrado (404).');
+            } else if (resRodada.status === 500) {
+            throw new Error('Erro interno do servidor (500).');
+            } else {
+            throw new Error(`Erro HTTP! status: ${resRodada.status}`);
             }
         }
 
@@ -60,8 +82,9 @@ async function montaTabela() {
         organizaTimes(times)
         organizaSetas(setas)
         exibeCampLogo(data.response[0].league.logo)
+        exibeNumeroRodada(dataRodada.response[0])
 
-        console.log(data)
+        console.log(dataRodada.response[0])
 
         
     } catch (error) {
@@ -152,6 +175,16 @@ function exibeCampLogo(img) {
       const logoUrl = img;
       campLogo.src = logoUrl;
     }
+}
+
+function exibeNumeroRodada(frase) {
+    const numero = frase.split(" - ");
+
+    // Apresentação
+    console.log(numero);
+
+    const numeroRodada = document.getElementById('rodadaNumber');
+    numeroRodada.textContent = numero[1]
 }
 
 montaTabela();
