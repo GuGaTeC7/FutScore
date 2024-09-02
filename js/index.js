@@ -21,6 +21,7 @@ async function montaTabela() {
   try {
     const res = await fetch(url + endpoint + "?" + searchParams, options);
     const data = await res.json();
+
     const resRodada = await fetch(
       url + endpointRodada + "?" + searchParamsRodada,
       options
@@ -47,7 +48,6 @@ async function montaTabela() {
         throw new Error(`Erro HTTP! status: ${resRodada.status}`);
       }
     }
-
     const bolinhas = [
       data.response[0].league.standings[0][0].form,
       data.response[0].league.standings[0][1].form,
@@ -95,14 +95,15 @@ async function montaTabela() {
       data.response[0].league.standings[0][4].status,
     ];
 
+    console.log("Resposta da API:");
+    console.log(data);
+
     organizaBolinhas(bolinhas);
     organizaPontos(pontos);
     organizaTimes(times);
     organizaSetas(setas);
     exibeCampLogo(data.response[0].league.logo);
     exibeNumeroRodada(dataRodada.response[0]);
-
-    console.log(dataRodada.response[0]);
   } catch (error) {
     // Erro de rede ou de resposta
     if (error.message.includes("NetworkError")) {
@@ -172,15 +173,22 @@ function organizaSetas(setas) {
 function organizaTimes(times) {
   for (let t = 1; t < 6; t++) {
     const posicaoContainer = document.getElementById("posicao-" + t);
+    console.log(posicaoContainer);
     const timeTd = posicaoContainer.querySelector("td[data-time]");
+    console.log(timeTd);
 
     const logoImg = document.createElement("img");
     logoImg.src = times[t - 1][1];
+    console.log(logoImg);
 
     const nomeTime = times[t - 1][0];
+
+    console.log("Nome retornado do array: " + nomeTime);
     const nomeTimeNodeText = document.createTextNode(
       " " + nomeTime.slice(0, 3).toUpperCase()
     );
+    console.log("Nome retornado do nó:");
+    console.log(nomeTimeNodeText);
 
     timeTd.appendChild(logoImg);
     timeTd.appendChild(nomeTimeNodeText);
@@ -189,6 +197,8 @@ function organizaTimes(times) {
 
 function exibeCampLogo(img) {
   const campLogo = document.querySelector(".camp-logo");
+
+  //console.log("Link recebido: " + img);
 
   if (campLogo) {
     const logoUrl = img;
@@ -199,8 +209,7 @@ function exibeCampLogo(img) {
 function exibeNumeroRodada(frase) {
   const numero = frase.split(" - ");
 
-  // Apresentação
-  console.log(numero);
+  //console.log("Split aplicado: " + "[" + numero + "]");
 
   const numeroRodada = document.getElementById("rodadaNumber");
   numeroRodada.textContent = numero[1];
