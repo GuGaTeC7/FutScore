@@ -48,6 +48,7 @@ async function montaTabela() {
         throw new Error(`Erro HTTP! status: ${resRodada.status}`);
       }
     }
+
     const bolinhas = [
       data.response[0].league.standings[0][0].form,
       data.response[0].league.standings[0][1].form,
