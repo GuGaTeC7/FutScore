@@ -1,10 +1,15 @@
 const url = "https://v3.football.api-sports.io";
 
-async function montaTabela() {
+function hideLoader(dataTabela) {
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
+  const loadingElement = tabela.querySelector("#loading");
+  loadingElement.style.display = "none";
+  console.log("sumiu");
+}
+
+async function montaTabela(liga, dataTabela) {
   const endpoint = "/standings";
   const endpointRodada = "/fixtures/rounds";
-
-  const liga = 71;
 
   const params = {
     league: liga,
@@ -15,6 +20,7 @@ async function montaTabela() {
     season: 2024,
     current: true,
   };
+
   const searchParams = new URLSearchParams(params);
   const searchParamsRodada = new URLSearchParams(paramsRodada);
 
@@ -48,6 +54,8 @@ async function montaTabela() {
         throw new Error(`Erro HTTP! status: ${resRodada.status}`);
       }
     }
+
+    if (data) hideLoader(dataTabela);
 
     const bolinhas = [
       data.response[0].league.standings[0][0].form,
@@ -99,12 +107,18 @@ async function montaTabela() {
     console.log("Resposta da API:");
     console.log(data);
 
-    organizaBolinhas(bolinhas);
-    organizaPontos(pontos);
-    organizaTimes(times);
-    organizaSetas(setas);
-    exibeCampLogo(data.response[0].league.logo);
-    exibeNumeroRodada(dataRodada.response[0]);
+    // const tabela = document.querySelector(`div[data-tabela='2']`);
+    // const circleContainer = tabela.querySelector("#time-" + 1);
+
+    // console.log(tabela);
+    // console.log(circleContainer);
+
+    organizaBolinhas(bolinhas, dataTabela);
+    organizaPontos(pontos, dataTabela);
+    organizaTimes(times, dataTabela);
+    organizaSetas(setas, dataTabela);
+    exibeCampLogo(data.response[0].league.logo, dataTabela);
+    exibeNumeroRodada(dataRodada.response[0], dataTabela);
   } catch (error) {
     // Erro de rede ou de resposta
     if (error.message.includes("NetworkError")) {
@@ -121,11 +135,13 @@ function invertePalavra(palavra) {
   return palavraInvertida;
 }
 
-function organizaBolinhas(bolinhas) {
+function organizaBolinhas(bolinhas, dataTabela) {
   const resultadosInvertidos = bolinhas.map((result) => invertePalavra(result));
 
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
+
   for (let t = 0; t < 5; t++) {
-    const circleContainer = document.getElementById("time-" + t);
+    const circleContainer = tabela.querySelector("#time-" + t);
     if (circleContainer) {
       // Verifica se o elemento existe
       const circles = circleContainer.querySelectorAll(".circle");
@@ -138,7 +154,7 @@ function organizaBolinhas(bolinhas) {
             circle.classList.add("circle-green");
           } else if (resultadosInvertidos[t][b] === "L") {
             circle.classList.add("circle-red");
-          } else {
+          } else if (resultadosInvertidos[t][b] === "D") {
             circle.classList.add("circle-gray");
           }
         }
@@ -147,17 +163,20 @@ function organizaBolinhas(bolinhas) {
   }
 }
 
-function organizaPontos(pontos) {
+function organizaPontos(pontos, dataTabela) {
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
   for (let t = 1; t < 6; t++) {
-    const posicaoContainer = document.getElementById("posicao-" + t);
+    const posicaoContainer = tabela.querySelector("#posicao-" + t);
+
     const pontosTd = posicaoContainer.querySelector("td[data-pontos]");
     pontosTd.textContent = pontos[t - 1];
   }
 }
 
-function organizaSetas(setas) {
+function organizaSetas(setas, dataTabela) {
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
   for (let t = 1; t < 6; t++) {
-    const posicaoContainer = document.getElementById("posicao-" + t);
+    const posicaoContainer = tabela.querySelector("#posicao-" + t);
     const setasTd = posicaoContainer.querySelector("td[data-seta]");
     const divSeta = setasTd.querySelector("div");
 
@@ -171,35 +190,30 @@ function organizaSetas(setas) {
   }
 }
 
-function organizaTimes(times) {
+function organizaTimes(times, dataTabela) {
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
   for (let t = 1; t < 6; t++) {
-    const posicaoContainer = document.getElementById("posicao-" + t);
-    console.log(posicaoContainer);
+    const posicaoContainer = tabela.querySelector("#posicao-" + t);
     const timeTd = posicaoContainer.querySelector("td[data-time]");
-    console.log(timeTd);
 
     const logoImg = document.createElement("img");
     logoImg.src = times[t - 1][1];
-    console.log(logoImg);
 
     const nomeTime = times[t - 1][0];
 
-    console.log("Nome retornado do array: " + nomeTime);
     const nomeTimeNodeText = document.createTextNode(
       " " + nomeTime.slice(0, 3).toUpperCase()
     );
-    console.log("Nome retornado do nó:");
-    console.log(nomeTimeNodeText);
 
     timeTd.appendChild(logoImg);
     timeTd.appendChild(nomeTimeNodeText);
   }
 }
 
-function exibeCampLogo(img) {
-  const campLogo = document.querySelector(".camp-logo");
+function exibeCampLogo(img, dataTabela) {
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
 
-  //console.log("Link recebido: " + img);
+  const campLogo = tabela.querySelector(".camp-logo");
 
   if (campLogo) {
     const logoUrl = img;
@@ -207,13 +221,56 @@ function exibeCampLogo(img) {
   }
 }
 
-function exibeNumeroRodada(frase) {
+function exibeNumeroRodada(frase, dataTabela) {
+  const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
+
   const numero = frase.split(" - ");
 
-  //console.log("Split aplicado: " + "[" + numero + "]");
-
-  const numeroRodada = document.getElementById("rodadaNumber");
-  numeroRodada.textContent = numero[1];
+  const numeroRodada = tabela.querySelector("#rodadaNumber");
+  const rodadaNumero = Number(numero[1]);
+  numeroRodada.textContent = rodadaNumero - 1;
+  console.log(numeroRodada);
 }
 
-montaTabela();
+// Lógica para montar as tabelas
+document.getElementById("verMais").addEventListener("click", () => {
+  exibeTabela(true);
+});
+document
+  .getElementById("verMenos")
+  .addEventListener("click", () => exibeTabela(false));
+
+const tabela2 = document.querySelector('div[data-tabela="2"]');
+const tabela3 = document.querySelector('div[data-tabela="3"]');
+const btnVerMais = document.querySelector("#verMais");
+const btnVerMenos = document.querySelector("#verMenos");
+
+let tabela2Montada = false;
+let tabela3Montada = false;
+
+function exibeTabela(show) {
+  tabela2.style.display = show ? "block" : "none";
+  tabela3.style.display = show ? "block" : "none";
+  btnVerMais.style.display = show ? "none" : "block";
+  btnVerMenos.style.display = show ? "block" : "none";
+
+  // Volta para o topo da tabela
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  if (show) {
+    if (!tabela2Montada) {
+      montaTabela(61, 2);
+      tabela2Montada = true;
+    }
+    if (!tabela3Montada) {
+      montaTabela(140, 3);
+      tabela3Montada = true;
+    }
+  }
+}
+
+// Inicializa a tabela 1
+montaTabela(71, 1);
