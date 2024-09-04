@@ -8,7 +8,6 @@ body {
     background-color: #f9f9f9 !important;
 }
 
-
 /* Navbar */
 #nav {
     padding: 0.8rem;
@@ -16,7 +15,7 @@ body {
 
 .navbar .nav-link {
     color: white !important;
-  }
+}
 
 nav img {
     width: 45px;
@@ -71,7 +70,6 @@ main {
 
 #ladoEsquerdo {
     margin-left: 3%;
-    
 }
 
 .classificacao {
@@ -85,6 +83,10 @@ main {
 .cabecalho-tabela {
     display: flex; 
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem; /* Espaço abaixo do cabeçalho, ajustável conforme necessário */
+    z-index: 2; /* Garante que o cabeçalho fique sobre o carregamento */
+    position: relative; /* Garante que o z-index funcione corretamente */
 }
 
 .ult-jogos {
@@ -98,12 +100,29 @@ main {
 }
 
 #borda-tabela {
-    height: 24.5rem;
-    padding: 3%;
+    height: 26rem;
+    padding: 2.7%;
+    padding-right: 3%;
     border-radius: 15px;
     background-color: #ffff;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
+    position: relative;
+    overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
+}
+
+[data-tabela='2'], [data-tabela='3'] {
+    display: none;
+}
+
+#verMenos {
+    display: none;
+    border-top: none;     
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 600;
 }
 
 #verMais {
@@ -119,7 +138,13 @@ main {
     filter: invert(1); 
     width: 25px;
     margin-bottom: 2px; 
+}
 
+#verMenos img {
+    filter: invert(1); 
+    width: 25px;
+    margin-bottom: 2px; 
+    rotate: 180deg;
 }
 
 #verMais:hover img {
@@ -132,6 +157,47 @@ main {
     border-top-left-radius: 0px;
     background-color: white;
     color: #0d6efd;
+}
+
+#verMenos:hover img {
+    filter: invert(41%) sepia(99%) saturate(589%) hue-rotate(192deg) brightness(99%) contrast(98%);
+}
+
+#verMenos:hover {
+    border-top: none;     
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    background-color: white;
+    color: #0d6efd;
+}
+
+/* Loading */
+#loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Permite centralizar o conteúdo */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com leve transparência */
+    border-radius: 15px; /* Para combinar com o contêiner principal */
+    z-index: 1; /* Garante que o carregamento fique atrás dos conteúdos principais */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 th, td {
@@ -165,7 +231,7 @@ aside, section h5 {
     display: flex;
 }
 
-.circle.circle.circle-gray {
+.circle.circle-gray {
     background-color: #a7a7a7;
 }
 
@@ -224,7 +290,6 @@ aside, section h5 {
 
 .resultados {
     margin-left: 10%;
-
 }
 
 /* Estatísticas do campeonato */
@@ -234,4 +299,3 @@ aside, section h5 {
     background-color: #ccc;
     padding: 20px;
 }
-
