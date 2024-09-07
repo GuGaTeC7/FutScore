@@ -224,6 +224,9 @@ function exibeCampLogo(img, dataTabela) {
 function exibeNumeroRodada(frase, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
 
+  const gambiarra = document.getElementById("gambiarra");
+  gambiarra.textContent = 26;
+
   const numero = frase.split(" - ");
 
   const numeroRodada = tabela.querySelector("#rodadaNumber");
