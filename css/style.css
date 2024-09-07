@@ -45,7 +45,7 @@ nav img {
 }
 
 .modal-content {
-    background: linear-gradient(to left, #b40000d6, #0052ced1); 
+    background-color: #0052ce !important; 
     border-color: rgba(0, 0, 0, 0.488);
 }
 
