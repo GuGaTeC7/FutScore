@@ -4,7 +4,6 @@ function hideLoader(dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
   const loadingElement = tabela.querySelector("#loading");
   loadingElement.style.display = "none";
-  console.log("sumiu");
 }
 
 async function montaTabela(liga, dataTabela) {
@@ -107,12 +106,6 @@ async function montaTabela(liga, dataTabela) {
     console.log("Resposta da API:");
     console.log(data);
 
-    // const tabela = document.querySelector(`div[data-tabela='2']`);
-    // const circleContainer = tabela.querySelector("#time-" + 1);
-
-    // console.log(tabela);
-    // console.log(circleContainer);
-
     organizaBolinhas(bolinhas, dataTabela);
     organizaPontos(pontos, dataTabela);
     organizaTimes(times, dataTabela);
@@ -124,7 +117,7 @@ async function montaTabela(liga, dataTabela) {
     if (error.message.includes("NetworkError")) {
       console.error("Erro de rede. Verifique sua conexão.");
     } else {
-      console.error("Erro ao buscar dados da API:", error.message);
+      //console.error("Erro ao buscar dados da API:", error);
     }
     return null;
   }
@@ -224,8 +217,8 @@ function exibeCampLogo(img, dataTabela) {
 function exibeNumeroRodada(frase, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
 
-  const gambiarra = document.getElementById("gambiarra");
-  gambiarra.textContent = 26;
+  const numRodada = document.getElementById("rodadaNumero");
+  numRodada.textContent = 26;
 
   const numero = frase.split(" - ");
 
@@ -275,5 +268,4 @@ function exibeTabela(show) {
   }
 }
 
-// Inicializa a tabela 1
 montaTabela(71, 1);
