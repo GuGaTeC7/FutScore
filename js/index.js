@@ -117,7 +117,7 @@ async function montaTabela(liga, dataTabela) {
     if (error.message.includes("NetworkError")) {
       console.error("Erro de rede. Verifique sua conexão.");
     } else {
-      //console.error("Erro ao buscar dados da API:", error);
+      console.error("Erro ao buscar dados da API:", error);
     }
     return null;
   }
@@ -225,7 +225,6 @@ function exibeNumeroRodada(frase, dataTabela) {
   const numeroRodada = tabela.querySelector("#rodadaNumber");
   const rodadaNumero = Number(numero[1]);
   numeroRodada.textContent = rodadaNumero - 1;
-  console.log(numeroRodada);
 }
 
 // Lógica para montar as tabelas
