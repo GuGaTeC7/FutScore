@@ -104,7 +104,7 @@ async function montaTabela(liga, dataTabela) {
     ];
 
     console.log("Resposta da API:");
-    console.log(data);
+    console.log(dataRodada);
 
     organizaBolinhas(bolinhas, dataTabela);
     organizaPontos(pontos, dataTabela);
@@ -217,14 +217,11 @@ function exibeCampLogo(img, dataTabela) {
 function exibeNumeroRodada(frase, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
 
-  const numRodada = document.getElementById("rodadaNumero");
-  numRodada.textContent = 26;
-
   const numero = frase.split(" - ");
 
   const numeroRodada = tabela.querySelector("#rodadaNumber");
-  const rodadaNumero = Number(numero[1]);
-  numeroRodada.textContent = rodadaNumero - 1;
+  const rodadaNumero = numero[1];
+  numeroRodada.textContent = rodadaNumero;
 }
 
 // Lógica para montar as tabelas
