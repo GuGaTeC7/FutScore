@@ -72,6 +72,7 @@ main {
     margin-left: 3%;
 }
 
+
 .classificacao {
     margin-left: -24%;
 }
@@ -268,15 +269,35 @@ aside, section h5 {
 }
 
 /* Jogos ao vivo */
-.jogos-ao-vivo {
-    grid-area: aoVivo;
-    border-radius: 10px;
-    background-color: #ccc;
-    padding: 20px;
+container {
+    width: 300px;
+    height: 600px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #a59e9e9c;
+    margin-left: 150PX;
 }
 
-.ao-vivo {
-    margin-top: 2%;
+.logo-visitante{
+}
+
+.nome-vistante{
+    margin-left: 20px;
+}
+
+.n-cartao-visitante{
+    margin-left: 30px;
+}
+
+.n-cartao-mandante{
+    margin-left: 50px;
+}
+
+.vistante-placar{
+    margin-left: 300px;
 }
 
 /* Resultado das Rodadas */
@@ -292,6 +313,94 @@ aside, section h5 {
     margin-left: 10%;
 }
 
+.jogos-ao-vivo {
+    grid-area: aoVivo;
+    border-radius: 10px;
+    background-color: lightgray;
+    display: flex;  
+    flex-direction: column;
+    margin: 20px;
+}
+
+.imgs{  
+    width: 100%;   /* ou outro valor */
+}
+
+.retangulo {
+    background-image: linear-gradient(60deg, black 50%, red 50% );
+    width: 450px;
+    height: 50px;
+    position: relative;
+    margin-left: 25px;
+}
+
+.retangulo-menor {
+    width: 500px;
+    height: 30px;
+    background-color: #767575;
+    margin-top: 0px; 
+    border-radius: 0 0 10px 10px;
+}
+
+.visitante {
+    position: absolute;
+    bottom: -5px;
+    left: -25px;
+}
+
+.mandante {
+    position: absolute;
+    right: -25px;
+    bottom: -5px;
+}
+
+.campeonato{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.data{
+    margin: 15px;
+}
+
+.horario{
+    margin-left: 140px;
+}
+
+.nome-time{
+    color: azure;
+    margin: 15px;
+}
+.nome-time-visitante{
+    color: azure;
+    margin-left: 30px;
+}
+
+.placar-visitante{
+    margin-left: 35px;
+    margin-right: 10px;
+}
+
+.placar-mandante{
+    margin-left: 10px;
+    margin-right: 35px
+}
+.vs{
+    color: azure;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.nome-time-mandante{
+    color: azure;
+}
+
+.ao-vivo {
+    margin-top: 2%;
+}
+
+
 /* Estatísticas do campeonato */
 .estatisticas-camp {
     grid-area: estatisticas;
@@ -299,3 +408,4 @@ aside, section h5 {
     background-color: #ccc;
     padding: 20px;
 }
+
