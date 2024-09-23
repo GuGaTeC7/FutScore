@@ -104,7 +104,7 @@ async function montaTabela(liga, dataTabela) {
     ];
 
     console.log("Resposta da API:");
-    console.log(data);
+    console.log(dataRodada);
 
     organizaBolinhas(bolinhas, dataTabela);
     organizaPontos(pontos, dataTabela);
@@ -217,14 +217,12 @@ function exibeCampLogo(img, dataTabela) {
 function exibeNumeroRodada(frase, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
 
-  const numRodada = document.getElementById("rodadaNumero");
-  numRodada.textContent = 26;
-
   const numero = frase.split(" - ");
 
   const numeroRodada = tabela.querySelector("#rodadaNumber");
-  const rodadaNumero = Number(numero[1]);
-  numeroRodada.textContent = rodadaNumero - 1;
+  console.log(numeroRodada);
+  const rodadaNumero = numero[1];
+  numeroRodada.textContent = rodadaNumero;
 }
 
 // Lógica para montar as tabelas
@@ -268,3 +266,68 @@ function exibeTabela(show) {
 }
 
 montaTabela(71, 1);
+
+// Estatísticas
+// Função para buscar campeonatos
+async function fetchLeagues(query) {
+  const url = `https://v3.football.api-sports.io/leagues?search=${query}`;
+
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error("Erro ao buscar ligas");
+    }
+
+    const data = await response.json();
+    console.log(data.response); // Retorna os campeonatos encontrados
+    return data.response; // Retorna os campeonatos encontrados
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+function exibeTodos(leagues) {
+  leagues.forEach((league) => {
+    const option = document.createElement("option");
+    option.value = league.league.id; // Use o ID da liga
+    option.textContent = league.league.name; // Nome da liga
+    selectElement.appendChild(option);
+  });
+}
+
+// Função para preencher o select com os resultados
+function populateLeagues(leagues) {
+  const selectElement = document.getElementById("campeonatos");
+  selectElement.style.display = "block";
+  //selectElement.innerHTML = ''; // Limpa as opções anteriores
+
+  // Adiciona as ligas como opções no select
+  leagues.forEach((league) => {
+    const option = document.createElement("option");
+    option.value = league.league.id; // Use o ID da liga
+    option.textContent = league.league.name; // Nome da liga
+    selectElement.appendChild(option);
+  });
+}
+
+// Função para lidar com a entrada do usuário
+function handleSearchInput() {
+  const searchInput = document.getElementById("search-input");
+
+  // Captura o evento de digitação no campo de busca
+  searchInput.addEventListener("input", async function () {
+    const query = this.value;
+    if (query.length > 2) {
+      // Evita buscar com strings curtas
+      const leagues = await fetchLeagues(query);
+      populateLeagues(leagues); // Preenche o select com as ligas encontradas
+    } else {
+      document.getElementById("campeonatos").innerHTML = ""; // Limpa o select se a busca for curta
+    }
+  });
+}
+
+// Chama a função quando o DOM estiver carregado
+document.addEventListener("DOMContentLoaded", handleSearchInput);
