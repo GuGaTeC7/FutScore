@@ -293,9 +293,13 @@ aside, section h5 {
 }
 
 /* Estatísticas do campeonato */
-.estatisticas-camp {
+#estatisticas-camp {
     grid-area: estatisticas;
     border-radius: 10px;
-    background-color: #ccc;
-    padding: 20px;
+    padding: 2.7%;
+    padding-right: 3%;
+    border-radius: 15px;
+    background-color: #ffff;
+    position: relative;
+    overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
 }
