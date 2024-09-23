@@ -8,7 +8,6 @@ body {
     background-color: #f9f9f9 !important;
 }
 
-
 /* Navbar */
 #nav {
     padding: 0.8rem;
@@ -16,7 +15,7 @@ body {
 
 .navbar .nav-link {
     color: white !important;
-  }
+}
 
 nav img {
     width: 45px;
@@ -46,31 +45,85 @@ nav img {
 }
 
 .modal-content {
-    background: linear-gradient(to left, #b40000d6, #0052ced1); 
+    background-color: #0052ce !important; 
     border-color: rgba(0, 0, 0, 0.488);
+}
+
+/* Main */
+main {
+    display: grid;
+    grid-template-areas: 
+        "tabelas aoVivo"
+        "resultado estatisticas";
+    gap: 35px;
+    padding: 50px;
+    grid-template-columns: 2fr 1fr; 
 }
 
 /* Tabelas Campeonatos */
 .tabelas {
-    margin: 4% 0 0 10%;
-    width: 45%;
+    grid-area: tabelas;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
 
-article h1:nth-child(1) {
+#ladoEsquerdo {
+    margin-left: 3%;
+}
+
+
+.classificacao {
+    margin-left: -24%;
+}
+
+.camp-logo {
+    width: 45px;
+}
+
+.cabecalho-tabela {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem; /* Espaço abaixo do cabeçalho, ajustável conforme necessário */
+    z-index: 2; /* Garante que o cabeçalho fique sobre o carregamento */
+    position: relative; /* Garante que o z-index funcione corretamente */
+}
+
+.ult-jogos {
+    margin-left: 8%;
+}
+
+.titulos-componentes {
     color: black;
     margin-left: 1%;
     text-transform: uppercase;
 }
 
 #borda-tabela {
-    height: 24.5rem;
-    padding: 3.5%;
+    height: 26rem;
+    padding: 2.7%;
+    padding-right: 3%;
     border-radius: 15px;
     background-color: #ffff;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
+    position: relative;
+    overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
+}
+
+[data-tabela='2'], [data-tabela='3'] {
+    display: none;
+}
+
+#verMenos {
+    display: none;
+    border-top: none;     
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    background-color: #0d6efd;
+    color: white;
+    font-weight: 600;
 }
 
 #verMais {
@@ -86,7 +139,13 @@ article h1:nth-child(1) {
     filter: invert(1); 
     width: 25px;
     margin-bottom: 2px; 
+}
 
+#verMenos img {
+    filter: invert(1); 
+    width: 25px;
+    margin-bottom: 2px; 
+    rotate: 180deg;
 }
 
 #verMais:hover img {
@@ -101,23 +160,63 @@ article h1:nth-child(1) {
     color: #0d6efd;
 }
 
+#verMenos:hover img {
+    filter: invert(41%) sepia(99%) saturate(589%) hue-rotate(192deg) brightness(99%) contrast(98%);
+}
+
+#verMenos:hover {
+    border-top: none;     
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    background-color: white;
+    color: #0d6efd;
+}
+
+/* Loading */
+#loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Permite centralizar o conteúdo */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com leve transparência */
+    border-radius: 15px; /* Para combinar com o contêiner principal */
+    z-index: 1; /* Garante que o carregamento fique atrás dos conteúdos principais */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 th, td {
     text-align: center !important;
     font-size: 1rem;
 }
 
-td img {
-    width: 25px; 
-    height: 25px;
+img {
+    width: 30px; 
 }
 
-article h1 {
+aside, section h1 {
     font-size: 1.5rem;
     color: #0d6efd;
     font-weight: 600;
 }
 
-article h5 {
+aside, section h5 {
     font-size: 1.1rem;
 }
 
@@ -133,7 +232,7 @@ article h5 {
     display: flex;
 }
 
-.circle.circle.circle-gray {
+.circle.circle-gray {
     background-color: #a7a7a7;
 }
 
@@ -167,5 +266,154 @@ article h5 {
 
 .arrow.down {
     border-top: 10px solid #b50000;
+}
+
+/* Jogos ao vivo */
+container {
+    width: 300px;
+    height: 600px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #a59e9e9c;
+    margin-left: 150PX;
+}
+
+.nome-vistante{
+    margin-left: 20px;
+}
+
+.n-cartao-visitante{
+    margin-left: 30px;
+}
+
+.n-cartao-mandante{
+    margin-left: 50px;
+}
+
+.vistante-placar{
+    margin-left: 300px;
+}
+
+/* Resultado das Rodadas */
+.result-jogadas {
+    grid-area: resultado;
+    border-radius: 10px;
+    background-color: #ccc;
+    padding: 20px;
+    width: 92.5%;
+}
+
+.resultados {
+    margin-left: 10%;
+}
+
+.jogos-ao-vivo {
+    grid-area: aoVivo;
+    border-radius: 10px;
+    background-color: lightgray;
+    display: flex;  
+    flex-direction: column;
+    margin: 20px;
+}
+
+.imgs{  
+    width: 100%;   /* ou outro valor */
+}
+
+.retangulo {
+    background-image: linear-gradient(60deg, black 50%, red 50% );
+    width: 450px;
+    height: 50px;
+    position: relative;
+    margin-left: 25px;
+}
+
+.retangulo-menor {
+    width: 500px;
+    height: 30px;
+    background-color: #767575;
+    margin-top: 0px; 
+    border-radius: 0 0 10px 10px;
+}
+
+.visitante {
+    position: absolute;
+    bottom: -5px;
+    left: -25px;
+}
+
+.mandante {
+    position: absolute;
+    right: -25px;
+    bottom: -5px;
+}
+
+.campeonato{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.data{
+    margin: 15px;
+}
+
+.horario{
+    margin-left: 140px;
+}
+
+.nome-time{
+    color: azure;
+    margin: 15px;
+}
+.nome-time-visitante{
+    color: azure;
+    margin-left: 30px;
+}
+
+.placar-visitante{
+    margin-left: 35px;
+    margin-right: 10px;
+}
+
+.placar-mandante{
+    margin-left: 10px;
+    margin-right: 35px
+}
+.vs{
+    color: azure;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.nome-time-mandante{
+    color: azure;
+}
+
+#ao-vivo {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5.7%;
+    padding-right: 3%;
+    border-radius: 15px;
+    background-color: #ffff;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Estatísticas do campeonato */
+#estatisticas-camp {
+    grid-area: estatisticas;
+    border-radius: 10px;
+    padding: 2.7%;
+    padding-right: 3%;
+    border-radius: 15px;
+    background-color: #ffff;
+    position: relative;
+    overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
 }
 
