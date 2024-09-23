@@ -281,9 +281,6 @@ container {
     margin-left: 150PX;
 }
 
-.logo-visitante{
-}
-
 .nome-vistante{
     margin-left: 20px;
 }
@@ -396,8 +393,15 @@ container {
     color: azure;
 }
 
-.ao-vivo {
-    margin-top: 2%;
+#ao-vivo {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5.7%;
+    padding-right: 3%;
+    border-radius: 15px;
+    background-color: #ffff;
+    position: relative;
+    overflow: hidden;
 }
 
 
