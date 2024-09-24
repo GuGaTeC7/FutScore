@@ -64,8 +64,6 @@ h1{
    
     position: absolute;
     right: 24px;
-    top: 20%;
-    margin-top: 5px;
 }
 
 .input-container a{
@@ -86,3 +84,7 @@ h1{
     border-radius: 10px;
 }
 
+.cadeado{
+    width: 20px;
+    margin-top: 15px;
+}
