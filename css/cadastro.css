@@ -28,10 +28,15 @@ body {
 
 
 }
+
 h1{
     font-size: 36px;
     text-align: center;
     color: #fff;
+}
+
+label {
+    margin-bottom: 10px;
 }
 
 .input-container{
@@ -49,10 +54,10 @@ h1{
     outline: none;
     border: 2px solid black;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 13px;
     color: black;
-    padding: 20px 45px 20px 20px;
-
+    padding: 20px 45px 20px 10px;
+    margin-top: 5px;
 }
 
 .input-container input::placeholder {
@@ -62,7 +67,7 @@ h1{
 .input-container img {
     position: absolute;
     right: 24px;
-    margin-top: 15px;
+    margin-top: 21px;
 }
 
 .input-container a{

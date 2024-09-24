@@ -1,52 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cadastro.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Poppins:ital,wght@0,500;1,200&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/cadastro.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Poppins:ital,wght@0,500;1,200&display=swap"
+      rel="stylesheet"
+    />
     <title>Tela de Cadastro</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <form>
-        <h1 style="color: black;">Cadastro</h1>
-            <div class="input-container">
-                <label for="nome">Nome</label>
-                <input id="nome" name="nome" placeholder="Nome" type="text" required>
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/user--v1.png" alt="ícone de usuário" />
-            </div>
+      <form>
+        <h1 style="color: black">Cadastro</h1>
 
-            <div class="input-container">
-                <label for="email">Email</label>
-                <input id="email" name="email" placeholder="Email" type="email" required>
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/new-post--v1.png" alt="ícone de email" />
-            </div>
+        <div class="input-container">
+          <label for="nome">Nome</label>
+          <input
+            id="nome"
+            name="nome"
+            placeholder="Escreva seu nome..."
+            type="text"
+          />
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios/50/user--v1.png"
+            alt="ícone de usuário"
+          />
+        </div>
 
-            <div class="input-container">
-                <label for="senha">Senha</label>
-                <input id="senha" name="senha" placeholder="Senha" type="password" required>
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/lock-2.png" alt="ícone de senha" />
-            </div>
+        <div class="input-container">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            placeholder="Escreva seu email..."
+            type="email"
+          />
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios/50/new-post--v1.png"
+            alt="ícone de email"
+          />
+        </div>
 
-            <div class="input-container">
-                <label for="confirmar-senha">Confirmar Senha</label>
-                <input id="confirmar-senha" name="confirmar-senha" placeholder="Confirmar Senha" type="password" required>
-                <img width="20" height="20" src="https://img.icons8.com/ios/50/lock-2.png" alt="ícone de senha" />
-            </div>
+        <div class="input-container">
+          <label for="senha">Senha</label>
+          <input
+            id="password"
+            name="senha"
+            placeholder="Escreva sua senha..."
+            type="password"
+          />
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios/50/lock-2.png"
+            alt="ícone de senha"
+          />
+        </div>
 
-            <button type="submit" class="submit-button">Cadastrar</button>
+        <div class="input-container">
+          <label for="confirmar-senha">Confirmar Senha</label>
+          <input
+            id="confirmar-senha"
+            name="confirmar-senha"
+            placeholder="Escreva sua senha novamente..."
+            type="password"
+          />
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios/50/lock-2.png"
+            alt="ícone de senha"
+          />
+        </div>
 
-            <div>
-                <p>Já possui uma conta? <a href="login.html">Login</a></p>
-            </div>
-        </form>
+        <input
+          type="submit"
+          class="submit-button"
+          value="Cadastrar"
+          onclick="cadastrar(); return false;"
+        />
+
+        <div>
+          <p>Já possui uma conta? <a href="login.html">Login</a></p>
+        </div>
+      </form>
     </div>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="js/cadastro.js"></script> 
+  </body>
 </html>

@@ -61,14 +61,19 @@
               </li>
             </ul>
 
-            <form class="d-flex">
+            <img
+              src="/assets/player.svg"
+              id="profile"
+              alt="img perfil"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              data-toggle="tooltip" 
+              data-placement="bottom"
+              data-bs-html="true"
+            />
+
+            <form class="d-flex" id="modalAuth">
               <!-- Botão de gatilho do modal -->
-              <img
-                src="https://www.sofascore.com/static/images/placeholders/player.svg"
-                alt=""
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              />
 
               <!-- Modal -->
               <div
@@ -93,14 +98,14 @@
                     </div>
                     <div class="modal-body">
                       <button type="button" class="btn btn-primary">
-                        Cadastro
+                        <a href="cadastro.html">Cadastro</a>
                       </button>
                       <button
                         type="button"
                         class="btn btn-danger"
                         data-bs-dismiss="modal"
                       >
-                        Login
+                        <a href="login.html">Login</a>
                       </button>
                     </div>
                   </div>
