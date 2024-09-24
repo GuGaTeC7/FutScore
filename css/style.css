@@ -21,11 +21,17 @@ nav img {
     width: 45px;
 }
 
+button a {
+    text-decoration: none;
+    color: white;
+    font-weight: 200px;
+}
+
 #logo {
     margin-right: 1%;
 }
 
-.d-flex img {
+#profile:hover {
     cursor: pointer;
 }
 
@@ -285,47 +291,38 @@ container {
     margin-left: 20px;
 }
 
-.ta{
-    width: 20px;
-}
-
 .n-cartao-visitante{
-    font-size: 10px;
     margin-left: 30px;
 }
 
 .n-cartao-mandante{
-    font-size: 10px;
     margin-left: 50px;
 }
 
 .vistante-placar{
-    margin-left: 70px;
+    margin-left: 300px;
 }
 
 /* Resultado das Rodadas */
 .result-jogadas {
     grid-area: resultado;
-    border-radius: 10px ;
+    border-radius: 10px;
     background-color: #ccc;
     padding: 20px;
-    width: 660px;
+    width: 92.5%;
+}
+
+.resultados {
+    margin-left: 10%;
 }
 
 .jogos-ao-vivo {
     grid-area: aoVivo;
     border-radius: 10px;
+    background-color: lightgray;
     display: flex;  
     flex-direction: column;
-    margin-left: 12.5%;
-    width: 500px;
-    margin-bottom: 20px;
-}
-
-.resultados {
-    border-color: #0052ce;
-    padding: 20px;
-    width: 90%;
+    margin: 20px;
 }
 
 .imgs{  
@@ -337,15 +334,16 @@ container {
     width: 450px;
     height: 50px;
     position: relative;
+    margin-left: 25px;
 }
 
 .retangulo-menor {
-    width: 450px;
+    width: 500px;
     height: 30px;
     background-color: #767575;
     margin-top: 0px; 
     border-radius: 0 0 10px 10px;
-    }
+}
 
 .visitante {
     position: absolute;
@@ -362,6 +360,7 @@ container {
 .campeonato{
     margin-top: 10px;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 .data{
@@ -400,8 +399,6 @@ container {
     color: azure;
 }
 
-
-
 #ao-vivo {
     width: 100%;
     border-radius: 10px;
@@ -411,7 +408,6 @@ container {
     background-color: #ffff;
     position: relative;
     overflow: hidden;
-    
 }
 
 
