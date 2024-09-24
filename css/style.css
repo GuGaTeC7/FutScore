@@ -21,17 +21,11 @@ nav img {
     width: 45px;
 }
 
-button a {
-    text-decoration: none;
-    color: white;
-    font-weight: 200px;
-}
-
 #logo {
     margin-right: 1%;
 }
 
-#profile:hover {
+.d-flex img {
     cursor: pointer;
 }
 
@@ -312,7 +306,7 @@ container {
 /* Resultado das Rodadas */
 .result-jogadas {
     grid-area: resultado;
-    border-radius: 10px;
+    border-radius: 10px ;
     background-color: #ccc;
     padding: 20px;
     width: 660px;
