@@ -423,3 +423,77 @@ container {
     overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
 }
 
+.primeiro-estatisticas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    margin-top: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.110);
+    border-radius: 6px;
+}
+
+.primeiro-estatisticas p {
+    margin-bottom: 0;
+}
+
+.primeiro-estatisticas h1 {
+    font-weight: 100;
+    font-size: 20px;
+    margin-bottom: 0;
+    color: black;
+}
+
+.img-jogador-um {
+    width: 100px;
+    margin-bottom: 5px;
+    border-radius: 100%;
+    border: 2.5px solid #0d6efd;
+}
+
+.estatisticas-table-um {
+    display: flex;
+}
+
+#table-result-um td {
+    font-size: 13.5px;
+    padding: 4px;
+}
+
+#table-result-um {
+    margin-bottom: 0px;
+}
+
+.perfil-jogador-um {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: column; 
+    width: 280px;
+}
+
+.nota {
+    position: absolute;
+    width: 35px;
+    top: 5px; /* Ajusta a posição vertical */
+    left: -10px; /* Ajusta a posição horizontal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0d6efd;
+    border-radius: 15px;
+    z-index: 10;
+    border: 2.5px solid #0d6efd;
+}
+
+.nota p {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+}
+  
+.barra-vertical {
+    height: 145px;
+    border: 1px solid rgba(0, 0, 0, 0.110);
+    margin-right: 4%;
+}
