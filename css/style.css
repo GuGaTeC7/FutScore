@@ -448,7 +448,7 @@ container {
     width: 100px;
     margin-bottom: 5px;
     border-radius: 100%;
-    border: 2.5px solid #0d6efd;
+    border: 2.5px solid #1672fd;
 }
 
 .estatisticas-table-um {
@@ -496,4 +496,54 @@ container {
     height: 145px;
     border: 1px solid rgba(0, 0, 0, 0.110);
     margin-right: 4%;
+}
+
+.tabela-estatisticas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.110);
+    border-radius: 6px;
+}
+
+.perfil-jogador-estatistica {
+    display: flex;
+    align-items: center;
+}
+
+.perfil-jogador-estatistica p {
+    margin-bottom: 0;
+}
+
+.nota-tabela-estatisticas {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0d6efd;
+    border-radius: 5px;
+    z-index: 10;
+    border: 2.5px solid #0d6efd;
+}
+.nota-tabela-estatisticas p{
+    font-size: 14px;
+    margin-bottom: 0;
+    color: white;
+}
+
+.img-jogador-estatisticas {
+    width: 45px;
+    border-radius: 100%;
+    border: 2px solid #1672fd;
+}
+
+.perfil-jogador-estatisticas {
+    display: flex;
+    align-items: center;
+}
+.perfil-jogador-estatisticas p {
+    font-size: 17px;
+    margin: 0 0 0 10px;
 }
