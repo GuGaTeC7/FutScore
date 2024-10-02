@@ -425,10 +425,11 @@ container {
 
 .primeiro-estatisticas {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     padding: 6px;
-    margin-top: 15px;
+    margin-top: 20px;
     border: 1px solid rgba(0, 0, 0, 0.110);
     border-radius: 6px;
 }
@@ -495,14 +496,15 @@ container {
 .barra-vertical {
     height: 145px;
     border: 1px solid rgba(0, 0, 0, 0.110);
-    margin-right: 4%;
+    margin-right: 5%;
 }
 
 .tabela-estatisticas {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
-    margin-top: 6px;
+    margin-top: 10px;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.110);
     border-radius: 6px;
@@ -546,4 +548,25 @@ container {
 .perfil-jogador-estatisticas p {
     font-size: 17px;
     margin: 0 0 0 10px;
+}
+
+.posicao-estatisticas {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -6px;
+    left: -7px;
+    background-color: #0d6efd;
+    border-radius: 5px;
+    z-index: 10;
+    border: 2.5px solid #0d6efd;
+}
+
+.posicao-estatisticas p {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0;
 }
