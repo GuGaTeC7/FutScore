@@ -128,9 +128,6 @@ async function montaTabela(liga, dataTabela) {
       data.response[0].league.standings[0][4].status,
     ];
 
-    console.log("Resposta da API:");
-    console.log(dataRodada);
-
     organizaBolinhas(bolinhas, dataTabela);
     organizaPontos(pontos, dataTabela);
     organizaTimes(times, dataTabela);
@@ -245,7 +242,6 @@ function exibeNumeroRodada(frase, dataTabela) {
   const numero = frase.split(" - ");
 
   const numeroRodada = tabela.querySelector("#rodadaNumber");
-  console.log(numeroRodada);
   const rodadaNumero = numero[1];
   numeroRodada.textContent = rodadaNumero;
 }

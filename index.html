@@ -92,8 +92,7 @@
         </div>
         <div class="cabecalho-tabela">
           <div>
-            <!-- arrume para rodadaNumber -->
-            <h5>Rodada <span id="rodadaNumbe">27</span></h5>
+            <h5>Rodada <span id="rodadaNumber"></span></h5>
             <h1>Brasileiro Série A</h1>
           </div>
           <div>
@@ -629,10 +628,15 @@
             <div class="form-group">
               <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do campeonato..." />
               <select name="campeonatos" id="campeonatos" class="form-control input-lg" data-live-search="true"
-                title="SELECIONE UM CAMPEONATO" style="display:none"></select>
+                title="SELECIONE UM CAMPEONATO" style="display:none; font-size: 14px;">
+            </select>
             </div>
           </div>
         </div>
+
+        <div id="loadingClass" style="display: none;">
+        <h1 style="margin-top: 13px; font-size: 1.4rem;" id="nomeLigaEstatisticas">Ligue 1</h1>
+        <h2>ARTILHEIROS</h2>
 
         <div class="primeiro-estatisticas">
 
@@ -643,16 +647,16 @@
           <div class="perfil-jogador-um">
             <div style="position: relative;">
               <div class="nota">
-                <p>7.17</p>
+                <p id="nota" data-nota="0"></p>
               </div>
-              <img src="https://media.api-sports.io/football/players/10321.png" class="img-jogador-um" alt="">
+              <img src="" class="img-jogador-um" alt="" data-img="0">
             </div>
 
             <div style="display: flex; justify-content: center; align-items: center;">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Flamengo_braz_logo.svg/400px-Flamengo_braz_logo.svg.png"
-                style="width: 17px; height: 18px; margin-right: 3px;" alt="">
-              <h1>Pedro</h1>
+                src=""
+                style="width: 17px; margin-right: 3px;" alt="img jogador" id="logoTimeJogadorUm">
+              <h1 data-name="0"></h1>
             </div>
             <b style="font-size: 0.9rem;">Atacante</b>
           </div>
@@ -663,23 +667,23 @@
             <tbody>
               <tr>
                 <td class="estatisticas-table-um">Jogos</td>
-                <td>21</td>
+                <td id="jogosTd"></td>
               </tr>
               <tr>
                 <td class="estatisticas-table-um">Gols</td>
-                <td>11</td>
+                <td id="golsTd"></td>
               </tr>
               <tr>
                 <td class="estatisticas-table-um">Assistências</td>
-                <td>5</td>
+                <td id="assistenciasTd"></td>
               </tr>
               <tr>
                 <td class="estatisticas-table-um">Conversão de gols</td>
-                <td>28%</td>
+                <td id="conversaoTd"></td>
               </tr>
               <tr>
                 <td class="estatisticas-table-um">Cartões amarelos</td>
-                <td>3</td>
+                <td id="cartoesTd"></td>
               </tr>
             </tbody>
           </table>
@@ -691,12 +695,12 @@
             <p>2</p>
           </div>
           <div class="perfil-jogador-estatisticas">
-            <img src="https://media.api-sports.io/football/players/10321.png" class="img-jogador-estatisticas"
-              alt="img jogador">
-            <p>Pedro Henrique</p>
+            <img src="" class="img-jogador-estatisticas"
+              alt="img jogador" data-img="1">
+            <p data-name="1"></p>
           </div>
           <div class="nota-tabela-estatisticas">
-            <p>7.17</p>
+            <p data-nota="1"></p>
           </div>
         </div>
 
@@ -706,12 +710,12 @@
             <p>3</p>
           </div>
           <div class="perfil-jogador-estatisticas">
-            <img src="https://media.api-sports.io/football/players/10321.png" class="img-jogador-estatisticas"
-              alt="img jogador">
-            <p>Pedro Henrique</p>
+            <img src="" class="img-jogador-estatisticas"
+              alt="img jogador" data-img="2">
+            <p data-name="2"></p>
           </div>
           <div class="nota-tabela-estatisticas">
-            <p>7.17</p>
+            <p data-nota="2"></p>
           </div>
         </div>
 
@@ -721,12 +725,12 @@
             <p>4</p>
           </div>
           <div class="perfil-jogador-estatisticas">
-            <img src="https://media.api-sports.io/football/players/10321.png" class="img-jogador-estatisticas"
-              alt="img jogador">
-            <p>Pedro Henrique</p>
+            <img src="" class="img-jogador-estatisticas"
+              alt="img jogador" data-img="3">
+            <p data-name="3"></p>
           </div>
           <div class="nota-tabela-estatisticas">
-            <p>7.17</p>
+            <p data-nota="3"></p>
           </div>
         </div>
 
@@ -736,19 +740,15 @@
             <p>5</p>
           </div>
           <div class="perfil-jogador-estatisticas">
-            <img src="https://media.api-sports.io/football/players/10321.png" class="img-jogador-estatisticas"
-              alt="img jogador">
-            <p>Pedro Henrique</p>
+            <img src="" class="img-jogador-estatisticas"
+              alt="img jogador" data-img="4">
+            <p data-name="4"></p>
           </div>
           <div class="nota-tabela-estatisticas">
-            <p>7.17</p>
+            <p data-nota="4"></p>
           </div>
         </div>
-
-
-
-
-
+      </div>
 
       </div>
     </section>
@@ -766,7 +766,6 @@
   <script src="/js/credenciais.js"></script>
   <script src="/js/tabela.js"></script>
   <script src="/js/estatisticas.js"></script>
-   
 </body>
 
 </html>
