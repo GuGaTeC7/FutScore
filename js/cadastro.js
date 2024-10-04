@@ -32,7 +32,7 @@ async function cadastrar() {
       console.log("Nome e email armazenados no localStorage:", nome, email);
       alert("Cadastro realizado com sucesso!");
 
-      window.location.href = '/index.html';
+      window.location.href = '/login.html';
     }
 
     //window.location.href = "/index.html";

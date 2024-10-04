@@ -50,6 +50,14 @@
           <img src="/assets/player.svg" id="profile" alt="img perfil" data-bs-toggle="modal"
             data-bs-target="#exampleModal" data-toggle="tooltip" data-placement="bottom" data-bs-html="true" />
 
+          <div class="quadrado-completo">
+            <div class="triangulo-para-cima"></div>
+            <div class="quadrado-login">
+              <p id="nomeUser"></p>
+              <button type="button" class="btn btn-danger" onclick="sair()" style="font-size: 12px;">Sair</button>
+            </div>
+          </div>
+
           <form class="d-flex" id="modalAuth">
             <!-- Botão de gatilho do modal -->
 
@@ -68,7 +76,7 @@
                     <button type="button" class="btn btn-primary">
                       <a href="cadastro.html">Cadastro</a>
                     </button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-danger">
                       <a href="login.html">Login</a>
                     </button>
                   </div>
@@ -629,126 +637,120 @@
               <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do campeonato..." />
               <select name="campeonatos" id="campeonatos" class="form-control input-lg" data-live-search="true"
                 title="SELECIONE UM CAMPEONATO" style="display:none; font-size: 14px;">
-            </select>
+              </select>
             </div>
           </div>
         </div>
 
         <div id="loadingClass" style="display: none;">
-        <h1 style="margin-top: 13px; font-size: 1.4rem;" id="nomeLigaEstatisticas">Ligue 1</h1>
-        <h2>ARTILHEIROS</h2>
+          <h1 style="margin-top: 13px; font-size: 1.4rem;" id="nomeLigaEstatisticas">Ligue 1</h1>
+          <h2>ARTILHEIROS</h2>
 
-        <div class="primeiro-estatisticas">
+          <div class="primeiro-estatisticas">
 
-          <div class="posicao-estatisticas">
-            <p>1</p>
-          </div>
+            <div class="posicao-estatisticas">
+              <p>1</p>
+            </div>
 
-          <div class="perfil-jogador-um">
-            <div style="position: relative;">
-              <div class="nota">
-                <p id="nota" data-nota="0"></p>
+            <div class="perfil-jogador-um">
+              <div style="position: relative;">
+                <div class="nota">
+                  <p id="nota" data-nota="0"></p>
+                </div>
+                <img src="" class="img-jogador-um" alt="" data-img="0">
               </div>
-              <img src="" class="img-jogador-um" alt="" data-img="0">
+
+              <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="" style="width: 17px; margin-right: 3px;" alt="img jogador" id="logoTimeJogadorUm">
+                <h1 data-name="0"></h1>
+              </div>
+              <b style="font-size: 0.9rem;">Atacante</b>
             </div>
 
-            <div style="display: flex; justify-content: center; align-items: center;">
-              <img
-                src=""
-                style="width: 17px; margin-right: 3px;" alt="img jogador" id="logoTimeJogadorUm">
-              <h1 data-name="0"></h1>
+            <div class="barra-vertical"></div>
+
+            <table class="table table-borderless" id="table-result-um" style="font-size: 10px;">
+              <tbody>
+                <tr>
+                  <td class="estatisticas-table-um">Jogos</td>
+                  <td id="jogosTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Gols</td>
+                  <td id="golsTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Assistências</td>
+                  <td id="assistenciasTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Conversão de gols</td>
+                  <td id="conversaoTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Cartões amarelos</td>
+                  <td id="cartoesTd"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Segundo Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>2</p>
             </div>
-            <b style="font-size: 0.9rem;">Atacante</b>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="1">
+              <p data-name="1"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="1"></p>
+            </div>
           </div>
 
-          <div class="barra-vertical"></div>
+          <!-- Terceiro Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>3</p>
+            </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="2">
+              <p data-name="2"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="2"></p>
+            </div>
+          </div>
 
-          <table class="table table-borderless" id="table-result-um" style="font-size: 10px;">
-            <tbody>
-              <tr>
-                <td class="estatisticas-table-um">Jogos</td>
-                <td id="jogosTd"></td>
-              </tr>
-              <tr>
-                <td class="estatisticas-table-um">Gols</td>
-                <td id="golsTd"></td>
-              </tr>
-              <tr>
-                <td class="estatisticas-table-um">Assistências</td>
-                <td id="assistenciasTd"></td>
-              </tr>
-              <tr>
-                <td class="estatisticas-table-um">Conversão de gols</td>
-                <td id="conversaoTd"></td>
-              </tr>
-              <tr>
-                <td class="estatisticas-table-um">Cartões amarelos</td>
-                <td id="cartoesTd"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <!-- Quarto Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>4</p>
+            </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="3">
+              <p data-name="3"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="3"></p>
+            </div>
+          </div>
 
-        <!-- Segundo Lugar -->
-        <div class="tabela-estatisticas">
-          <div class="posicao-estatisticas">
-            <p>2</p>
-          </div>
-          <div class="perfil-jogador-estatisticas">
-            <img src="" class="img-jogador-estatisticas"
-              alt="img jogador" data-img="1">
-            <p data-name="1"></p>
-          </div>
-          <div class="nota-tabela-estatisticas">
-            <p data-nota="1"></p>
-          </div>
-        </div>
-
-        <!-- Terceiro Lugar -->
-        <div class="tabela-estatisticas">
-          <div class="posicao-estatisticas">
-            <p>3</p>
-          </div>
-          <div class="perfil-jogador-estatisticas">
-            <img src="" class="img-jogador-estatisticas"
-              alt="img jogador" data-img="2">
-            <p data-name="2"></p>
-          </div>
-          <div class="nota-tabela-estatisticas">
-            <p data-nota="2"></p>
+          <!-- Quinto Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>5</p>
+            </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="4">
+              <p data-name="4"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="4"></p>
+            </div>
           </div>
         </div>
-
-        <!-- Quarto Lugar -->
-        <div class="tabela-estatisticas">
-          <div class="posicao-estatisticas">
-            <p>4</p>
-          </div>
-          <div class="perfil-jogador-estatisticas">
-            <img src="" class="img-jogador-estatisticas"
-              alt="img jogador" data-img="3">
-            <p data-name="3"></p>
-          </div>
-          <div class="nota-tabela-estatisticas">
-            <p data-nota="3"></p>
-          </div>
-        </div>
-
-        <!-- Quinto Lugar -->
-        <div class="tabela-estatisticas">
-          <div class="posicao-estatisticas">
-            <p>5</p>
-          </div>
-          <div class="perfil-jogador-estatisticas">
-            <img src="" class="img-jogador-estatisticas"
-              alt="img jogador" data-img="4">
-            <p data-name="4"></p>
-          </div>
-          <div class="nota-tabela-estatisticas">
-            <p data-nota="4"></p>
-          </div>
-        </div>
-      </div>
 
       </div>
     </section>
@@ -766,6 +768,51 @@
   <script src="/js/credenciais.js"></script>
   <script src="/js/tabela.js"></script>
   <script src="/js/estatisticas.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+  <script>
+    // Obtém o token do localStorage
+    const token = localStorage.getItem("token");
+    
+
+    // Verifica se o token está armazenado no localStorage
+    if (token) {
+      const modal = document.getElementById("modalAuth");
+      modal.style.setProperty("display", "none", "important"); // Esconde o modal
+
+      // Decodifica o token JWT
+      const decodedToken = jwt_decode(token);
+
+      // Seleciona a imagem do perfil pelo ID
+      const img = document.getElementById("profile");
+
+      // Remove os atributos 'data-bs-toggle' e 'data-bs-target' para desativar o modal no clique
+      img.removeAttribute("data-bs-toggle");
+      img.removeAttribute("data-bs-target");
+
+      // Acessa o nome do usuário através do claim "name"
+      const nomeArmazenado = decodedToken.name || "Usuário";  // Acessa o campo 'name' do token
+      document.getElementById("nomeUser").innerText = nomeArmazenado
+
+      // Exibe o conteúdo do payload decodificado no console
+      console.log("Token decodificado:", decodedToken);
+
+      const quadradoLogin = document.querySelector(".quadrado-completo");
+
+
+      img.addEventListener("click", () => {
+        quadradoLogin.style.display = quadradoLogin.style.display == "block" ? "none" : "block";
+      });
+
+
+    } else {
+      const img = document.getElementById("profile");
+      if (img) {
+        img.style.display = "block"; // Esconde a imagem de perfil
+      }
+      console.log("Token não encontrado");
+    }
+  </script>
 </body>
 
 </html>

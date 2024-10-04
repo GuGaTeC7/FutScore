@@ -1,28 +1,3 @@
-// Código para verificar se dentro do LocalStorage estão armazenados 'nome' e 'email'
-const nomeArmazenado = localStorage.getItem("nome");
-const emailArmazenado = localStorage.getItem("email");
-
-//codigo para verificar se dentro do LocalStorage estão armezanados
-if (nomeArmazenado && emailArmazenado) {
-  const modal = document.getElementById("modalAuth");
-  modal.style.setProperty("display", "none", "important");
-
-  // Seleciona a imagem pelo ID
-  const img = document.getElementById("profile");
-
-  // Remove os atributos 'data-bs-toggle' e 'data-bs-target' fazendo com que a img não exiba o modal
-  img.removeAttribute("data-bs-toggle");
-  img.removeAttribute("data-bs-target");
-
-  img.setAttribute("title", `${nomeArmazenado}<br> ${emailArmazenado}`);
-
-  var option = {
-    animation: true,
-  };
-
-  var tooltip = new bootstrap.Tooltip(img, option);
-}
-
 const url = "https://v3.football.api-sports.io";
 
 function hideLoader(dataTabela) {

@@ -1,25 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/login.css" />
     <title>Login</title>
-</head>
+  </head>
 
-<body> 
-    <section class="area-Login" >
-        <div class="Login" > 
-        <img src="assets/favicon.ico.jpg">
+  <body>
+    <section class="area-Login">
+      <div class="Login">
+        <img src="assets/favicon.ico.jpg" />
 
-        <form method="post">
-            <input type="text" name="nome" placeholder="Nome de Usuário" autofocus>
-            <input type="password" name="senha" placeholder="Senha">
-            <input type="submit" value="entrar">
-            <p>Ainda não possui uma conta?<a href="cadastro.html"> Criar Conta</a></p>
+        <form>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value="guga@gmail.com"
+            placeholder="Email"
+            autofocus
+          />
+          <input
+            type="password"
+            id="password"
+            value="123"
+            name="senha"
+            placeholder="Senha"
+          />
+          <input
+            type="submit"
+            value="Entrar"
+            onclick="login(); return false;"
+          />
+          <p>
+            Ainda não possui uma conta?<a href="cadastro.html"> Criar Conta</a>
+          </p>
         </form>
-        </div>
+      </div>
     </section>
 
-</body>
+    <script>
+      // Captura os campos de email e senha
+      const iemail = document.querySelector("#email");
+      const ipassword = document.querySelector("#password");
+
+      // Função de login
+      function login() {
+        // Faz a requisição para o backend (API)
+        fetch(`http://localhost:8080/users/login`, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            email: iemail.value, // Pega o valor do input de email
+            password: ipassword.value, // Pega o valor do input de senha
+          }),
+        })
+          .then((response) => {
+            // Converte a resposta em JSON
+            return response.json();
+          })
+          .then((data) => {
+            // Verifica se o login foi bem-sucedido e se há um token
+            console.log(data);
+            if (data.token) {
+              const token = data.token; // Supondo que o token vem como { "token": "valor_do_token" }
+
+              // Armazena o token no localStorage
+              localStorage.setItem("token", token);
+
+              console.log("Token armazenado no localStorage:", token);
+
+              // Redireciona para a página home
+              window.location.href = "/index.html";
+            } else {
+              // Exibe uma mensagem de erro se não houver token
+              alert("Erro ao realizar o login: Token não encontrado.");
+            }
+          })
+          .catch((error) => {
+            // Lida com erros na requisição
+            console.log("Erro na requisição:", error);
+            alert("Erro na requisição");
+          });
+      }
+    </script>
+
+    <!-- <script src="js/login.js"></script> -->
+  </body>
 </html>
