@@ -377,6 +377,7 @@ container {
   display: flex;
   flex-direction: column;
   margin: 20px;
+  filter: blur(5px);
 }
 
 .imgs {
