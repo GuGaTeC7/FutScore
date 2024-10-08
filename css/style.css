@@ -55,9 +55,10 @@ button a {
   height: 0;
   border-left: 18px solid transparent;
   border-right: 18px solid transparent;
-  border-bottom: 18px solid #0d6efd;
+  border-bottom: 18px solid rgba(0, 0, 0, 0.322);
   position: absolute;
-  bottom: 94%;
+  bottom: 2%;
+  right: 3.7%;
 }
 
 .quadrado-login {
@@ -69,10 +70,11 @@ button a {
   width: 100px;
   height: 100px;
   position: absolute;
-  right: 1.9%;
-  top: 83%;
+  right: 1.7%;
+  top: 86%;
   z-index: 10;
   border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.322);
 }
 
 .modal-header {
