@@ -8,21 +8,30 @@
 }
 
 body {
-  background-color: #f9f9f9 !important;
+  background-color: #262b37 !important;
 }
 
 /* Navbar */
 #nav {
-  padding: 0.8rem;
+  padding: 2.2rem;
   position: relative;
+  height: 13vh;
 }
 
 .navbar .nav-link {
   color: white !important;
 }
 
-nav img {
-  width: 45px;
+.navbar .nav-link:hover {
+  color: rgb(36, 22, 237) !important;
+}
+
+.navbar-collapse {
+  flex-grow: unset !important;
+}
+
+#profile {
+  width: 55px;
 }
 
 button a {
@@ -46,10 +55,9 @@ button a {
   height: 0;
   border-left: 18px solid transparent;
   border-right: 18px solid transparent;
-  border-bottom: 18px solid rgb(0, 0, 0);
+  border-bottom: 18px solid #0d6efd;
   position: absolute;
-  right: 29px;
-  top: 58px;
+  bottom: 94%;
 }
 
 .quadrado-login {
@@ -58,17 +66,22 @@ button a {
   align-items: center;
   flex-direction: column;
   background-color: #0d6efd;
-  border: 1px solid black;
   width: 100px;
   height: 100px;
   position: absolute;
-  right: 20px;
-  top: 65px;
+  right: 1.9%;
+  top: 83%;
   z-index: 10;
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.43) !important;
 }
 
 #logo {
-  margin-right: 1%;
+  width: 100px;
+  margin-right: 11%;
 }
 
 #profile:hover {
@@ -140,7 +153,7 @@ main {
 }
 
 .titulos-componentes {
-  color: black;
+  color: #fff;
   margin-left: 1%;
   text-transform: uppercase;
 }
@@ -150,11 +163,25 @@ main {
   padding: 2.7%;
   padding-right: 3%;
   border-radius: 15px;
-  background-color: #ffff;
+  background-color: #262b37;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   position: relative;
   overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
+}
+
+.table-group-divider {
+  border-top: 2px solid white !important;
+}
+
+.table > :not(caption) > * > * {
+  background-color: #262b37 !important;
+  color: #fff !important;
+}
+
+.tabelas h5 {
+  color: white;
+  font-weight: 400 !important;
 }
 
 [data-tabela="2"],
@@ -231,10 +258,10 @@ main {
   right: 0;
   bottom: 0;
   background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
+    0,
+    0,
+    0,
+    0.44
   ); /* Fundo branco com leve transparência */
   border-radius: 15px; /* Para combinar com o contêiner principal */
   z-index: 1; /* Garante que o carregamento fique atrás dos conteúdos principais */
@@ -358,12 +385,13 @@ container {
 }
 
 /* Resultado das Rodadas */
-.result-jogadas {
+#result-jogadas {
   grid-area: resultado;
   border-radius: 10px;
-  background-color: #ccc;
+  background-color: #262b37;
   padding: 20px;
   width: 92.5%;
+  color: white;
 }
 
 .resultados {
@@ -460,9 +488,10 @@ container {
   padding: 5.7%;
   padding-right: 3%;
   border-radius: 15px;
-  background-color: #ffff;
+  background-color: #262b37;
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
 /* Estatísticas do campeonato */
@@ -471,14 +500,13 @@ container {
   border-radius: 10px;
   padding: 5%;
   border-radius: 15px;
-  background-color: #ffff;
+  color: white;
   position: relative;
   overflow: hidden; /* Garante que o conteúdo não extrapole as bordas */
 }
 
 #loadingClass > h2 {
-  color: black;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: bold;
 }
 
@@ -489,7 +517,7 @@ container {
   align-items: center;
   padding: 6px;
   margin-top: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 6px;
 }
 
@@ -501,7 +529,7 @@ container {
   font-weight: 100;
   font-size: 20px;
   margin-bottom: 0;
-  color: black;
+  color: white;
 }
 
 .img-jogador-um {
@@ -554,7 +582,7 @@ container {
 
 .barra-vertical {
   height: 145px;
-  border: 1px solid rgba(0, 0, 0, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   margin-right: 5%;
 }
 
@@ -565,7 +593,7 @@ container {
   align-items: center;
   margin-top: 10px;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 6px;
 }
 
