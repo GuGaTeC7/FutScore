@@ -11,7 +11,7 @@ async function fetchLeagues(query) {
     }
 
     const data = await response.json();
-    console.log(data.response); // Retorna os campeonatos encontrados
+    // console.log(data.response); // Retorna os campeonatos encontrados
     return data.response; // Retorna os campeonatos encontrados
   } catch (error) {
     console.error(error);
@@ -71,7 +71,7 @@ function handleSearchInput() {
   // Adiciona o event listener para capturar a opção selecionada
   selectElement.addEventListener("change", function () {
     const selectedLeagueId = this.value; // Captura o valor (ID) da liga selecionada
-    console.log("id liga selecionada: " + selectedLeagueId);
+    // console.log("id liga selecionada: " + selectedLeagueId);
     montaEstatisticas(selectedLeagueId);
   });
 
@@ -131,10 +131,6 @@ async function montaEstatisticas(liga) {
       img: data.response[0].statistics[0].team.logo,
     };
 
-    console.log("Resposta da API:");
-    console.log(data.response);
-
-    console.log(dados);
     exibeNomeLiga(data.response[0].statistics[0].league.name);
     exibeNome(names);
     exibeDadosPrimeiroJogador(dados);

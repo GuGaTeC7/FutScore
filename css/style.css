@@ -395,6 +395,11 @@ container {
   font-size: 1.5em;
 }
 
+.team-logo {
+  width: 35px;
+  height: auto;
+}
+
 .cartao {
   display: flex;
   align-items: center;
@@ -403,15 +408,17 @@ container {
   width: 15px;
   height: 20px;
   padding: 5px;
-  font-size: 12px;
+  font-size: 14px;
   color: #525252;
 }
 
 .cartao-amarelo {
+  display: none;
   background-color: yellow;
 }
 
 .cartao-vermelho {
+  display: none;
   background-color: red;
 }
 
