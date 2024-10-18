@@ -31,7 +31,8 @@ body {
 }
 
 #profile {
-  width: 55px;
+  width: 50px;
+  height: auto;
 }
 
 button a {
@@ -370,10 +371,6 @@ container {
   padding: 10px;
   background-color: #a59e9e9c;
   margin-left: 150px;
-}
-.match-ao-vivo {
-  display: flex;
-  flex-direction: column;
 }
 
 .team {

@@ -91,11 +91,13 @@
     <!-- Tabelas Campeonatos -->
     <section class="tabelas" id="ladoEsquerdo">
       <h1 class="titulos-componentes">Principais Campeonatos</h1>
-      <!-- Tabela 1 -->
       <div class="border border-primary" id="borda-tabela" data-tabela="1">
+        
+        <!-- Loading -->
         <div id="loading" style="display: flex">
           <div class="spinner"></div>
         </div>
+
         <div class="cabecalho-tabela">
           <div>
             <h5>Rodada <span id="rodadaNumber"></span></h5>
@@ -117,6 +119,8 @@
               <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
             </tr>
           </thead>
+
+          <!-- Tabela 1 -->
           <tbody class="table-group-divider">
             <tr id="posicao-1">
               <th scope="row">1</th>
@@ -493,37 +497,9 @@
         <div class="container">
           <div class="organiza-ao-vivo">
 
-            <div class="match-ao-vivo">
-              <div class="infos">
-                <h6 class="title-liga">Campeonato Brasileiro</h6>
-                <span class="tempo">1º
-                  <span class="minuto">29'</span>
-                </span>
-              </div>
-              <div class="resultado-partida">
-                <div class="team">
-                  <img src="assets/corinthians.png" alt="Corinthians" class="team-logo">
-                  <span class="team-name">Corinthians</span>
-                </div>
-                <div class="eventos-jogo">
-                  <span class="cartao cartao-amarelo">2</span>
-                  <span class="cartao cartao-vermelho">1</span>
-                  <img class="subs" src="assets/sub.png">
-                  <span class="team-score">1</span>
-                </div>
-              </div>                   
-              <div class="resultado-partida">
-                <div class="team">
-                  <img src="assets/corinthians.png" alt="Corinthians" class="team-logo">
-                  <span class="team-name">Corinthians</span>
-                </div>
-                <div class="eventos-jogo">
-                  <span class="cartao cartao-amarelo">2</span>
-                  <span class="cartao cartao-vermelho">1</span>
-                  <img class="subs" src="assets/sub.png">
-                  <span class="team-score">1</span>
-                </div>
-              </div>  
+            <!-- Loading -->
+            <div id="loading">
+              <div class="spinner"></div>
             </div>
 
           </div>  
@@ -613,21 +589,28 @@
     <section class="estatisticas">
       <h1 class="titulos-componentes">Estatísticas</h1>
       <div class="border border-primary" id="estatisticas-camp">
+
+        
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="form-group">
               <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do campeonato..." />
               <select name="campeonatos" id="campeonatos" class="form-control input-lg" data-live-search="true"
-                title="SELECIONE UM CAMPEONATO" style="display:none; font-size: 14px;">
-              </select>
-            </div>
+              title="SELECIONE UM CAMPEONATO" style="display:none; font-size: 14px;">
+            </select>
           </div>
         </div>
-
-        <div id="loadingClass" style="display: none;">
-          <h1 style="margin-top: 13px; font-size: 1.4rem;" id="nomeLigaEstatisticas">Ligue 1</h1>
-          <h2>ARTILHEIROS</h2>
-
+      </div>
+      
+      <!-- Loading -->
+      <div id="loading">
+        <div class="spinner"></div>
+      </div>
+      
+      <div id="loadingClass" style="display: none;">
+        <h1 style="margin-top: 13px; font-size: 1.4rem;" id="nomeLigaEstatisticas">Ligue 1</h1>
+        <h2>ARTILHEIROS</h2>
+        
           <div class="primeiro-estatisticas">
 
             <div class="posicao-estatisticas">

@@ -239,6 +239,7 @@ async function montaGridAoVivo() {
   const searchParams = new URLSearchParams(params);
 
   try {
+    // Dados mockados para testes
     // const data = { response: mockData() };
 
     const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
@@ -337,26 +338,36 @@ function organizaInfos(matches) {
     const cartaoVermelhoAway = document.getElementById(cartaoVermelhoAwayId);
 
     match.events.forEach((event) => {
-      // Se o time for o home
-      if (event.detail === "Yellow Card" && event.team.id == idTimeHome) {
-        countCartoesAmarelosHome++;
-        cartaoAmareloHome.textContent = countCartoesAmarelosHome; // Atualiza o valor no HTML
-        cartaoAmareloHome.style.display = "flex"; // Garante que o cartão seja visível
-      } else if (event.detail === "Red Card" && event.team.id == idTimeHome) {
-        countCartoesVermelhosHome++;
-        cartaoVermelhoHome.textContent = countCartoesVermelhosHome; // Atualiza o valor no HTML
-        cartaoVermelhoHome.style.display = "flex";
-      }
+      // Verifica se o tipo do evento é "Card"
+      if (event.type === "Card") {
+        switch (event.detail) {
+          case "Yellow Card":
+            if (event.team.id == idTimeHome) {
+              countCartoesAmarelosHome++;
+              cartaoAmareloHome.textContent = countCartoesAmarelosHome;
+              cartaoAmareloHome.style.display = "flex"; // Garantir que o cartão seja exibido
+            } else if (event.team.id == idTimeAway) {
+              countCartoesAmarelosAway++;
+              cartaoAmareloAway.textContent = countCartoesAmarelosAway;
+              cartaoAmareloAway.style.display = "flex";
+            }
+            break;
 
-      // Se o time for o away
-      else if (event.detail === "Yellow Card" && event.team.id == idTimeAway) {
-        countCartoesAmarelosAway++;
-        cartaoAmareloAway.textContent = countCartoesAmarelosAway; // Atualiza o valor no HTML
-        cartaoAmareloAway.style.display = "flex";
-      } else if (event.detail === "Red Card" && event.team.id == idTimeAway) {
-        countCartoesVermelhosAway++;
-        cartaoVermelhoAway.textContent = countCartoesVermelhosAway; // Atualiza o valor no HTML
-        cartaoVermelhoAway.style.display = "flex";
+          case "Red Card":
+            if (event.team.id == idTimeHome) {
+              countCartoesVermelhosHome++;
+              cartaoVermelhoHome.textContent = countCartoesVermelhosHome;
+              cartaoVermelhoHome.style.display = "flex";
+            } else if (event.team.id == idTimeAway) {
+              countCartoesVermelhosAway++;
+              cartaoVermelhoAway.textContent = countCartoesVermelhosAway;
+              cartaoVermelhoAway.style.display = "flex";
+            }
+            break;
+
+          default:
+            break; // Caso para ignorar eventos não relacionados
+        }
       }
     });
   });
