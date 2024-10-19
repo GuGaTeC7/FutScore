@@ -1,3 +1,10 @@
+function hideLoaderEstatisticas() {
+  const grid = document.querySelector("#estatisticas-camp");
+  const loadingElement = grid.querySelector(".loading");
+  console.log(loadingElement);
+  loadingElement.style.display = "none";
+}
+
 // Estatísticas
 // Função para buscar campeonatos
 async function fetchLeagues(query) {
@@ -131,6 +138,7 @@ async function montaEstatisticas(liga) {
       img: data.response[0].statistics[0].team.logo,
     };
 
+    hideLoaderEstatisticas();
     exibeNomeLiga(data.response[0].statistics[0].league.name);
     exibeNome(names);
     exibeDadosPrimeiroJogador(dados);

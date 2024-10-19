@@ -246,7 +246,7 @@ async function montaGridAoVivo() {
     const data = await res.json();
     console.log(data.response);
 
-    const liveMatches = data.response.slice(0, 3); // Pegue as 3 primeiras partidas mockadas
+    const liveMatches = data.response.slice(0, 20); // Pegue as 3 primeiras partidas mockadas
 
     // Chama a função para organizar e exibir as informações
     organizaInfos(liveMatches);
