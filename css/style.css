@@ -445,6 +445,13 @@ container {
   filter: invert(1);
 }
 
+.seta-verde {
+  color: green; /* Cor para a seta que indica que o jogador entrou */
+}
+.seta-vermelha {
+  color: red; /* Cor para a seta que indica que o jogador saiu */
+}
+
 .infos {
   display: flex;
   align-items: center;
@@ -642,6 +649,12 @@ container {
   margin-bottom: 5px;
   border-radius: 100%;
   border: 2.5px solid #1672fd;
+  height: auto;
+}
+
+#logoTimeJogadorUm {
+  width: 17px;
+  margin-right: 3px;
   height: auto;
 }
 

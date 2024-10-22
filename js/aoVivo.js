@@ -819,7 +819,7 @@ function organizaInfos(matches) {
         <div class="eventos-jogo">
           <span class="cartao cartao-amarelo" id="${cartaoAmareloHomeId}">${countCartoesAmarelosHome}</span>
           <span class="cartao cartao-vermelho" id="${cartaoVermelhoHomeId}">${countCartoesVermelhosHome}</span>
-          <img class="subs" id="substituicaoHome-${index}" src="assets/sub.png">
+          <img class="subs" id="substituicaoHome-${index}" src="assets/sub.png" data-bs-toggle="tooltip" data-bs-placement="bottom">
           <span class="team-score">${match.goals.home}</span>
         </div>
       </div>                    
@@ -831,7 +831,7 @@ function organizaInfos(matches) {
         <div class="eventos-jogo">
           <span class="cartao cartao-amarelo" id="${cartaoAmareloAwayId}">${countCartoesAmarelosAway}</span>
           <span class="cartao cartao-vermelho" id="${cartaoVermelhoAwayId}">${countCartoesVermelhosAway}</span>
-          <img class="subs" id="substituicaoAway-${index}" src="assets/sub.png">
+          <img class="subs" id="substituicaoAway-${index}" src="assets/sub.png" data-bs-toggle="tooltip" data-bs-placement="bottom">
           <span class="team-score">${match.goals.away}</span>
         </div>
       </div>
@@ -902,25 +902,36 @@ function organizaInfos(matches) {
 
         const tempoSub = event.time.elapsed;
 
+        const setaVerde = '<i class="fas fa-arrow-right seta-verde"></i>'; // Ícone verde para o jogador que entrou
+        const setaVermelha = '<i class="fas fa-arrow-left seta-vermelha"></i>'; // Ícone vermelho para o jogador que saiu
+
         if (event.team.id == idTimeHome) {
           // Adiciona a substituição ao time da casa
           iconSubHome.style.display = "block";
           substituicoesHome.push(
-            `${tempoSub}':` +
-              "\n" +
-              `Saiu: ${jogadorSaiu}, Entrou: ${jogadorEntrou}`
+            `<strong>${tempoSub}'</strong>:<br> <strong>Saiu:</strong> ${jogadorSaiu} ${setaVermelha} <br> <strong>Entrou:</strong> ${jogadorEntrou} ${setaVerde}`
           );
-          iconSubHome.setAttribute("title", substituicoesHome.join("\n"));
+          iconSubHome.setAttribute("data-bs-toggle", "tooltip");
+          iconSubHome.setAttribute("data-bs-html", "true");
+          iconSubHome.setAttribute("title", substituicoesHome.join("<br>"));
         } else if (event.team.id == idTimeAway) {
           // Adiciona a substituição ao time visitante
           iconSubAway.style.display = "block";
           substituicoesAway.push(
-            `${tempoSub}':` +
-              "\n" +
-              `Saiu: ${jogadorSaiu}, Entrou: ${jogadorEntrou}`
+            `<strong>${tempoSub}'</strong>:<br> <strong>Saiu:</strong> ${jogadorSaiu} ${setaVermelha} <br> <strong>Entrou:</strong> ${jogadorEntrou} ${setaVerde}`
           );
-          iconSubAway.setAttribute("title", substituicoesAway.join("\n"));
+          iconSubAway.setAttribute("data-bs-toggle", "tooltip");
+          iconSubAway.setAttribute("data-bs-html", "true");
+          iconSubAway.setAttribute("title", substituicoesAway.join("<br>"));
         }
+
+        // Inicializa o tooltip
+        const tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
       }
     });
   });
