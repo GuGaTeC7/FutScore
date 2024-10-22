@@ -226,6 +226,522 @@ function mockData() {
         },
       ],
     },
+    {
+      fixture: {
+        id: 1299021,
+        referee: "Tobias Stieler, Germany",
+        timezone: "UTC",
+        date: "2024-10-22T16:45:00+00:00",
+        timestamp: 1729615500,
+        periods: {
+          first: 1729615500,
+          second: null,
+        },
+        venue: {
+          id: 20470,
+          name: "Stade Louis-II",
+          city: "Monaco",
+        },
+        status: {
+          long: "First Half",
+          short: "1H",
+          elapsed: 23,
+          extra: null,
+        },
+      },
+      league: {
+        id: 2,
+        name: "UEFA Champions League",
+        country: "World",
+        logo: "https://media.api-sports.io/football/leagues/2.png",
+        flag: null,
+        season: 2024,
+        round: "League Stage - 3",
+      },
+      teams: {
+        home: {
+          id: 91,
+          name: "Monaco",
+          logo: "https://media.api-sports.io/football/teams/91.png",
+          winner: true,
+        },
+        away: {
+          id: 598,
+          name: "FK Crvena Zvezda",
+          logo: "https://media.api-sports.io/football/teams/598.png",
+          winner: false,
+        },
+      },
+      goals: {
+        home: 1,
+        away: 0,
+      },
+      score: {
+        halftime: {
+          home: 1,
+          away: 0,
+        },
+        fulltime: {
+          home: null,
+          away: null,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+      events: [
+        {
+          time: {
+            elapsed: 7,
+            extra: null,
+          },
+          team: {
+            id: 598,
+            name: "FK Crvena Zvezda",
+            logo: "https://media.api-sports.io/football/teams/598.png",
+          },
+          player: {
+            id: 41242,
+            name: "Dalcio",
+          },
+          assist: {
+            id: 63475,
+            name: "Bruno Duarte",
+          },
+          type: "subst",
+          detail: "Substitution 1",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 21,
+            extra: null,
+          },
+          team: {
+            id: 91,
+            name: "Monaco",
+            logo: "https://media.api-sports.io/football/teams/91.png",
+          },
+          player: {
+            id: 1101,
+            name: "T. Minamino",
+          },
+          assist: {
+            id: 30504,
+            name: "W. Singo",
+          },
+          type: "Goal",
+          detail: "Normal Goal",
+          comments: null,
+        },
+      ],
+    },
+    {
+      fixture: {
+        id: 1206850,
+        referee: null,
+        timezone: "UTC",
+        date: "2024-10-22T16:00:00+00:00",
+        timestamp: 1729612800,
+        periods: {
+          first: 1729612800,
+          second: 1729616400,
+        },
+        venue: {
+          id: 19952,
+          name: "Bogdanka Arena",
+          city: "\u0141\u0119czna",
+        },
+        status: {
+          long: "Second Half",
+          short: "2H",
+          elapsed: 90,
+          extra: 10,
+        },
+      },
+      league: {
+        id: 107,
+        name: "I Liga",
+        country: "Poland",
+        logo: "https://media.api-sports.io/football/leagues/107.png",
+        flag: "https://media.api-sports.io/flags/pl.svg",
+        season: 2024,
+        round: "Regular Season - 6",
+      },
+      teams: {
+        home: {
+          id: 6941,
+          name: "G\u00f3rnik \u0141\u0119czna",
+          logo: "https://media.api-sports.io/football/teams/6941.png",
+          winner: true,
+        },
+        away: {
+          id: 338,
+          name: "Wisla Krakow",
+          logo: "https://media.api-sports.io/football/teams/338.png",
+          winner: false,
+        },
+      },
+      goals: {
+        home: 1,
+        away: 0,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 0,
+        },
+        fulltime: {
+          home: null,
+          away: null,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+      events: [
+        {
+          time: {
+            elapsed: 25,
+            extra: null,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: 40769,
+            name: "B. Jaroch",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 41,
+            extra: null,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: 107533,
+            name: "R. Mikulec",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 51,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: 24933,
+            name: "J. Bednarczyk",
+          },
+          assist: {
+            id: 139896,
+            name: "P. Banaszak",
+          },
+          type: "Goal",
+          detail: "Normal Goal",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 55,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: 40888,
+            name: "P. Zyra",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 58,
+            extra: null,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: null,
+            name: "O. Sukiennicki",
+          },
+          assist: {
+            id: 181533,
+            name: "A. Rodado",
+          },
+          type: "subst",
+          detail: "Substitution 1",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 71,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: 158152,
+            name: "K. Orlik",
+          },
+          assist: {
+            id: null,
+            name: "B. Spacil",
+          },
+          type: "subst",
+          detail: "Substitution 1",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 71,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: 40790,
+            name: "M. Roginic",
+          },
+          assist: {
+            id: 40888,
+            name: "P. Zyra",
+          },
+          type: "subst",
+          detail: "Substitution 2",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 76,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: 148637,
+            name: "A. Kostrzewski",
+          },
+          assist: {
+            id: 61310,
+            name: "B. Pindroch",
+          },
+          type: "subst",
+          detail: "Substitution 3",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 81,
+            extra: null,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: 135861,
+            name: "G. Kiakos",
+          },
+          assist: {
+            id: 28474,
+            name: "T. Kiss",
+          },
+          type: "subst",
+          detail: "Substitution 2",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 81,
+            extra: null,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: null,
+            name: "F. P. Almeida Duarte F.",
+          },
+          assist: {
+            id: 104902,
+            name: "J. Alfaro",
+          },
+          type: "subst",
+          detail: "Substitution 3",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 81,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: null,
+            name: "B. Akhmedov",
+          },
+          assist: {
+            id: 265823,
+            name: "D. Warchol",
+          },
+          type: "subst",
+          detail: "Substitution 4",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 88,
+            extra: null,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: null,
+            name: "F. Janaszek",
+          },
+          assist: {
+            id: 408299,
+            name: "S. Krawczyk",
+          },
+          type: "subst",
+          detail: "Substitution 5",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 90,
+            extra: 7,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: 269891,
+            name: "P. Gogol",
+          },
+          assist: {
+            id: 40769,
+            name: "B. Jaroch",
+          },
+          type: "subst",
+          detail: "Substitution 4",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 90,
+            extra: 10,
+          },
+          team: {
+            id: 6941,
+            name: "G\u00f3rnik \u0141\u0119czna",
+            logo: "https://media.api-sports.io/football/teams/6941.png",
+          },
+          player: {
+            id: null,
+            name: null,
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 90,
+            extra: 10,
+          },
+          team: {
+            id: 338,
+            name: "Wisla Krakow",
+            logo: "https://media.api-sports.io/football/teams/338.png",
+          },
+          player: {
+            id: null,
+            name: null,
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+      ],
+    },
   ];
 }
 
@@ -257,7 +773,7 @@ async function montaGridAoVivo() {
 
 // Função para organizar e exibir os dados no HTML
 function organizaInfos(matches) {
-  const liveMatchesContainer = document.getElementById("ao-vivo"); // Container onde os jogos serão exibidos
+  const liveMatchesContainer = document.getElementById("ao-vivo");
 
   // Limpa o conteúdo anterior (caso tenha atualizações)
   liveMatchesContainer.innerHTML = "";
@@ -268,14 +784,12 @@ function organizaInfos(matches) {
     matchElement.classList.add("match-ao-vivo");
 
     // Trata o tempo do jogo
-    var tempo = match.fixture.status.short;
-
+    let tempo = match.fixture.status.short;
     if (tempo === "1H") {
       tempo = "1º";
     } else if (tempo === "2H") {
       tempo = "2º";
     }
-    console.log("Esse é o tempo: " + tempo);
 
     // IDs dinâmicos para os cartões
     const cartaoAmareloHomeId = `cartaoAmareloHome-${index}`;
@@ -289,6 +803,7 @@ function organizaInfos(matches) {
     let countCartoesAmarelosAway = 0;
     let countCartoesVermelhosAway = 0;
 
+    // Layout da partida ao vivo
     matchElement.innerHTML = `
       <div class="infos">
         <h6 class="title-liga">${match.league.name}</h6>
@@ -304,10 +819,10 @@ function organizaInfos(matches) {
         <div class="eventos-jogo">
           <span class="cartao cartao-amarelo" id="${cartaoAmareloHomeId}">${countCartoesAmarelosHome}</span>
           <span class="cartao cartao-vermelho" id="${cartaoVermelhoHomeId}">${countCartoesVermelhosHome}</span>
-          <img class="subs" src="assets/sub.png">
+          <img class="subs" id="substituicaoHome-${index}" src="assets/sub.png">
           <span class="team-score">${match.goals.home}</span>
         </div>
-      </div>                   
+      </div>                    
       <div class="resultado-partida">
         <div class="team">
           <img src="${match.teams.away.logo}" alt="${match.teams.away.name}" class="team-logo">
@@ -316,11 +831,10 @@ function organizaInfos(matches) {
         <div class="eventos-jogo">
           <span class="cartao cartao-amarelo" id="${cartaoAmareloAwayId}">${countCartoesAmarelosAway}</span>
           <span class="cartao cartao-vermelho" id="${cartaoVermelhoAwayId}">${countCartoesVermelhosAway}</span>
-          <img class="subs" src="assets/sub.png">
+          <img class="subs" id="substituicaoAway-${index}" src="assets/sub.png">
           <span class="team-score">${match.goals.away}</span>
         </div>
       </div>
-
       <hr>
     `;
 
@@ -331,12 +845,21 @@ function organizaInfos(matches) {
     const idTimeHome = match.teams.home.id;
     const idTimeAway = match.teams.away.id;
 
-    // Exibe a cor do cartão se houver eventos de cartão
+    // Exibe o cartão caso haja eventos de cartão
     const cartaoAmareloHome = document.getElementById(cartaoAmareloHomeId);
     const cartaoVermelhoHome = document.getElementById(cartaoVermelhoHomeId);
     const cartaoAmareloAway = document.getElementById(cartaoAmareloAwayId);
     const cartaoVermelhoAway = document.getElementById(cartaoVermelhoAwayId);
 
+    // Exibe o ícone de substituição caso haja eventos de substituição
+    const iconSubHome = document.getElementById(`substituicaoHome-${index}`);
+    const iconSubAway = document.getElementById(`substituicaoAway-${index}`);
+
+    // Inicializa arrays para armazenar as substituições para cada time
+    let substituicoesHome = [];
+    let substituicoesAway = [];
+
+    // Executa em cada evento
     match.events.forEach((event) => {
       // Verifica se o tipo do evento é "Card"
       if (event.type === "Card") {
@@ -345,7 +868,7 @@ function organizaInfos(matches) {
             if (event.team.id == idTimeHome) {
               countCartoesAmarelosHome++;
               cartaoAmareloHome.textContent = countCartoesAmarelosHome;
-              cartaoAmareloHome.style.display = "flex"; // Garantir que o cartão seja exibido
+              cartaoAmareloHome.style.display = "flex";
             } else if (event.team.id == idTimeAway) {
               countCartoesAmarelosAway++;
               cartaoAmareloAway.textContent = countCartoesAmarelosAway;
@@ -367,6 +890,36 @@ function organizaInfos(matches) {
 
           default:
             break; // Caso para ignorar eventos não relacionados
+        }
+      }
+
+      // Verifica se o evento é do tipo "subst" (substituição)
+      if (event.type === "subst") {
+        const jogadorEntrou =
+          event.player.name || "Erro ao buscar o nome do jogador";
+        const jogadorSaiu =
+          event.assist.name || "Erro ao buscar o nome do jogador";
+
+        const tempoSub = event.time.elapsed;
+
+        if (event.team.id == idTimeHome) {
+          // Adiciona a substituição ao time da casa
+          iconSubHome.style.display = "block";
+          substituicoesHome.push(
+            `${tempoSub}':` +
+              "\n" +
+              `Saiu: ${jogadorSaiu}, Entrou: ${jogadorEntrou}`
+          );
+          iconSubHome.setAttribute("title", substituicoesHome.join("\n"));
+        } else if (event.team.id == idTimeAway) {
+          // Adiciona a substituição ao time visitante
+          iconSubAway.style.display = "block";
+          substituicoesAway.push(
+            `${tempoSub}':` +
+              "\n" +
+              `Saiu: ${jogadorSaiu}, Entrou: ${jogadorEntrou}`
+          );
+          iconSubAway.setAttribute("title", substituicoesAway.join("\n"));
         }
       }
     });
