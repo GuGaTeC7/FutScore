@@ -443,6 +443,7 @@ container {
   width: 18px;
   height: 18px;
   filter: invert(1);
+  cursor: pointer;
 }
 
 .seta-verde {

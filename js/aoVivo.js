@@ -126,7 +126,7 @@ function mockData() {
           },
           player: {
             id: null,
-            name: null,
+            name: "G. Luiz",
           },
           assist: {
             id: null,
@@ -148,7 +148,51 @@ function mockData() {
           },
           player: {
             id: null,
+            name: "G. Luiz",
+          },
+          assist: {
+            id: null,
             name: null,
+          },
+          type: "Card",
+          detail: "Red Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 18,
+            extra: null,
+          },
+          team: {
+            id: 1458,
+            name: "Bogotá FC",
+            logo: "https://media.api-sports.io/football/teams/1458.png",
+          },
+          player: {
+            id: null,
+            name: "G. Luiz",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 18,
+            extra: null,
+          },
+          team: {
+            id: 1466,
+            name: "Barranquilla",
+            logo: "https://media.api-sports.io/football/teams/1466.png",
+          },
+          player: {
+            id: null,
+            name: "G. Luiz",
           },
           assist: {
             id: null,
@@ -696,50 +740,6 @@ function mockData() {
           detail: "Substitution 4",
           comments: null,
         },
-        {
-          time: {
-            elapsed: 90,
-            extra: 10,
-          },
-          team: {
-            id: 6941,
-            name: "G\u00f3rnik \u0141\u0119czna",
-            logo: "https://media.api-sports.io/football/teams/6941.png",
-          },
-          player: {
-            id: null,
-            name: null,
-          },
-          assist: {
-            id: null,
-            name: null,
-          },
-          type: "Card",
-          detail: "Yellow Card",
-          comments: null,
-        },
-        {
-          time: {
-            elapsed: 90,
-            extra: 10,
-          },
-          team: {
-            id: 338,
-            name: "Wisla Krakow",
-            logo: "https://media.api-sports.io/football/teams/338.png",
-          },
-          player: {
-            id: null,
-            name: null,
-          },
-          assist: {
-            id: null,
-            name: null,
-          },
-          type: "Card",
-          detail: "Yellow Card",
-          comments: null,
-        },
       ],
     },
   ];
@@ -863,28 +863,73 @@ function organizaInfos(matches) {
     match.events.forEach((event) => {
       // Verifica se o tipo do evento é "Card"
       if (event.type === "Card") {
+        const jogadorCartao =
+          event.player.name || "Erro ao buscar nome do jogador";
+        const tempoCartao =
+          event.time.elapsed || "Erro ao buscar tempo do cartão";
+
         switch (event.detail) {
           case "Yellow Card":
             if (event.team.id == idTimeHome) {
               countCartoesAmarelosHome++;
-              cartaoAmareloHome.textContent = countCartoesAmarelosHome;
+              cartaoAmareloHome.textContent = `${countCartoesAmarelosHome}`;
               cartaoAmareloHome.style.display = "flex";
+
+              // Adiciona o nome do jogador ao título do cartão
+              const titleAtualHome =
+                cartaoAmareloHome.getAttribute("title") || "";
+              cartaoAmareloHome.setAttribute(
+                "title",
+                `${titleAtualHome} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
+              );
+              cartaoAmareloHome.setAttribute("data-bs-html", "true");
+              cartaoAmareloHome.setAttribute("data-bs-toggle", "tooltip");
             } else if (event.team.id == idTimeAway) {
               countCartoesAmarelosAway++;
-              cartaoAmareloAway.textContent = countCartoesAmarelosAway;
+              cartaoAmareloAway.textContent = `${countCartoesAmarelosAway}`;
               cartaoAmareloAway.style.display = "flex";
+
+              // Adiciona o nome do jogador ao título do cartão
+              const titleAtualAway =
+                cartaoAmareloAway.getAttribute("title") || "";
+              cartaoAmareloAway.setAttribute(
+                "title",
+                `${titleAtualAway} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
+              );
+              cartaoAmareloAway.setAttribute("data-bs-html", "true");
+              cartaoAmareloAway.setAttribute("data-bs-toggle", "tooltip");
             }
             break;
 
           case "Red Card":
             if (event.team.id == idTimeHome) {
               countCartoesVermelhosHome++;
-              cartaoVermelhoHome.textContent = countCartoesVermelhosHome;
+              cartaoVermelhoHome.textContent = `${countCartoesVermelhosHome}`;
               cartaoVermelhoHome.style.display = "flex";
+
+              // Adiciona o nome do jogador ao título do cartão
+              const titleAtualHomeRed =
+                cartaoVermelhoHome.getAttribute("title") || "";
+              cartaoVermelhoHome.setAttribute(
+                "title",
+                `${titleAtualHomeRed} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
+              );
+              cartaoVermelhoHome.setAttribute("data-bs-html", "true");
+              cartaoVermelhoHome.setAttribute("data-bs-toggle", "tooltip");
             } else if (event.team.id == idTimeAway) {
               countCartoesVermelhosAway++;
-              cartaoVermelhoAway.textContent = countCartoesVermelhosAway;
+              cartaoVermelhoAway.textContent = `${countCartoesVermelhosAway}`;
               cartaoVermelhoAway.style.display = "flex";
+
+              // Adiciona o nome do jogador ao título do cartão
+              const titleAtualAwayRed =
+                cartaoVermelhoAway.getAttribute("title") || "";
+              cartaoVermelhoAway.setAttribute(
+                "title",
+                `${titleAtualAwayRed} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
+              );
+              cartaoVermelhoAway.setAttribute("data-bs-toggle", "tooltip");
+              cartaoVermelhoAway.setAttribute("data-bs-html", "true");
             }
             break;
 
