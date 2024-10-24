@@ -742,6 +742,363 @@ function mockData() {
         },
       ],
     },
+    {
+      fixture: {
+        id: 1312817,
+        referee: null,
+        timezone: "UTC",
+        date: "2024-10-23T22:00:00+00:00",
+        timestamp: 1729720800,
+        periods: {
+          first: 1729720800,
+          second: 1729724400,
+        },
+        venue: {
+          id: 329,
+          name: "Estadio Bicentenario de Chinquihue",
+          city: "Puerto Montt",
+        },
+        status: {
+          long: "Second Half",
+          short: "2H",
+          elapsed: 90,
+          extra: 6,
+        },
+      },
+      league: {
+        id: 267,
+        name: "Copa Chile",
+        country: "Chile",
+        logo: "https://media.api-sports.io/football/leagues/267.png",
+        flag: "https://media.api-sports.io/flags/cl.svg",
+        season: 2024,
+        round: "Regional Finals",
+      },
+      teams: {
+        home: {
+          id: 2342,
+          name: "D. Puerto Montt",
+          logo: "https://media.api-sports.io/football/teams/2342.png",
+          winner: false,
+        },
+        away: {
+          id: 2337,
+          name: "Nublense",
+          logo: "https://media.api-sports.io/football/teams/2337.png",
+          winner: true,
+        },
+      },
+      goals: {
+        home: 0,
+        away: 1,
+      },
+      score: {
+        halftime: {
+          home: 0,
+          away: 0,
+        },
+        fulltime: {
+          home: null,
+          away: null,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+      events: [
+        {
+          time: {
+            elapsed: 10,
+            extra: null,
+          },
+          team: {
+            id: 2342,
+            name: "D. Puerto Montt",
+            logo: "https://media.api-sports.io/football/teams/2342.png",
+          },
+          player: {
+            id: null,
+            name: "B. Troncoso",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 21,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 195801,
+            name: "C. Medina",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 28,
+            extra: null,
+          },
+          team: {
+            id: 2342,
+            name: "D. Puerto Montt",
+            logo: "https://media.api-sports.io/football/teams/2342.png",
+          },
+          player: {
+            id: null,
+            name: "L. Vasquez",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 31,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 11835,
+            name: "I. Rozas",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 65,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 5760,
+            name: "G. Graciani",
+          },
+          assist: {
+            id: 309987,
+            name: "M. Plaza",
+          },
+          type: "subst",
+          detail: "Substitution 1",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 65,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 455872,
+            name: "F. Moya",
+          },
+          assist: {
+            id: 11835,
+            name: "I. Rozas",
+          },
+          type: "subst",
+          detail: "Substitution 2",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 66,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 5760,
+            name: "G. Graciani",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Goal",
+          detail: "Normal Goal",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 73,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 11930,
+            name: "M. Rivera",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Yellow Card",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 74,
+            extra: null,
+          },
+          team: {
+            id: 2342,
+            name: "D. Puerto Montt",
+            logo: "https://media.api-sports.io/football/teams/2342.png",
+          },
+          player: {
+            id: null,
+            name: "J. Arias",
+          },
+          assist: {
+            id: 12238,
+            name: "S. Perez",
+          },
+          type: "subst",
+          detail: "Substitution 1",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 79,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 35671,
+            name: "I. Sosa",
+          },
+          assist: {
+            id: 11648,
+            name: "P. Sanchez",
+          },
+          type: "subst",
+          detail: "Substitution 3",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 89,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: 184883,
+            name: "P. Bonacci",
+          },
+          assist: {
+            id: 195801,
+            name: "C. Medina",
+          },
+          type: "subst",
+          detail: "Substitution 4",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 90,
+            extra: null,
+          },
+          team: {
+            id: 2337,
+            name: "Nublense",
+            logo: "https://media.api-sports.io/football/teams/2337.png",
+          },
+          player: {
+            id: null,
+            name: "M. Torrealba",
+          },
+          assist: {
+            id: 11941,
+            name: "B. Oyarzo Munoz",
+          },
+          type: "subst",
+          detail: "Substitution 5",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 90,
+            extra: 1,
+          },
+          team: {
+            id: 2342,
+            name: "D. Puerto Montt",
+            logo: "https://media.api-sports.io/football/teams/2342.png",
+          },
+          player: {
+            id: 11931,
+            name: "M. Riveros",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Card",
+          detail: "Red Card",
+          comments: null,
+        },
+      ],
+    },
   ];
 }
 
@@ -756,10 +1113,10 @@ async function montaGridAoVivo() {
 
   try {
     // Dados mockados para testes
-    // const data = { response: mockData() };
+    const data = { response: mockData() };
 
-    const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
-    const data = await res.json();
+    // const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
+    // const data = await res.json();
     console.log(data.response);
 
     const liveMatches = data.response.slice(0, 20); // Pegue as 3 primeiras partidas mockadas
@@ -928,8 +1285,8 @@ function organizaInfos(matches) {
                 "title",
                 `${titleAtualAwayRed} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
               );
-              cartaoVermelhoAway.setAttribute("data-bs-toggle", "tooltip");
               cartaoVermelhoAway.setAttribute("data-bs-html", "true");
+              cartaoVermelhoAway.setAttribute("data-bs-toggle", "tooltip");
             }
             break;
 
@@ -969,15 +1326,15 @@ function organizaInfos(matches) {
           iconSubAway.setAttribute("data-bs-html", "true");
           iconSubAway.setAttribute("title", substituicoesAway.join("<br>"));
         }
-
-        // Inicializa o tooltip
-        const tooltipTriggerList = [].slice.call(
-          document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        );
-        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
       }
+    });
+
+    // Inicializa o tooltip
+    const tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
     });
   });
 }
