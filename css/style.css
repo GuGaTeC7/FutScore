@@ -392,6 +392,7 @@ container {
   font-weight: bold;
   font-size: 1.5em;
   margin-left: 30px;
+  cursor: pointer;
 }
 
 .team-logo {

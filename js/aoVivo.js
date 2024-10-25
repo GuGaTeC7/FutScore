@@ -1113,10 +1113,10 @@ async function montaGridAoVivo() {
 
   try {
     // Dados mockados para testes
-    // const data = { response: mockData() };
+    const data = { response: mockData() };
 
-    const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
-    const data = await res.json();
+    // const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
+    // const data = await res.json();
     console.log(data.response);
 
     const liveMatches = data.response.slice(0, 20); // Pegue as 3 primeiras partidas mockadas
@@ -1154,6 +1154,9 @@ function organizaInfos(matches) {
     const cartaoAmareloAwayId = `cartaoAmareloAway-${index}`;
     const cartaoVermelhoAwayId = `cartaoVermelhoAway-${index}`;
 
+    const golsHomeElemento = `golsHome-${index}`;
+    const golsAwayElemento = `golsAway-${index}`;
+
     // Inicializa contadores de cartões
     let countCartoesAmarelosHome = 0;
     let countCartoesVermelhosHome = 0;
@@ -1174,10 +1177,10 @@ function organizaInfos(matches) {
           <span class="team-name">${match.teams.home.name}</span>
         </div>
         <div class="eventos-jogo">
-          <span class="cartao cartao-amarelo" id="${cartaoAmareloHomeId}">${countCartoesAmarelosHome}</span>
-          <span class="cartao cartao-vermelho" id="${cartaoVermelhoHomeId}">${countCartoesVermelhosHome}</span>
-          <img class="subs" id="substituicaoHome-${index}" src="assets/sub.png" data-bs-toggle="tooltip" data-bs-placement="bottom">
-          <span class="team-score">${match.goals.home}</span>
+          <span class="cartao cartao-amarelo" id="${cartaoAmareloHomeId}" data-bs-placement="bottom">${countCartoesAmarelosHome}</span>
+          <span class="cartao cartao-vermelho" id="${cartaoVermelhoHomeId}" data-bs-placement="bottom">${countCartoesVermelhosHome}</span>
+          <img class="subs" id="substituicaoHome-${index}" src="assets/sub.png" data-bs-placement="bottom">
+          <span class="team-score" id="golsHome-${index}" data-bs-placement="left">${match.goals.home}</span>
         </div>
       </div>                    
       <div class="resultado-partida">
@@ -1186,10 +1189,10 @@ function organizaInfos(matches) {
           <span class="team-name">${match.teams.away.name}</span>
         </div>
         <div class="eventos-jogo">
-          <span class="cartao cartao-amarelo" id="${cartaoAmareloAwayId}">${countCartoesAmarelosAway}</span>
-          <span class="cartao cartao-vermelho" id="${cartaoVermelhoAwayId}">${countCartoesVermelhosAway}</span>
-          <img class="subs" id="substituicaoAway-${index}" src="assets/sub.png" data-bs-toggle="tooltip" data-bs-placement="bottom">
-          <span class="team-score">${match.goals.away}</span>
+          <span class="cartao cartao-amarelo" id="${cartaoAmareloAwayId}" data-bs-placement="bottom">${countCartoesAmarelosAway}</span>
+          <span class="cartao cartao-vermelho" id="${cartaoVermelhoAwayId}" data-bs-placement="bottom">${countCartoesVermelhosAway}</span>
+          <img class="subs" id="substituicaoAway-${index}" src="assets/sub.png" data-bs-placement="bottom">
+          <span class="team-score" id="golsAway-${index}" data-bs-placement="left">${match.goals.away}</span>
         </div>
       </div>
       <hr>
@@ -1212,12 +1215,18 @@ function organizaInfos(matches) {
     const iconSubHome = document.getElementById(`substituicaoHome-${index}`);
     const iconSubAway = document.getElementById(`substituicaoAway-${index}`);
 
+    const golsHome = document.getElementById(`golsHome-${index}`);
+    const golsAway = document.getElementById(`golsAway-${index}`);
+
     // Inicializa arrays para armazenar as substituições para cada time
     let substituicoesHome = [];
     let substituicoesAway = [];
 
     // Executa em cada evento
     match.events.forEach((event) => {
+      // Armazena o nome do jogador do evento
+      const jogador = event.player.name || "Erro ao buscar nome do jogador";
+
       // Verifica se o tipo do evento é "Card"
       if (event.type === "Card") {
         const jogadorCartao =
@@ -1269,7 +1278,7 @@ function organizaInfos(matches) {
                 cartaoVermelhoHome.getAttribute("title") || "";
               cartaoVermelhoHome.setAttribute(
                 "title",
-                `${titleAtualHomeRed} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
+                `${titleAtualHomeRed} <b>${tempoCartao}'</b>:<br> ${jogador}<br>`
               );
               cartaoVermelhoHome.setAttribute("data-bs-html", "true");
               cartaoVermelhoHome.setAttribute("data-bs-toggle", "tooltip");
@@ -1283,7 +1292,7 @@ function organizaInfos(matches) {
                 cartaoVermelhoAway.getAttribute("title") || "";
               cartaoVermelhoAway.setAttribute(
                 "title",
-                `${titleAtualAwayRed} <b>${tempoCartao}'</b>:<br> ${jogadorCartao}<br>`
+                `${titleAtualAwayRed} <b>${tempoCartao}'</b>:<br> ${jogador}<br>`
               );
               cartaoVermelhoAway.setAttribute("data-bs-html", "true");
               cartaoVermelhoAway.setAttribute("data-bs-toggle", "tooltip");
@@ -1325,6 +1334,32 @@ function organizaInfos(matches) {
           iconSubAway.setAttribute("data-bs-toggle", "tooltip");
           iconSubAway.setAttribute("data-bs-html", "true");
           iconSubAway.setAttribute("title", substituicoesAway.join("<br>"));
+        }
+      }
+
+      if (event.type === "Goal") {
+        const tempoGol = event.time.elapsed || "Tempo desconhecido";
+        const jogador = event.player.name || "Jogador desconhecido";
+
+        if (event.team.id == idTimeHome) {
+          // Recupera o título atual para garantir que os gols anteriores permaneçam
+          const titleAtualHomeGols = golsHome.getAttribute("title") || "";
+
+          // Adiciona o novo gol ao título, acumulando com os anteriores
+          const novoTitleHomeGols = `${titleAtualHomeGols}<strong>${tempoGol}'</strong>: ${jogador}<br>`;
+          golsHome.setAttribute("title", novoTitleHomeGols);
+
+          // Configura tooltip para exibir HTML
+          golsHome.setAttribute("data-bs-toggle", "tooltip");
+          golsHome.setAttribute("data-bs-html", "true");
+        } else if (event.team.id == idTimeAway) {
+          // Mesma lógica para o time visitante
+          const titleAtualAwayGols = golsAway.getAttribute("title") || "";
+          const novoTitleAwayGols = `${titleAtualAwayGols}<strong>${tempoGol}'</strong>: ${jogador}<br>`;
+          golsAway.setAttribute("title", novoTitleAwayGols);
+
+          golsAway.setAttribute("data-bs-toggle", "tooltip");
+          golsAway.setAttribute("data-bs-html", "true");
         }
       }
     });
