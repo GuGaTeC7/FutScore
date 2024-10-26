@@ -1099,6 +1099,121 @@ function mockData() {
         },
       ],
     },
+    {
+      fixture: {
+        id: 1299787,
+        referee: null,
+        timezone: "UTC",
+        date: "2024-10-25T22:00:00+00:00",
+        timestamp: 1729893600,
+        periods: {
+          first: 1729893600,
+          second: 1729897200,
+        },
+        venue: {
+          id: 11250,
+          name: "Estadio Juan N. López",
+          city: "La Piedad",
+        },
+        status: {
+          long: "Second Half",
+          short: "2H",
+          elapsed: 76,
+          extra: null,
+        },
+      },
+      league: {
+        id: 872,
+        name: "Liga Premier Serie B",
+        country: "Mexico",
+        logo: "https://media.api-sports.io/football/leagues/872.png",
+        flag: "https://media.api-sports.io/flags/mx.svg",
+        season: 2024,
+        round: "Apertura - 8",
+      },
+      teams: {
+        home: {
+          id: 24941,
+          name: "Real Zamora",
+          logo: "https://media.api-sports.io/football/teams/24941.png",
+          winner: true,
+        },
+        away: {
+          id: 22056,
+          name: "Poza Rica",
+          logo: "https://media.api-sports.io/football/teams/22056.png",
+          winner: false,
+        },
+      },
+      goals: {
+        home: 2,
+        away: 0,
+      },
+      score: {
+        halftime: {
+          home: 1,
+          away: 0,
+        },
+        fulltime: {
+          home: null,
+          away: null,
+        },
+        extratime: {
+          home: null,
+          away: null,
+        },
+        penalty: {
+          home: null,
+          away: null,
+        },
+      },
+      events: [
+        {
+          time: {
+            elapsed: 14,
+            extra: null,
+          },
+          team: {
+            id: 24941,
+            name: "Real Zamora",
+            logo: "https://media.api-sports.io/football/teams/24941.png",
+          },
+          player: {
+            id: 453423,
+            name: "I. Reyes",
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Goal",
+          detail: "Normal Goal",
+          comments: null,
+        },
+        {
+          time: {
+            elapsed: 75,
+            extra: null,
+          },
+          team: {
+            id: 24941,
+            name: "Real Zamora",
+            logo: "https://media.api-sports.io/football/teams/24941.png",
+          },
+          player: {
+            id: null,
+            name: null,
+          },
+          assist: {
+            id: null,
+            name: null,
+          },
+          type: "Goal",
+          detail: "Normal Goal",
+          comments: null,
+        },
+      ],
+    },
   ];
 }
 
@@ -1113,10 +1228,10 @@ async function montaGridAoVivo() {
 
   try {
     // Dados mockados para testes
-    const data = { response: mockData() };
+    // const data = { response: mockData() };
 
-    // const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
-    // const data = await res.json();
+    const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
+    const data = await res.json();
     console.log(data.response);
 
     const liveMatches = data.response.slice(0, 20); // Pegue as 3 primeiras partidas mockadas
@@ -1147,6 +1262,10 @@ function organizaInfos(matches) {
     } else if (tempo === "2H") {
       tempo = "2º";
     }
+    // else if (tempo === "HT") {
+    //   tempo = "HT";
+    //   document.querySelectorAll(".tempo").style.width = "23px !important";
+    // }
 
     // IDs dinâmicos para os cartões
     const cartaoAmareloHomeId = `cartaoAmareloHome-${index}`;
@@ -1225,12 +1344,11 @@ function organizaInfos(matches) {
     // Executa em cada evento
     match.events.forEach((event) => {
       // Armazena o nome do jogador do evento
-      const jogador = event.player.name || "Erro ao buscar nome do jogador";
+      const jogador = event.player.name || "<b>GOL</b>";
 
       // Verifica se o tipo do evento é "Card"
       if (event.type === "Card") {
-        const jogadorCartao =
-          event.player.name || "Erro ao buscar nome do jogador";
+        const jogadorCartao = event.player.name || " ";
         const tempoCartao =
           event.time.elapsed || "Erro ao buscar tempo do cartão";
 
@@ -1306,10 +1424,8 @@ function organizaInfos(matches) {
 
       // Verifica se o evento é do tipo "subst" (substituição)
       if (event.type === "subst") {
-        const jogadorEntrou =
-          event.player.name || "Erro ao buscar o nome do jogador";
-        const jogadorSaiu =
-          event.assist.name || "Erro ao buscar o nome do jogador";
+        const jogadorEntrou = event.player.name || " ";
+        const jogadorSaiu = event.assist.name || " ";
 
         const tempoSub = event.time.elapsed;
 
@@ -1339,7 +1455,6 @@ function organizaInfos(matches) {
 
       if (event.type === "Goal") {
         const tempoGol = event.time.elapsed || "Tempo desconhecido";
-        const jogador = event.player.name || "Jogador desconhecido";
 
         if (event.team.id == idTimeHome) {
           // Recupera o título atual para garantir que os gols anteriores permaneçam
@@ -1374,5 +1489,10 @@ function organizaInfos(matches) {
   });
 }
 
-// Chama a função para mockar e exibir os jogos ao vivo ao carregar a página
+// Chamada inicial
 montaGridAoVivo();
+
+setInterval(async () => {
+  montaGridAoVivo();
+  organizaInfos();
+}, 60000);
