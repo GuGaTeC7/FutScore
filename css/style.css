@@ -472,6 +472,10 @@ container {
   margin-right: 20px;
 }
 
+.acrescimo {
+  margin-right: 40px;
+}
+
 .minuto {
   display: flex;
   align-items: center;

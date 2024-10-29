@@ -1247,7 +1247,7 @@ async function montaGridAoVivo() {
 function organizaInfos(matches) {
   const liveMatchesContainer = document.getElementById("ao-vivo");
 
-  // Limpa o conteúdo anterior (caso tenha atualizações)
+  // Limpa o conteúdo anterior
   liveMatchesContainer.innerHTML = "";
 
   // Itera sobre os jogos ao vivo e cria o layout para cada jogo
@@ -1266,6 +1266,17 @@ function organizaInfos(matches) {
     //   tempo = "HT";
     //   document.querySelectorAll(".tempo").style.width = "23px !important";
     // }
+
+    const tempoElementoId = `tempo-${index}`; // Define o ID do elemento tempo
+
+    // Acrescimo int
+    let acrescimo = match.fixture.status.extra;
+    // Acrescimo string
+    let acrescimoStr = "";
+
+    if (acrescimo !== null) {
+      acrescimoStr = `+${acrescimo}`;
+    }
 
     // IDs dinâmicos para os cartões
     const cartaoAmareloHomeId = `cartaoAmareloHome-${index}`;
@@ -1286,8 +1297,8 @@ function organizaInfos(matches) {
     matchElement.innerHTML = `
       <div class="infos">
         <h6 class="title-liga">${match.league.name}</h6>
-        <span class="tempo">${tempo}
-          <span class="minuto">${match.fixture.status.elapsed}'</span>
+        <span class="tempo" id="${tempoElementoId}">${tempo}
+          <span class="minuto">${match.fixture.status.elapsed}'${acrescimoStr}</span>
         </span>
       </div>
       <div class="resultado-partida">
@@ -1319,6 +1330,19 @@ function organizaInfos(matches) {
 
     // Adiciona o jogo ao container
     liveMatchesContainer.appendChild(matchElement);
+
+    // Pega o elemento tempo
+    const tempoElemento = document.getElementById(tempoElementoId);
+
+    if (acrescimo !== null) {
+      if (tempoElemento) {
+        tempoElemento.classList.add("acrescimo");
+      } else {
+        console.error(
+          `Elemento com ID ${tempoElementoId} não encontrado no DOM.`
+        );
+      }
+    }
 
     // ID times
     const idTimeHome = match.teams.home.id;
@@ -1493,6 +1517,10 @@ function organizaInfos(matches) {
 montaGridAoVivo();
 
 setInterval(async () => {
+  const liveMatchesContainer = document.getElementById("ao-vivo");
+
+  // Limpa o conteúdo anterior
+  liveMatchesContainer.innerHTML = "";
+
   montaGridAoVivo();
-  organizaInfos();
 }, 60000);
