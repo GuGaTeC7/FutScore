@@ -18,6 +18,7 @@ async function fetchLeagues(query) {
     }
 
     const data = await response.json();
+    console.log(data);
     // console.log(data.response); // Retorna os campeonatos encontrados
     return data.response; // Retorna os campeonatos encontrados
   } catch (error) {
@@ -53,7 +54,7 @@ function populateLeagues(leagues) {
   leagues.forEach((league) => {
     const option = document.createElement("option");
     option.value = league.league.id; // ID da liga
-    option.textContent = league.league.name; // Nome da liga
+    option.textContent = `${league.league.name} - ${league.country.name}`; // Nome da liga
     selectElement.appendChild(option);
   });
 }
