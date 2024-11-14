@@ -500,85 +500,72 @@ container {
 .jogos-ao-vivo {
   grid-area: aoVivo;
   border-radius: 10px;
-  background-color: lightgray;
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  filter: blur(5px);
-}
-
-.imgs {
-  width: 100%; /* ou outro valor */
-}
-
-.retangulo {
-  background-image: linear-gradient(60deg, black 50%, red 50%);
-  width: 450px;
-  height: 50px;
-  position: relative;
-  margin-left: 25px;
-}
-
-.retangulo-menor {
-  width: 500px;
-  height: 30px;
-  background-color: #767575;
-  margin-top: 0px;
-  border-radius: 0 0 10px 10px;
-}
-
-.visitante {
-  position: absolute;
-  bottom: -5px;
-  left: -25px;
-}
-
-.mandante {
-  position: absolute;
-  right: -25px;
-  bottom: -5px;
+  margin: 10px;
 }
 
 .campeonato {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  margin-left: 10px;
-}
-
-.data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 15px;
 }
 
-.horario {
-  margin-left: 140px;
+.horario{
+  display: flex;
+  margin-right: 15px;
+}
+.retangulo {
+  background-image: linear-gradient(60deg, black 50%, red 50%);
+  width: auto;
+  height: 50px;
+  position: relative;
+  margin-left: 25px;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.nome-time {
-  color: azure;
-  margin: 15px;
-}
-.nome-time-visitante {
-  color: azure;
-  margin-left: 30px;
-}
-
-.placar-visitante {
-  margin-left: 35px;
-  margin-right: 10px;
+.retangulo-menor {
+  background-color: #5e5e5e8e;
+  width: auto;
+  height: 40px;
+  border-radius: 0 0 10px 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.placar-mandante {
-  margin-left: 10px;
-  margin-right: 35px;
-}
-.vs {
-  color: azure;
-  margin-left: 5px;
-  margin-right: 5px;
+.logo-team{
+  width: auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
-.nome-time-mandante {
-  color: azure;
+.vs{
+  font-size: 30px;
+}
+
+.odds{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 40px;
+}
+
+.odd{
+  height: 20px;
+  width: 20px;
+}
+
+.sub{
+  filter: invert(100%);
 }
 
 #ao-vivo {
