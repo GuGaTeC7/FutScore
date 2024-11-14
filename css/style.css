@@ -235,7 +235,7 @@ main {
   border-top: none;
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
-  background-color: white;
+  background-color: rgb(19, 19, 19);
   color: #0d6efd;
 }
 
@@ -248,7 +248,7 @@ main {
   border-top: none;
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
-  background-color: white;
+  background-color: rgb(19, 19, 19);
   color: #0d6efd;
 }
 
