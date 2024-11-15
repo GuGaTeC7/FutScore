@@ -1,822 +1,846 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FutScore</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FutScore</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-primary" id="nav">
+        <div class="container-fluid">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0"
+            style="margin-right: 0 !important"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Campeonatos
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Brasileirão Série A</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">UEFA Champions League</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">UEFA Europa League</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Premier League</a></li>
+                <li><a class="dropdown-item" href="#">LaLiga</a></li>
+              </ul>
+            </li>
+          </ul>
 
-</head>
+          <img
+            src="assets/logos/logoFutScore-removebg-preview.png"
+            alt="logo"
+            id="logo"
+          />
 
-<body>
-  <!-- Header -->
-  <header>
-    <nav class="navbar navbar-expand-lg bg-primary" id="nav">
-      <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <img
+              src="/assets/player.svg"
+              id="profile"
+              alt="img perfil"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              data-bs-html="true"
+            />
 
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 0 !important;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Campeonatos
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="#">Brasileirão Série A</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">UEFA Champions League</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">UEFA Europa League</a>
-              </li>
-              <li><a class="dropdown-item" href="#">Premier League</a></li>
-              <li><a class="dropdown-item" href="#">LaLiga</a></li>
-            </ul>
-          </li>
-        </ul>
-
-        <img src="assets/logos/logoFutScore-removebg-preview.png" alt="logo" id="logo" />
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <img src="/assets/player.svg" id="profile" alt="img perfil" data-bs-toggle="modal"
-            data-bs-target="#exampleModal" data-toggle="tooltip" data-placement="bottom" data-bs-html="true" />
-
-          <div class="quadrado-completo">
-            <div class="triangulo-para-cima"></div>
-            <div class="quadrado-login">
-              <p id="nomeUser"></p>
-              <button type="button" class="btn btn-danger" onclick="sair()" style="font-size: 12px;">Sair</button>
+            <div class="quadrado-completo">
+              <div class="triangulo-para-cima"></div>
+              <div class="quadrado-login">
+                <p id="nomeUser"></p>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  onclick="sair()"
+                  style="font-size: 12px"
+                >
+                  Sair
+                </button>
+              </div>
             </div>
-          </div>
 
-          <form class="d-flex" id="modalAuth">
-            <!-- Botão de gatilho do modal -->
+            <form class="d-flex" id="modalAuth">
+              <!-- Botão de gatilho do modal -->
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">
-                      Autenticação
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <button type="button" class="btn btn-primary">
-                      <a href="cadastro.html">Cadastro</a>
-                    </button>
-                    <button type="button" class="btn btn-danger">
-                      <a href="login.html">Login</a>
-                    </button>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Autenticação
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <button type="button" class="btn btn-primary">
+                        <a href="cadastro.html">Cadastro</a>
+                      </button>
+                      <button type="button" class="btn btn-danger">
+                        <a href="login.html">Login</a>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Tabelas Campeonatos -->
+      <section class="tabelas" id="ladoEsquerdo">
+        <h1 class="titulos-componentes">Principais Campeonatos</h1>
+        <div class="border border-primary" id="borda-tabela" data-tabela="1">
+          <!-- Loading -->
+          <div id="loading" style="display: flex">
+            <div class="spinner"></div>
+          </div>
+
+          <div class="cabecalho-tabela">
+            <div>
+              <h5>Rodada <span id="rodadaNumber"></span></h5>
+              <h1>Brasileiro Série A</h1>
             </div>
-          </form>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Tabelas Campeonatos -->
-    <section class="tabelas" id="ladoEsquerdo">
-      <h1 class="titulos-componentes">Principais Campeonatos</h1>
-      <div class="border border-primary" id="borda-tabela" data-tabela="1">
-        
-        <!-- Loading -->
-        <div id="loading" style="display: flex">
-          <div class="spinner"></div>
-        </div>
-
-        <div class="cabecalho-tabela">
-          <div>
-            <h5>Rodada <span id="rodadaNumber"></span></h5>
-            <h1>Brasileiro Série A</h1>
+            <div>
+              <img src="" class="camp-logo" alt="Campeonato" />
+            </div>
           </div>
-          <div>
-            <img src="" class="camp-logo" alt="Campeonato" />
-          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" colspan="2">
+                  <span class="classificacao">Classificação</span>
+                </th>
+                <th scope="col">P</th>
+                <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
+              </tr>
+            </thead>
+
+            <!-- Tabela 1 -->
+            <tbody class="table-group-divider">
+              <tr id="posicao-1">
+                <th scope="row">1</th>
+                <td data-time="0">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="0">
+                  <div></div>
+                </td>
+                <td data-pontos="0"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-0">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-2">
+                <th scope="row">2</th>
+                <td data-time="1">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="1">
+                  <div></div>
+                </td>
+                <td data-pontos="1"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-1">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-3">
+                <th scope="row">3</th>
+                <td data-time="2">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="2">
+                  <div></div>
+                </td>
+                <td data-pontos="2"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-2">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-4">
+                <th scope="row">4</th>
+                <td data-time="3">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="3">
+                  <div></div>
+                </td>
+                <td data-pontos="3"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-3">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-5">
+                <th scope="row">5</th>
+                <td data-time="4">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="4">
+                  <div></div>
+                </td>
+                <td data-pontos="4"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-4">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col" colspan="2">
-                <span class="classificacao">Classificação</span>
-              </th>
-              <th scope="col">P</th>
-              <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
-            </tr>
-          </thead>
-
-          <!-- Tabela 1 -->
-          <tbody class="table-group-divider">
-            <tr id="posicao-1">
-              <th scope="row">1</th>
-              <td data-time="0">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="0">
-                <div></div>
-              </td>
-              <td data-pontos="0"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-0">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-2">
-              <th scope="row">2</th>
-              <td data-time="1">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="1">
-                <div></div>
-              </td>
-              <td data-pontos="1"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-1">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-3">
-              <th scope="row">3</th>
-              <td data-time="2">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="2">
-                <div></div>
-              </td>
-              <td data-pontos="2"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-2">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-4">
-              <th scope="row">4</th>
-              <td data-time="3">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="3">
-                <div></div>
-              </td>
-              <td data-pontos="3"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-3">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-5">
-              <th scope="row">5</th>
-              <td data-time="4">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="4">
-                <div></div>
-              </td>
-              <td data-pontos="4"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-4">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Tabela 2 -->
-      <div class="border border-primary" id="borda-tabela" style="
+        <!-- Tabela 2 -->
+        <div
+          class="border border-primary"
+          id="borda-tabela"
+          style="
             border-top: none !important;
             border-top-right-radius: 0px;
             border-top-left-radius: 0px;
-          " data-tabela="2">
-        <div id="loading" style="display: flex">
-          <div class="spinner"></div>
-        </div>
-        <div class="cabecalho-tabela">
-          <div>
-            <h5>Rodada <span id="rodadaNumber"></span></h5>
-            <h1>Ligue 1</h1>
+          "
+          data-tabela="2"
+        >
+          <div id="loading" style="display: flex">
+            <div class="spinner"></div>
           </div>
-          <div>
-            <img src="" class="camp-logo" alt="Campeonato" />
+          <div class="cabecalho-tabela">
+            <div>
+              <h5>Rodada <span id="rodadaNumber"></span></h5>
+              <h1>Ligue 1</h1>
+            </div>
+            <div>
+              <img src="" class="camp-logo" alt="Campeonato" />
+            </div>
           </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" colspan="2">
+                  <span class="classificacao">Classificação</span>
+                </th>
+                <th scope="col">P</th>
+                <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr id="posicao-1">
+                <th scope="row">1</th>
+                <td data-time="0">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="0">
+                  <div></div>
+                </td>
+                <td data-pontos="0"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-0">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-2">
+                <th scope="row">2</th>
+                <td data-time="1">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="1">
+                  <div></div>
+                </td>
+                <td data-pontos="1"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-1">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-3">
+                <th scope="row">3</th>
+                <td data-time="2">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="2">
+                  <div></div>
+                </td>
+                <td data-pontos="2"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-2">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-4">
+                <th scope="row">4</th>
+                <td data-time="3">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="3">
+                  <div></div>
+                </td>
+                <td data-pontos="3"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-3">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-5">
+                <th scope="row">5</th>
+                <td data-time="4">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="4">
+                  <div></div>
+                </td>
+                <td data-pontos="4"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-4">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col" colspan="2">
-                <span class="classificacao">Classificação</span>
-              </th>
-              <th scope="col">P</th>
-              <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
-            </tr>
-          </thead>
-          <tbody class="table-group-divider">
-            <tr id="posicao-1">
-              <th scope="row">1</th>
-              <td data-time="0">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="0">
-                <div></div>
-              </td>
-              <td data-pontos="0"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-0">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-2">
-              <th scope="row">2</th>
-              <td data-time="1">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="1">
-                <div></div>
-              </td>
-              <td data-pontos="1"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-1">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-3">
-              <th scope="row">3</th>
-              <td data-time="2">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="2">
-                <div></div>
-              </td>
-              <td data-pontos="2"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-2">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-4">
-              <th scope="row">4</th>
-              <td data-time="3">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="3">
-                <div></div>
-              </td>
-              <td data-pontos="3"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-3">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-5">
-              <th scope="row">5</th>
-              <td data-time="4">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="4">
-                <div></div>
-              </td>
-              <td data-pontos="4"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-4">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Tabela 3 -->
-      <div class="border border-primary" id="borda-tabela" style="
+        <!-- Tabela 3 -->
+        <div
+          class="border border-primary"
+          id="borda-tabela"
+          style="
             border-top: none !important;
             border-top-right-radius: 0px;
             border-top-left-radius: 0px;
-          " data-tabela="3">
-        <div id="loading" style="display: flex">
-          <div class="spinner"></div>
-        </div>
-        <div class="cabecalho-tabela">
-          <div>
-            <h5>Rodada <span id="rodadaNumber"></span></h5>
-            <h1>La Liga</h1>
+          "
+          data-tabela="3"
+        >
+          <div id="loading" style="display: flex">
+            <div class="spinner"></div>
           </div>
-          <div>
-            <img src="" class="camp-logo" alt="Campeonato" />
-          </div>
-        </div>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col" colspan="2">
-                <span class="classificacao">Classificação</span>
-              </th>
-              <th scope="col">P</th>
-              <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
-            </tr>
-          </thead>
-          <tbody class="table-group-divider">
-            <tr id="posicao-1">
-              <th scope="row">1</th>
-              <td data-time="0">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="0">
-                <div></div>
-              </td>
-              <td data-pontos="0"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-0">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-2">
-              <th scope="row">2</th>
-              <td data-time="1">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="1">
-                <div></div>
-              </td>
-              <td data-pontos="1"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-1">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-3">
-              <th scope="row">3</th>
-              <td data-time="2">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="2">
-                <div></div>
-              </td>
-              <td data-pontos="2"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-2">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-4">
-              <th scope="row">4</th>
-              <td data-time="3">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="3">
-                <div></div>
-              </td>
-              <td data-pontos="3"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-3">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-            <tr id="posicao-5">
-              <th scope="row">5</th>
-              <td data-time="4">
-                <!-- Conteúdo inserido via Javascript -->
-              </td>
-              <td data-seta="4">
-                <div></div>
-              </td>
-              <td data-pontos="4"></td>
-              <td class="circle">
-                <div class="circle-container" id="time-4">
-                  <div class="circle" data-index="0"></div>
-                  <div class="circle" data-index="1"></div>
-                  <div class="circle" data-index="2"></div>
-                  <div class="circle" data-index="3"></div>
-                  <div class="circle" data-index="4"></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <button type="button" class="btn btn-outline-primary" id="verMais">
-        VER MAIS<img src="/assets/seta-pequena-para-baixo.png" />
-      </button>
-      <button type="button" class="btn btn-outline-primary" href="/index.html#ladoEsquerdo" id="verMenos">
-        VER MENOS<img src="/assets/seta-pequena-para-baixo.png" />
-      </button>
-    </section>
-
-    <!-- Jogos ao vivo -->
-    <section>
-      <h1 class="titulos-componentes">Jogos Ao Vivo</h1>
-      <div class="border border-primary" id="ao-vivo">
-        <!-- Em desenvolvimento -->
-        <div class="container">
-          <div class="organiza-ao-vivo">
-
-            <!-- Loading -->
-            <div id="loading">
-              <div class="spinner"></div>
+          <div class="cabecalho-tabela">
+            <div>
+              <h5>Rodada <span id="rodadaNumber"></span></h5>
+              <h1>La Liga</h1>
             </div>
-
-          </div>  
-        </div>
-      
-      </div>      
-    </section>
-
-    <!-- Resultado das Rodadas -->
-    <section class="resultados" id="ladoEsquerdo">
-      <h1 class="titulos-componentes">Resultados</h1>
-      <div class="border border-primary" id="result-jogadas">
-        <!-- Em desenvolvimento -->
-        <div class="jogos-ao-vivo">
-          <h6 class="campeonato"><b>Copa Sul-Americana - Quartas de final</b>
-            <span class="horario"><b>21:00</b></span>
-          </h6>
-          <div class="retangulo">
-            <img class="logo-team" src="assets/corinthians.png">
-            <div class="nome-team">Corinthians</div> 
-            <div class="placar">2</div>
-            <div class="vs">X</div>
-            <div class="placar">2</div>
-            <div class="nome-team">Fortaleza</div>
-            <img class="logo-team" src="assets/fortaleza.png">
-          </div>  
-          <div class="retangulo-menor">
-            <span class="odds">
-              <img class="odd" src="assets/cartao-amarelo.png">
-              <img class="odd sub" src="assets/sub.png">
-              <div class="cartao cartao-vermelho"></div>
-            </span>
-            <span class="odds">
-              <img class="odd cartao-vermelho" src="">
-              <img class="odd sub" src="assets/sub.png">
-              <img class="odd" src="assets/cartao-amarelo.png">
-            </span>
-          </div>
-        </div>
-
-        <div class="jogos-ao-vivo">
-          <h6 class="campeonato"><b>Copa Sul-Americana - Quartas de final</b>
-            <span class="horario"><b>21:00</b></span>
-          </h6>
-          <div class="retangulo">
-            <img class="logo-team" src="assets/corinthians.png">
-            <div class="nome-team">Corinthians</div> 
-            <div class="placar">2</div>
-            <div class="vs">X</div>
-            <div class="placar">2</div>
-            <div class="nome-team">Fortaleza</div>
-            <img class="logo-team" src="assets/fortaleza.png">
-          </div>  
-          <div class="retangulo-menor">
-            <span class="odds">
-              <img class="odd" src="assets/cartao-amarelo.png">
-              <img class="odd sub" src="assets/sub.png">
-            </span>
-            <span class="odds">
-              <div class="cartao-vermelho"></div>
-              <img class="odd sub" src="assets/sub.png">
-              <img class="odd" src="assets/cartao-amarelo.png">
-            </span>
-          </div>
-        </div>
-
-        <div class="jogos-ao-vivo">
-          <h6 class="campeonato"><b>Copa Sul-Americana - Quartas de final</b>
-            <span class="horario"><b>21:00</b></span>
-          </h6>
-          <div class="retangulo">
-            <img class="logo-team" src="assets/corinthians.png">
-            <div class="nome-team">Corinthians</div> 
-            <div class="placar">2</div>
-            <div class="vs">X</div>
-            <div class="placar">2</div>
-            <div class="nome-team">Fortaleza</div>
-            <img class="logo-team" src="assets/fortaleza.png">
-          </div>  
-          <div class="retangulo-menor">
-            <span class="odds">
-              <img class="odd" src="assets/cartao-amarelo.png">
-              <img class="odd sub" src="assets/sub.png">
-            </span>
-            <span class="odds">
-              <img class="odd sub" src="assets/sub.png">
-              <img class="odd" src="assets/cartao-amarelo.png">
-            </span>
-          </div>
-        </div>
-
-        <div class="jogos-ao-vivo">
-          <h6 class="campeonato"><b>Copa Sul-Americana - Quartas de final</b>
-            <span class="horario"><b>21:00</b></span>
-          </h6>
-          <div class="retangulo">
-            <img class="logo-team" src="assets/corinthians.png">
-            <div class="nome-team">Corinthians</div> 
-            <div class="placar">2</div>
-            <div class="vs">X</div>
-            <div class="placar">2</div>
-            <div class="nome-team">Fortaleza</div>
-            <img class="logo-team" src="assets/fortaleza.png">
-          </div>  
-          <div class="retangulo-menor">
-            <span class="odds">
-              <img class="odd" src="assets/cartao-amarelo.png">
-              <img class="odd sub" src="assets/sub.png">
-            </span>
-            <span class="odds">
-              <img class="odd sub" src="assets/sub.png">
-              <img class="odd" src="assets/cartao-amarelo.png">
-            </span>
-          </div>
-        </div> 
-    </section>
-
-
-    <!-- Estatísticas do campeonato -->
-    <section class="estatisticas">
-      <h1 class="titulos-componentes">Estatísticas</h1>
-      <div class="border border-primary" id="estatisticas-camp">
-
-        
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="form-group">
-              <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do campeonato..." />
-              <select name="campeonatos" id="campeonatos" class="form-control input-lg" data-live-search="true"
-              title="SELECIONE UM CAMPEONATO" style="display:none; font-size: 14px;">
-            </select>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Loading -->
-      <div id="loading" class="loading">
-        <div class="spinner"></div>
-      </div>
-
-      <div id="loadingClass" style="display: none;">
-        <h1 style="margin-top: 13px; font-size: 1.4rem;" id="nomeLigaEstatisticas">Ligue 1</h1>
-        <h2>ARTILHEIROS</h2>
-        
-          <div class="primeiro-estatisticas">
-
-            <div class="posicao-estatisticas">
-              <p>1</p>
+            <div>
+              <img src="" class="camp-logo" alt="Campeonato" />
             </div>
+          </div>
 
-            <div class="perfil-jogador-um">
-              <div style="position: relative;">
-                <div class="nota">
-                  <p id="nota" data-nota="0"></p>
-                </div>
-                <img src="" class="img-jogador-um" alt="" data-img="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" colspan="2">
+                  <span class="classificacao">Classificação</span>
+                </th>
+                <th scope="col">P</th>
+                <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr id="posicao-1">
+                <th scope="row">1</th>
+                <td data-time="0">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="0">
+                  <div></div>
+                </td>
+                <td data-pontos="0"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-0">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-2">
+                <th scope="row">2</th>
+                <td data-time="1">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="1">
+                  <div></div>
+                </td>
+                <td data-pontos="1"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-1">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-3">
+                <th scope="row">3</th>
+                <td data-time="2">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="2">
+                  <div></div>
+                </td>
+                <td data-pontos="2"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-2">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-4">
+                <th scope="row">4</th>
+                <td data-time="3">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="3">
+                  <div></div>
+                </td>
+                <td data-pontos="3"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-3">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="posicao-5">
+                <th scope="row">5</th>
+                <td data-time="4">
+                  <!-- Conteúdo inserido via Javascript -->
+                </td>
+                <td data-seta="4">
+                  <div></div>
+                </td>
+                <td data-pontos="4"></td>
+                <td class="circle">
+                  <div class="circle-container" id="time-4">
+                    <div class="circle" data-index="0"></div>
+                    <div class="circle" data-index="1"></div>
+                    <div class="circle" data-index="2"></div>
+                    <div class="circle" data-index="3"></div>
+                    <div class="circle" data-index="4"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button type="button" class="btn btn-outline-primary" id="verMais">
+          VER MAIS<img src="/assets/seta-pequena-para-baixo.png" />
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          href="/index.html#ladoEsquerdo"
+          id="verMenos"
+        >
+          VER MENOS<img src="/assets/seta-pequena-para-baixo.png" />
+        </button>
+      </section>
+
+      <!-- Jogos ao vivo -->
+      <section>
+        <h1 class="titulos-componentes">Jogos Ao Vivo</h1>
+        <div class="border border-primary" id="ao-vivo">
+          <!-- Em desenvolvimento -->
+          <div class="container">
+            <div class="organiza-ao-vivo">
+              <!-- Loading -->
+              <div id="loading">
+                <div class="spinner"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resultado das Rodadas -->
+      <section class="resultados" id="ladoEsquerdo">
+        <h1 class="titulos-componentes">Resultados</h1>
+        <div class="border border-primary" id="result-jogadas">
+          <div class="jogos-ao-vivo">
+            <h6 class="campeonato">
+              <b>Copa Sul-Americana - Quartas de final</b>
+              <span class="data"><b>11/06</b></span>
+            </h6>
+            <div class="retangulo" id="retangulo">
+              <img
+                class="logo-team"
+                src="assets/corinthians.png"
+                id="home-logo"
+              />
+              <div class="nome-team">Corinthians</div>
+              <div class="placar">2</div>
+              <div class="vs">X</div>
+              <div class="placar">2</div>
+              <div class="nome-team">Fortaleza</div>
+              <img
+                class="logo-team"
+                src="assets/fortaleza.png"
+                id="away-logo"
+              />
+            </div>
+            <div class="retangulo-menor">
+              <span class="odds">
+                <img class="odd" src="assets/cartao-vermelho.png" />
+                <img class="odd" src="assets/cartao-amarelo.png" />
+                <img class="odd sub" src="assets/sub.png" />
+              </span>
+              <span class="odds">
+                <img class="odd sub" src="assets/sub.png" />
+                <img class="odd" src="assets/cartao-amarelo.png" />
+                <img class="odd" src="assets/cartao-vermelho.png" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Estatísticas do campeonato -->
+      <section class="estatisticas">
+        <h1 class="titulos-componentes">Estatísticas</h1>
+        <div class="border border-primary" id="estatisticas-camp">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="search-input"
+                  class="form-control"
+                  placeholder="Digite o nome do campeonato..."
+                />
+                <select
+                  name="campeonatos"
+                  id="campeonatos"
+                  class="form-control input-lg"
+                  data-live-search="true"
+                  title="SELECIONE UM CAMPEONATO"
+                  style="display: none; font-size: 14px"
+                ></select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading -->
+          <div id="loading" class="loading">
+            <div class="spinner"></div>
+          </div>
+
+          <div id="loadingClass" style="display: none">
+            <h1
+              style="margin-top: 13px; font-size: 1.4rem"
+              id="nomeLigaEstatisticas"
+            >
+              Ligue 1
+            </h1>
+            <h2>ARTILHEIROS</h2>
+
+            <div class="primeiro-estatisticas">
+              <div class="posicao-estatisticas">
+                <p>1</p>
               </div>
 
-              <div style="display: flex; justify-content: center; align-items: center;">
-                <img src="" alt="img jogador" id="logoTimeJogadorUm">
-                <h1 data-name="0"></h1>
+              <div class="perfil-jogador-um">
+                <div style="position: relative">
+                  <div class="nota">
+                    <p id="nota" data-nota="0"></p>
+                  </div>
+                  <img src="" class="img-jogador-um" alt="" data-img="0" />
+                </div>
+
+                <div
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <img src="" alt="img jogador" id="logoTimeJogadorUm" />
+                  <h1 data-name="0"></h1>
+                </div>
+                <b style="font-size: 0.9rem">Atacante</b>
               </div>
-              <b style="font-size: 0.9rem;">Atacante</b>
+
+              <div class="barra-vertical"></div>
+
+              <table
+                class="table table-borderless"
+                id="table-result-um"
+                style="font-size: 10px"
+              >
+                <tbody>
+                  <tr>
+                    <td class="estatisticas-table-um">Jogos</td>
+                    <td id="jogosTd"></td>
+                  </tr>
+                  <tr>
+                    <td class="estatisticas-table-um">Gols</td>
+                    <td id="golsTd"></td>
+                  </tr>
+                  <tr>
+                    <td class="estatisticas-table-um">Assistências</td>
+                    <td id="assistenciasTd"></td>
+                  </tr>
+                  <tr>
+                    <td class="estatisticas-table-um">Conversão de gols</td>
+                    <td id="conversaoTd"></td>
+                  </tr>
+                  <tr>
+                    <td class="estatisticas-table-um">Cartões amarelos</td>
+                    <td id="cartoesTd"></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
-            <div class="barra-vertical"></div>
+            <!-- Segundo Lugar -->
+            <div class="tabela-estatisticas">
+              <div class="posicao-estatisticas">
+                <p>2</p>
+              </div>
+              <div class="perfil-jogador-estatisticas">
+                <img
+                  src=""
+                  class="img-jogador-estatisticas"
+                  alt="img jogador"
+                  data-img="1"
+                />
+                <p data-name="1"></p>
+              </div>
+              <div class="nota-tabela-estatisticas">
+                <p data-nota="1"></p>
+              </div>
+            </div>
 
-            <table class="table table-borderless" id="table-result-um" style="font-size: 10px;">
-              <tbody>
-                <tr>
-                  <td class="estatisticas-table-um">Jogos</td>
-                  <td id="jogosTd"></td>
-                </tr>
-                <tr>
-                  <td class="estatisticas-table-um">Gols</td>
-                  <td id="golsTd"></td>
-                </tr>
-                <tr>
-                  <td class="estatisticas-table-um">Assistências</td>
-                  <td id="assistenciasTd"></td>
-                </tr>
-                <tr>
-                  <td class="estatisticas-table-um">Conversão de gols</td>
-                  <td id="conversaoTd"></td>
-                </tr>
-                <tr>
-                  <td class="estatisticas-table-um">Cartões amarelos</td>
-                  <td id="cartoesTd"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <!-- Terceiro Lugar -->
+            <div class="tabela-estatisticas">
+              <div class="posicao-estatisticas">
+                <p>3</p>
+              </div>
+              <div class="perfil-jogador-estatisticas">
+                <img
+                  src=""
+                  class="img-jogador-estatisticas"
+                  alt="img jogador"
+                  data-img="2"
+                />
+                <p data-name="2"></p>
+              </div>
+              <div class="nota-tabela-estatisticas">
+                <p data-nota="2"></p>
+              </div>
+            </div>
 
-          <!-- Segundo Lugar -->
-          <div class="tabela-estatisticas">
-            <div class="posicao-estatisticas">
-              <p>2</p>
+            <!-- Quarto Lugar -->
+            <div class="tabela-estatisticas">
+              <div class="posicao-estatisticas">
+                <p>4</p>
+              </div>
+              <div class="perfil-jogador-estatisticas">
+                <img
+                  src=""
+                  class="img-jogador-estatisticas"
+                  alt="img jogador"
+                  data-img="3"
+                />
+                <p data-name="3"></p>
+              </div>
+              <div class="nota-tabela-estatisticas">
+                <p data-nota="3"></p>
+              </div>
             </div>
-            <div class="perfil-jogador-estatisticas">
-              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="1">
-              <p data-name="1"></p>
-            </div>
-            <div class="nota-tabela-estatisticas">
-              <p data-nota="1"></p>
-            </div>
-          </div>
 
-          <!-- Terceiro Lugar -->
-          <div class="tabela-estatisticas">
-            <div class="posicao-estatisticas">
-              <p>3</p>
-            </div>
-            <div class="perfil-jogador-estatisticas">
-              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="2">
-              <p data-name="2"></p>
-            </div>
-            <div class="nota-tabela-estatisticas">
-              <p data-nota="2"></p>
-            </div>
-          </div>
-
-          <!-- Quarto Lugar -->
-          <div class="tabela-estatisticas">
-            <div class="posicao-estatisticas">
-              <p>4</p>
-            </div>
-            <div class="perfil-jogador-estatisticas">
-              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="3">
-              <p data-name="3"></p>
-            </div>
-            <div class="nota-tabela-estatisticas">
-              <p data-nota="3"></p>
-            </div>
-          </div>
-
-          <!-- Quinto Lugar -->
-          <div class="tabela-estatisticas">
-            <div class="posicao-estatisticas">
-              <p>5</p>
-            </div>
-            <div class="perfil-jogador-estatisticas">
-              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="4">
-              <p data-name="4"></p>
-            </div>
-            <div class="nota-tabela-estatisticas">
-              <p data-nota="4"></p>
+            <!-- Quinto Lugar -->
+            <div class="tabela-estatisticas">
+              <div class="posicao-estatisticas">
+                <p>5</p>
+              </div>
+              <div class="perfil-jogador-estatisticas">
+                <img
+                  src=""
+                  class="img-jogador-estatisticas"
+                  alt="img jogador"
+                  data-img="4"
+                />
+                <p data-name="4"></p>
+              </div>
+              <div class="nota-tabela-estatisticas">
+                <p data-nota="4"></p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+    </main>
 
-      </div>
-    </section>
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Js -->
+    <script src="/js/credenciais.js"></script>
+    <script src="/js/tabela.js"></script>
+    <script src="/js/estatisticas.js"></script>
+    <script src="js/aoVivo.js"></script>
+    <script src="js/resultado.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/colorthief/2.3.2/color-thief.min.js"></script>
 
-  </main>
+    <script>
+      // Obtém o token do localStorage
+      const token = localStorage.getItem("token");
 
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-    crossorigin="anonymous"></script>
-  <!-- Js -->
-  <script src="/js/credenciais.js"></script>
-  <script src="/js/tabela.js"></script>
-  <script src="/js/estatisticas.js"></script>
-  <script src="js/aoVivo.js"></script>
-  <script src="js/resultado.js"></script>
-  <script src="/js/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/colorthief/2.3.2/color-thief.min.js"></script>
+      // Verifica se o token está armazenado no localStorage
+      if (token) {
+        const modal = document.getElementById("modalAuth");
+        modal.style.setProperty("display", "none", "important"); // Esconde o modal
 
-  <script>
-    // Obtém o token do localStorage
-    const token = localStorage.getItem("token");
-    
+        // Decodifica o token JWT
+        const decodedToken = jwt_decode(token);
 
-    // Verifica se o token está armazenado no localStorage
-    if (token) {
-      const modal = document.getElementById("modalAuth");
-      modal.style.setProperty("display", "none", "important"); // Esconde o modal
+        // Seleciona a imagem do perfil pelo ID
+        const img = document.getElementById("profile");
 
-      // Decodifica o token JWT
-      const decodedToken = jwt_decode(token);
+        // Remove os atributos 'data-bs-toggle' e 'data-bs-target' para desativar o modal no clique
+        img.removeAttribute("data-bs-toggle");
+        img.removeAttribute("data-bs-target");
 
-      // Seleciona a imagem do perfil pelo ID
-      const img = document.getElementById("profile");
+        // Acessa o nome do usuário através do claim "name"
+        const nomeArmazenado = decodedToken.name || "Usuário"; // Acessa o campo 'name' do token
+        document.getElementById("nomeUser").innerText = nomeArmazenado;
 
-      // Remove os atributos 'data-bs-toggle' e 'data-bs-target' para desativar o modal no clique
-      img.removeAttribute("data-bs-toggle");
-      img.removeAttribute("data-bs-target");
+        // Exibe o conteúdo do payload decodificado no console
+        console.log("Token decodificado:", decodedToken);
 
-      // Acessa o nome do usuário através do claim "name"
-      const nomeArmazenado = decodedToken.name || "Usuário";  // Acessa o campo 'name' do token
-      document.getElementById("nomeUser").innerText = nomeArmazenado
+        const quadradoLogin = document.querySelector(".quadrado-completo");
 
-      // Exibe o conteúdo do payload decodificado no console
-      console.log("Token decodificado:", decodedToken);
-
-      const quadradoLogin = document.querySelector(".quadrado-completo");
-
-
-      img.addEventListener("click", () => {
-        quadradoLogin.style.display = quadradoLogin.style.display == "block" ? "none" : "block";
-      });
-
-
-    } else {
-      const img = document.getElementById("profile");
-      if (img) {
-        img.style.display = "block"; // Esconde a imagem de perfil
+        img.addEventListener("click", () => {
+          quadradoLogin.style.display =
+            quadradoLogin.style.display == "block" ? "none" : "block";
+        });
+      } else {
+        const img = document.getElementById("profile");
+        if (img) {
+          img.style.display = "block"; // Esconde a imagem de perfil
+        }
+        console.log("Token não encontrado");
       }
-      console.log("Token não encontrado");
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
