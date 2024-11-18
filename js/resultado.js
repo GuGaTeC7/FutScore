@@ -1,3 +1,104 @@
+async function getFinishedMatches() {
+  const LEAGUE_ID = 71;
+  const SEASON = 2024;
+  const QTD_JOGOS = 20;
+
+  const url = `https://v3.football.api-sports.io/fixtures?league=${LEAGUE_ID}&season=${SEASON}&status=FT&last=${QTD_JOGOS}`;
+
+  try {
+    const response = await fetch(url, options); // Certifique-se de que 'options' esteja definido corretamente
+
+    if (!response.ok) {
+      throw new Error(`Erro: ${response.status} - ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log("Resultados:");
+    console.log(data);
+    displayMatches(data.response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function displayMatches(matches) {
+  const matchesElement = document.getElementById("result-jogadas");
+
+  // Verifica se `matches` é válido
+  if (!Array.isArray(matches) || matches.length === 0) {
+    matchesElement.innerHTML = "<p>Os jogos não foram encontrados.</p>";
+    return;
+  }
+
+  matchesElement.innerHTML = ""; // Limpa o container antes de adicionar novos jogos
+
+  matches.forEach((match, index) => {
+    const homeTeam = match.teams.home.name;
+    const awayTeam = match.teams.away.name;
+    const homeScore = match.goals.home;
+    const awayScore = match.goals.away;
+    const homeLogo = match.teams.home.logo;
+    const awayLogo = match.teams.away.logo;
+
+    const retanguloId = `retangulo-${index}`;
+    const homeLogoId = `home-logo-${index}`;
+    const awayLogoId = `away-logo-${index}`;
+
+    const matchHTML = `
+      <div class="jogos-ao-vivo">
+        <h6 class="campeonato">
+          <b>Copa Sul-Americana - Quartas de final</b>
+          <span class="data"><b>11/06</b></span>
+        </h6>
+        <div class="retangulo" id="${retanguloId}">
+          <div class="img-moldura">
+            <img class="logo-team" src="${homeLogo}" id="${homeLogoId}" crossOrigin="anonymous" />
+          </div>
+          <div class="nome-team">${homeTeam}</div>
+          <div class="placar">${homeScore}</div>
+          <div class="vs">X</div>
+          <div class="placar">${awayScore}</div>
+          <div class="nome-team">${awayTeam}</div>
+          <div class="img-moldura">
+            <img class="logo-team" src="${awayLogo}" id="${awayLogoId}" crossOrigin="anonymous" />
+          </div>
+        </div>
+        <div class="retangulo-menor">
+          <span class="odds">
+            <img class="odd" src="assets/cartao-vermelho.png" />
+            <img class="odd" src="assets/cartao-amarelo.png" />
+            <img class="odd sub" src="assets/sub.png" />
+          </span>
+          <span class="odds">
+            <img class="odd sub" src="assets/sub.png" />
+            <img class="odd" src="assets/cartao-amarelo.png" />
+            <img class="odd" src="assets/cartao-vermelho.png" />
+          </span>
+        </div>
+      </div>
+    `;
+
+    const div = document.createElement("div");
+    div.innerHTML = matchHTML;
+    matchesElement.appendChild(div);
+
+    // Busca os elementos criados
+    const homeLogoElement = document.getElementById(homeLogoId);
+    const awayLogoElement = document.getElementById(awayLogoId);
+
+    if (!homeLogoElement || !awayLogoElement) {
+      console.error(`Elementos não encontrados: ${homeLogoId}, ${awayLogoId}`);
+      return;
+    }
+
+    homeLogoElement.onload = function () {
+      setTeamColors(homeLogoElement, awayLogoElement, retanguloId);
+    };
+
+    if (homeLogoElement.complete) homeLogoElement.onload();
+  });
+}
+
 function setTeamColors(homeLogo, awayLogo, retanguloId) {
   const retangulo = document.getElementById(retanguloId);
 
@@ -45,8 +146,8 @@ function setTeamColors(homeLogo, awayLogo, retanguloId) {
   function increaseSaturationAndDarken(r, g, b, saturationFactor) {
     // Calcula a saturação e luminosidade base
     let [h, s, l] = rgbToHsl(r, g, b);
-    s = Math.min(s * saturationFactor, 0.7); // Aumenta saturação
-    l = Math.max(l * 0.7, 0); // Escurece a cor (diminui luminosidade)
+    s = Math.min(s * saturationFactor, 1); // Aumenta saturação
+    l = Math.max(l * 0.5, 0); // Escurece a cor (diminui luminosidade)
     return hslToRgb(h, s, l); // Converte de volta para RGB
   }
 
@@ -129,9 +230,5 @@ function setTeamColors(homeLogo, awayLogo, retanguloId) {
   }
 }
 
-// Seleciona os elementos de imagem
-const homeLogo = document.getElementById("home-logo");
-const awayLogo = document.getElementById("away-logo");
-
 // Chama a função para definir as cores do `retângulo`
-setTeamColors(homeLogo, awayLogo, "retangulo");
+getFinishedMatches();

@@ -1,7 +1,6 @@
 function hideLoaderEstatisticas() {
   const grid = document.querySelector("#estatisticas-camp");
   const loadingElement = grid.querySelector(".loading");
-  console.log(loadingElement);
   loadingElement.style.display = "none";
 }
 

@@ -1232,7 +1232,6 @@ async function montaGridAoVivo() {
 
     const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
     const data = await res.json();
-    console.log(data.response);
 
     const liveMatches = data.response.slice(0, 20); // Pegue as 3 primeiras partidas mockadas
 

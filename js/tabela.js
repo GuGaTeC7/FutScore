@@ -27,8 +27,6 @@ async function montaTabela(liga, dataTabela) {
     const res = await fetch(url + endpoint + "?" + searchParams, options);
     const data = await res.json();
 
-    console.log(data);
-
     const resRodada = await fetch(
       url + endpointRodada + "?" + searchParamsRodada,
       options
