@@ -1,5 +1,5 @@
 async function getFinishedMatches() {
-  const LEAGUE_ID = 71;
+  const LEAGUE_ID = 140;
   const SEASON = 2024;
   const QTD_JOGOS = 20;
 
@@ -32,6 +32,17 @@ function displayMatches(matches) {
 
   matchesElement.innerHTML = ""; // Limpa o container antes de adicionar novos jogos
 
+  // Cria e insere o título do campeonato
+  const nomeCampElement = document.createElement("h3");
+  if (matches[0].league && matches[0].league.name) {
+    nomeCampElement.innerText =
+      matches[0].league.name + "-" + matches[0].league.country;
+  } else {
+    console.warn("Dados da liga não disponíveis ou array 'matches' vazio.");
+    nomeCampElement.innerText = "Liga não disponível";
+  }
+  matchesElement.appendChild(nomeCampElement);
+
   matches.forEach((match, index) => {
     const homeTeam = match.teams.home.name;
     const awayTeam = match.teams.away.name;
@@ -39,6 +50,12 @@ function displayMatches(matches) {
     const awayScore = match.goals.away;
     const homeLogo = match.teams.home.logo;
     const awayLogo = match.teams.away.logo;
+    const dataJogo = match.fixture.date;
+    const round = match.league.round || "Rodada desconhecida";
+    const roundCut = round.split("-");
+    console.log("Rodada -" + roundCut[1]);
+
+    formatDate(dataJogo);
 
     const retanguloId = `retangulo-${index}`;
     const homeLogoId = `home-logo-${index}`;
@@ -47,20 +64,24 @@ function displayMatches(matches) {
     const matchHTML = `
       <div class="jogos-ao-vivo">
         <h6 class="campeonato">
-          <b>Copa Sul-Americana - Quartas de final</b>
-          <span class="data"><b>11/06</b></span>
+          <b>Rodada - <span class="round">${roundCut[1]}</span></b>
+          <span class="data"><b>${formatDate(dataJogo)}</b></span>
         </h6>
         <div class="retangulo" id="${retanguloId}">
-          <div class="img-moldura">
-            <img class="logo-team" src="${homeLogo}" id="${homeLogoId}" crossOrigin="anonymous" />
+          <div class="lado-home">
+            <div class="img-moldura left">
+              <img class="logo-team" src="${homeLogo}" id="${homeLogoId}" crossOrigin="anonymous" />
+            </div>
+            <div class="nome-team">${homeTeam}</div>
           </div>
-          <div class="nome-team">${homeTeam}</div>
           <div class="placar">${homeScore}</div>
           <div class="vs">X</div>
           <div class="placar">${awayScore}</div>
-          <div class="nome-team">${awayTeam}</div>
-          <div class="img-moldura">
-            <img class="logo-team" src="${awayLogo}" id="${awayLogoId}" crossOrigin="anonymous" />
+          <div class="lado-visitante">
+            <div class="nome-team">${awayTeam}</div>
+            <div class="img-moldura right">
+              <img class="logo-team" src="${awayLogo}" id="${awayLogoId}" crossOrigin="anonymous" />
+            </div>
           </div>
         </div>
         <div class="retangulo-menor">
@@ -97,6 +118,17 @@ function displayMatches(matches) {
 
     if (homeLogoElement.complete) homeLogoElement.onload();
   });
+}
+
+function formatDate(isoDate) {
+  const date = new Date(isoDate); // Converte o ISO para um objeto Date
+
+  // Extrai o dia, mês e ano
+  const day = String(date.getUTCDate()).padStart(2, "0"); // Usa UTC para evitar fuso horário
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // Mês é baseado em zero
+  const year = date.getUTCFullYear();
+
+  return `${day}/${month}/${year}`; // Formata a data
 }
 
 function setTeamColors(homeLogo, awayLogo, retanguloId) {
