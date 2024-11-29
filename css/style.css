@@ -492,6 +492,7 @@ container {
   color: white;
   max-height: 645px;
   overflow-y: auto;
+  padding: 1.4%;
 }
 
 #result-jogadas > h3 {
@@ -537,7 +538,19 @@ container {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  margin-top: 2%;
+}
+
+.jogos-ao-vivo:nth-child(1) {
   margin-top: 0;
+}
+
+.amarelo {
+  display: none;
+}
+
+.vermelho {
+  display: none;
 }
 
 .campeonato {
@@ -563,6 +576,7 @@ container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 0;
 }
 
 .retangulo-menor {
@@ -575,6 +589,7 @@ container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .placar {
@@ -608,7 +623,7 @@ container {
   margin: 0 20px;
 }
 
-.odds {
+.eventos-resultados {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -616,13 +631,15 @@ container {
   margin: 40px;
 }
 
-.odd {
+.icon-resultados {
   max-width: 20px;
   height: auto;
+  cursor: pointer;
 }
 
 .sub {
   filter: invert(100%);
+  display: none;
 }
 
 .lado-home {

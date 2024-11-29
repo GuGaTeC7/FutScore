@@ -1311,7 +1311,7 @@ function organizaInfos(matches) {
           <img class="subs" id="substituicaoHome-${index}" src="assets/sub.png" data-bs-placement="bottom">
           <span class="team-score" id="golsHome-${index}" data-bs-placement="left">${match.goals.home}</span>
         </div>
-      </div>                    
+      </div>
       <div class="resultado-partida">
         <div class="team">
           <img src="${match.teams.away.logo}" alt="${match.teams.away.name}" class="team-logo">
