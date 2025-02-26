@@ -51,6 +51,20 @@ button a {
   margin-bottom: 5px;
 }
 
+.quadrado-login div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.quadrado-login i {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.quadrado-login i:hover {
+  cursor: pointer;
+}
+
 .triangulo-para-cima {
   width: 0;
   height: 0;
@@ -270,6 +284,18 @@ main {
   ); /* Fundo branco com leve transparência */
   border-radius: 15px; /* Para combinar com o contêiner principal */
   z-index: 1; /* Garante que o carregamento fique atrás dos conteúdos principais */
+}
+
+.results-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  z-index: 1;
 }
 
 .spinner {
@@ -594,6 +620,7 @@ container {
 
 .placar {
   font-size: 1.7rem;
+  cursor: pointer;
 }
 
 .logo-team {

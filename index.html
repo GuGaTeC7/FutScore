@@ -77,7 +77,10 @@
             <div class="quadrado-completo">
               <div class="triangulo-para-cima"></div>
               <div class="quadrado-login">
-                <p id="nomeUser"></p>
+                <div>
+                  <p id="nomeUser"></p>
+                  <i class="fa-solid fa-pen" id="editar"></i>
+                </div>
                 <button
                   type="button"
                   class="btn btn-danger"
@@ -142,8 +145,8 @@
 
           <div class="cabecalho-tabela">
             <div>
-              <h5>Rodada <span id="rodadaNumber"></span></h5>
-              <h1>Brasileiro Série A</h1>
+              <h5>Rodada <span id="rodadaNumber">Mata-mata</span></h5>
+              <h1>UEFA Champions League</h1>
             </div>
             <div>
               <img src="" class="camp-logo" alt="Campeonato" />
@@ -566,48 +569,11 @@
       <section class="resultados" id="ladoEsquerdo">
         <h1 class="titulos-componentes">Resultados</h1>
         <div class="border border-primary" id="result-jogadas">
-          <h3>La Liga</h3>
+          <h3>BRASILEIRO SÉRIE A</h3>
           <div class="jogos-ao-vivo">
-            <h6 class="campeonato">
-              <b>Copa Sul-Americana - Quartas de final</b>
-              <span class="data"><b>11/06</b></span>
-            </h6>
-            <div class="retangulo" id="retangulo">
-              <div class="lado-home">
-                <div class="img-moldura">
-                  <img
-                    class="logo-team"
-                    src="assets/corinthians.png"
-                    id="home-logo"
-                  />
-                </div>
-                <div class="nome-team">Corinthians</div>
-                <div class="placar">2</div>
-              </div>
-              <div class="vs">X</div>
-              <div class="lado-visitante">
-                <div class="placar">2</div>
-                <div class="nome-team">Fortaleza</div>
-                <div class="img-moldura">
-                  <img
-                    class="logo-team"
-                    src="assets/fortaleza.png"
-                    id="away-logo"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="retangulo-menor">
-              <span class="eventos-resultados">
-                <img class="icon-resultados" src="assets/cartao-vermelho.png" />
-                <img class="icon-resultados" src="assets/cartao-amarelo.png" />
-                <img class="icon-resultados sub" src="assets/sub.png" />
-              </span>
-              <span class="eventos-resultados">
-                <img class="icon-resultados sub" src="assets/sub.png" />
-                <img class="icon-resultados" src="assets/cartao-amarelo.png" />
-                <img class="icon-resultados" src="assets/cartao-vermelho.png" />
-              </span>
+            <!-- Loading -->
+            <div class="results-loading">
+              <div class="spinner"></div>
             </div>
           </div>
         </div>

@@ -59,8 +59,7 @@ async function displayMatches(matches) {
     // Cria e insere o título do campeonato
     const nomeCampElement = document.createElement("h3");
     if (matches[0].league && matches[0].league.name) {
-      nomeCampElement.innerText =
-        matches[0].league.name + " - " + matches[0].league.country;
+      nomeCampElement.innerText = "BRASILEIRO SÉRIE A";
     } else {
       console.warn("Dados da liga não disponíveis ou array 'matches' vazio.");
       nomeCampElement.innerText = "Liga não disponível";
@@ -101,6 +100,9 @@ async function displayMatches(matches) {
       const homeLogoId = `home-logo-${index}`;
       const awayLogoId = `away-logo-${index}`;
 
+      const golsHome = `placar-home-${index}`;
+      const golsAway = `placar-away-${index}`;
+
       const matchHTML = `
         <div class="jogos-ao-vivo">
           <h6 class="campeonato">
@@ -114,9 +116,9 @@ async function displayMatches(matches) {
               </div>
               <div class="nome-team">${homeTeam}</div>
             </div>
-            <div class="placar">${homeScore}</div>
+            <div class="placar" data-bs-placement="bottom" id="${golsHome}">${homeScore}</div>
             <div class="vs">X</div>
-            <div class="placar">${awayScore}</div>
+            <div class="placar" data-bs-placement="bottom" id="${golsAway}">${awayScore}</div>
             <div class="lado-visitante">
               <div class="nome-team">${awayTeam}</div>
               <div class="img-moldura right">
@@ -191,21 +193,16 @@ async function insereEventos() {
   );
 
   for (let i = 0; i < idJogos.length; i++) {
-    console.log("contador For: " + i);
     const events = await getFixtureEvents(idJogos[i]);
-    console.log("Requisição a API para o evento:", idJogos[i]);
 
     let substituicoesHome = [];
     let substituicoesAway = [];
-
-    console.log("Eventos:", events);
 
     if (events && Array.isArray(events)) {
       events.forEach((event) => {
         const cartaoAmareloHome = document.getElementById(
           `cartaoAmareloHomeResultado-${i}`
         );
-        console.log("home amarelo", cartaoAmareloHome);
         const cartaoAmareloAway = document.getElementById(
           `cartaoAmareloAwayResultado-${i}`
         );
@@ -222,6 +219,9 @@ async function insereEventos() {
         const iconSubAway = document.getElementById(
           `substituicaoAwayResultado-${i}`
         );
+
+        const placarHome = document.getElementById(`placar-home-${i}`);
+        const placarAway = document.getElementById(`placar-away-${i}`);
 
         const idTimeHomeElement = idJogosElements[i].querySelector(
           `.eventos-resultados[data-id-time-home]`
@@ -352,6 +352,32 @@ async function insereEventos() {
             );
             bootstrap.Tooltip.getInstance(iconSubAway)?.dispose();
             new bootstrap.Tooltip(iconSubAway, { html: true });
+          }
+        }
+
+        if (event.type === "Goal") {
+          const tempoGol = event.time.elapsed || "Tempo desconhecido";
+          const jogador = event.player?.name || "Jogador desconhecido";
+
+          if (event.team.id == idTimeHome) {
+            // Recupera o título atual para garantir que os gols anteriores permaneçam
+            const titleAtualHomeGols = placarHome.getAttribute("title") || "";
+
+            // Adiciona o novo gol ao título, acumulando com os anteriores
+            const novoTitleHomeGols = `${titleAtualHomeGols}<strong>${tempoGol}'</strong>: ${jogador}<br>`;
+            placarHome.setAttribute("title", novoTitleHomeGols);
+
+            // Configura tooltip para exibir HTML
+            placarHome.setAttribute("data-bs-toggle", "tooltip");
+            placarHome.setAttribute("data-bs-html", "true");
+          } else if (event.team.id == idTimeAway) {
+            // Mesma lógica para o time visitante
+            const titleAtualAwayGols = placarAway.getAttribute("title") || "";
+            const novoTitleAwayGols = `${titleAtualAwayGols}<strong>${tempoGol}'</strong>: ${jogador}<br>`;
+            placarAway.setAttribute("title", novoTitleAwayGols);
+
+            placarAway.setAttribute("data-bs-toggle", "tooltip");
+            placarAway.setAttribute("data-bs-html", "true");
           }
         }
       });

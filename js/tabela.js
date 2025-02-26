@@ -261,4 +261,4 @@ function exibeTabela(show) {
   }
 }
 
-montaTabela(71, 1);
+montaTabela(2, 1);
