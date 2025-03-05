@@ -178,7 +178,7 @@ main {
 }
 
 #borda-tabela {
-  height: 26rem;
+  height: 100%;
   padding: 2.7%;
   padding-right: 3%;
   border-radius: 15px;

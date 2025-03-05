@@ -62,6 +62,21 @@ async function montaTabela(liga, dataTabela) {
       data.response[0].league.standings[0][2].form,
       data.response[0].league.standings[0][3].form,
       data.response[0].league.standings[0][4].form,
+      data.response[0].league.standings[0][5].form,
+      data.response[0].league.standings[0][6].form,
+      data.response[0].league.standings[0][7].form,
+      data.response[0].league.standings[0][8].form,
+      data.response[0].league.standings[0][9].form,
+      data.response[0].league.standings[0][10].form,
+      data.response[0].league.standings[0][11].form,
+      data.response[0].league.standings[0][12].form,
+      data.response[0].league.standings[0][13].form,
+      data.response[0].league.standings[0][14].form,
+      data.response[0].league.standings[0][15].form,
+      data.response[0].league.standings[0][16].form,
+      data.response[0].league.standings[0][17].form,
+      data.response[0].league.standings[0][18].form,
+      data.response[0].league.standings[0][19].form,
     ];
 
     const pontos = [
@@ -70,6 +85,21 @@ async function montaTabela(liga, dataTabela) {
       data.response[0].league.standings[0][2].points,
       data.response[0].league.standings[0][3].points,
       data.response[0].league.standings[0][4].points,
+      data.response[0].league.standings[0][5].points,
+      data.response[0].league.standings[0][6].points,
+      data.response[0].league.standings[0][7].points,
+      data.response[0].league.standings[0][8].points,
+      data.response[0].league.standings[0][9].points,
+      data.response[0].league.standings[0][10].points,
+      data.response[0].league.standings[0][11].points,
+      data.response[0].league.standings[0][12].points,
+      data.response[0].league.standings[0][13].points,
+      data.response[0].league.standings[0][14].points,
+      data.response[0].league.standings[0][15].points,
+      data.response[0].league.standings[0][16].points,
+      data.response[0].league.standings[0][17].points,
+      data.response[0].league.standings[0][18].points,
+      data.response[0].league.standings[0][19].points,
     ];
 
     const times = [
@@ -93,6 +123,66 @@ async function montaTabela(liga, dataTabela) {
         data.response[0].league.standings[0][4].team.name,
         data.response[0].league.standings[0][4].team.logo,
       ],
+      [
+        data.response[0].league.standings[0][5].team.name,
+        data.response[0].league.standings[0][5].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][6].team.name,
+        data.response[0].league.standings[0][6].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][7].team.name,
+        data.response[0].league.standings[0][7].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][8].team.name,
+        data.response[0].league.standings[0][8].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][9].team.name,
+        data.response[0].league.standings[0][9].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][10].team.name,
+        data.response[0].league.standings[0][10].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][11].team.name,
+        data.response[0].league.standings[0][11].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][12].team.name,
+        data.response[0].league.standings[0][12].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][13].team.name,
+        data.response[0].league.standings[0][13].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][14].team.name,
+        data.response[0].league.standings[0][14].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][15].team.name,
+        data.response[0].league.standings[0][15].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][16].team.name,
+        data.response[0].league.standings[0][16].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][17].team.name,
+        data.response[0].league.standings[0][17].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][18].team.name,
+        data.response[0].league.standings[0][18].team.logo,
+      ],
+      [
+        data.response[0].league.standings[0][19].team.name,
+        data.response[0].league.standings[0][19].team.logo,
+      ],
     ];
 
     const setas = [
@@ -101,6 +191,21 @@ async function montaTabela(liga, dataTabela) {
       data.response[0].league.standings[0][2].status,
       data.response[0].league.standings[0][3].status,
       data.response[0].league.standings[0][4].status,
+      data.response[0].league.standings[0][5].status,
+      data.response[0].league.standings[0][6].status,
+      data.response[0].league.standings[0][7].status,
+      data.response[0].league.standings[0][8].status,
+      data.response[0].league.standings[0][9].status,
+      data.response[0].league.standings[0][10].status,
+      data.response[0].league.standings[0][11].status,
+      data.response[0].league.standings[0][12].status,
+      data.response[0].league.standings[0][13].status,
+      data.response[0].league.standings[0][14].status,
+      data.response[0].league.standings[0][15].status,
+      data.response[0].league.standings[0][16].status,
+      data.response[0].league.standings[0][17].status,
+      data.response[0].league.standings[0][18].status,
+      data.response[0].league.standings[0][19].status,
     ];
 
     organizaBolinhas(bolinhas, dataTabela);
@@ -108,7 +213,7 @@ async function montaTabela(liga, dataTabela) {
     organizaTimes(times, dataTabela);
     organizaSetas(setas, dataTabela);
     exibeCampLogo(data.response[0].league.logo, dataTabela);
-    exibeNumeroRodada(dataRodada.response[0], dataTabela);
+    // exibeNumeroRodada(dataRodada.response[0], dataTabela);
   } catch (error) {
     // Erro de rede ou de resposta
     if (error.message.includes("NetworkError")) {
@@ -130,13 +235,14 @@ function organizaBolinhas(bolinhas, dataTabela) {
 
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
 
-  for (let t = 0; t < 5; t++) {
+  // NUMERO EXATO ARRAY
+  for (let t = 0; t < 20; t++) {
     const circleContainer = tabela.querySelector("#time-" + t);
     if (circleContainer) {
       // Verifica se o elemento existe
       const circles = circleContainer.querySelectorAll(".circle");
 
-      for (let b = 0; b < 5; b++) {
+      for (let b = 0; b < 20; b++) {
         const circle = circles[b];
         if (circle) {
           // Verifica se o círculo existe
@@ -155,7 +261,7 @@ function organizaBolinhas(bolinhas, dataTabela) {
 
 function organizaPontos(pontos, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
-  for (let t = 1; t < 6; t++) {
+  for (let t = 1; t < 21; t++) {
     const posicaoContainer = tabela.querySelector("#posicao-" + t);
 
     const pontosTd = posicaoContainer.querySelector("td[data-pontos]");
@@ -163,9 +269,10 @@ function organizaPontos(pontos, dataTabela) {
   }
 }
 
+// NUMERO +1 DO ARRAY
 function organizaSetas(setas, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
-  for (let t = 1; t < 6; t++) {
+  for (let t = 1; t < 21; t++) {
     const posicaoContainer = tabela.querySelector("#posicao-" + t);
     const setasTd = posicaoContainer.querySelector("td[data-seta]");
     const divSeta = setasTd.querySelector("div");
@@ -180,9 +287,10 @@ function organizaSetas(setas, dataTabela) {
   }
 }
 
+// NUMERO +1 DO ARRAY
 function organizaTimes(times, dataTabela) {
   const tabela = document.querySelector(`div[data-tabela='${dataTabela}']`);
-  for (let t = 1; t < 6; t++) {
+  for (let t = 1; t < 21; t++) {
     const posicaoContainer = tabela.querySelector("#posicao-" + t);
     const timeTd = posicaoContainer.querySelector("td[data-time]");
 
@@ -221,9 +329,41 @@ function exibeNumeroRodada(frase, dataTabela) {
   numeroRodada.textContent = rodadaNumero;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const tabela = document.querySelector(".table tbody");
+  const linhas = tabela.querySelectorAll("tr");
+  const btnVerMais = document.getElementById("verMais");
+  const btnVerMenos = document.getElementById("verMenos");
+
+  // Oculta os times 6 a 20 no carregamento
+  linhas.forEach((linha, index) => {
+    if (index >= 5) linha.style.display = "none";
+  });
+
+  // Exibir tabela completa ao clicar em "Ver Mais"
+  btnVerMais.addEventListener("click", () => {
+    linhas.forEach((linha) => (linha.style.display = "table-row"));
+    btnVerMais.style.display = "none";
+    btnVerMenos.style.display = "block";
+  });
+
+  // Voltar a exibir apenas os 5 primeiros ao clicar em "Ver Menos"
+  btnVerMenos.addEventListener("click", () => {
+    linhas.forEach((linha, index) => {
+      if (index >= 5) linha.style.display = "none";
+    });
+    btnVerMais.style.display = "block";
+    btnVerMenos.style.display = "none";
+  });
+
+  // Inicia escondendo o botão "Ver Menos"
+  btnVerMenos.style.display = "none";
+});
+
+
 // Lógica para montar as tabelas
 document.getElementById("verMais").addEventListener("click", () => {
-  exibeTabela(true);
+  // exibeTabela(true);
 });
 document
   .getElementById("verMenos")
