@@ -1,1106 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FutScore</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-  </head>
 
-  <body>
-    <!-- Header -->
-    <header>
-      <nav class="navbar navbar-expand-lg bg-primary" id="nav">
-        <div class="container-fluid">
-          <ul
-            class="navbar-nav me-auto mb-2 mb-lg-0"
-            style="margin-right: 0 !important"
-          >
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Campeonatos
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="#">Brasileirão Série A</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">UEFA Champions League</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">UEFA Europa League</a>
-                </li>
-                <li><a class="dropdown-item" href="#">Premier League</a></li>
-                <li><a class="dropdown-item" href="#">LaLiga</a></li>
-              </ul>
-            </li>
-          </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FutScore</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
 
-          <img
-            src="assets/logos/logoFutScore-removebg-preview.png"
-            alt="logo"
-            id="logo"
-          />
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-primary" id="nav">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 0 !important">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Campeonatos
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#">Brasileirão Série A</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">UEFA Champions League</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">UEFA Europa League</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Premier League</a></li>
+              <li><a class="dropdown-item" href="#">LaLiga</a></li>
+            </ul>
+          </li>
+        </ul>
 
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <img
-              src="/assets/player.svg"
-              id="profile"
-              alt="img perfil"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              data-toggle="tooltip"
-              data-placement="bottom"
-              data-bs-html="true"
-            />
+        <img src="assets/logos/logoFutScore-removebg-preview.png" alt="logo" id="logo" />
 
-            <div class="quadrado-completo">
-              <div class="triangulo-para-cima"></div>
-              <div class="quadrado-login">
-                <div>
-                  <p id="nomeUser"></p>
-                  <i class="fa-solid fa-pen" id="editar"></i>
-                </div>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  onclick="sair()"
-                  style="font-size: 12px"
-                >
-                  Sair
-                </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <img src="/assets/player.svg" id="profile" alt="img perfil" data-bs-toggle="modal"
+            data-bs-target="#exampleModal" data-toggle="tooltip" data-placement="bottom" data-bs-html="true" />
+
+          <div class="quadrado-completo">
+            <div class="triangulo-para-cima"></div>
+            <div class="quadrado-login">
+              <div>
+                <p id="nomeUser"></p>
+                <i class="fa-solid fa-pen" id="editar"></i>
               </div>
+              <button type="button" class="btn btn-danger" onclick="sair()" style="font-size: 12px">
+                Sair
+              </button>
             </div>
+          </div>
 
-            <form class="d-flex" id="modalAuth">
-              <!-- Botão de gatilho do modal -->
+          <form class="d-flex" id="modalAuth">
+            <!-- Botão de gatilho do modal -->
 
-              <!-- Modal -->
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        Autenticação
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <button type="button" class="btn btn-primary">
-                        <a href="cadastro.html">Cadastro</a>
-                      </button>
-                      <button type="button" class="btn btn-danger">
-                        <a href="login.html">Login</a>
-                      </button>
-                    </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Autenticação
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <button type="button" class="btn btn-primary">
+                      <a href="cadastro.html">Cadastro</a>
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                      <a href="login.html">Login</a>
+                    </button>
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-      <!-- Tabelas Campeonatos -->
-      <section class="tabelas" id="ladoEsquerdo">
-        <h1 class="titulos-componentes">Principais Campeonatos</h1>
-        <div class="border border-primary" id="borda-tabela" data-tabela="1">
-          <!-- Loading -->
-          <div id="loading" style="display: flex">
-            <div class="spinner"></div>
-          </div>
-
-          <div class="cabecalho-tabela">
-            <div>
-              <h5>Rodada: <span id="rodadaNumber">Oitavas de final</span></h5>
-              <h1>UEFA Champions League</h1>
-            </div>
-            <div>
-              <img src="" class="camp-logo" alt="Campeonato" />
-            </div>
-          </div>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" colspan="2">
-                  <span class="classificacao">Classificação</span>
-                </th>
-                <th scope="col">P</th>
-                <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
-              </tr>
-            </thead>
-
-            <!-- Tabela 1 -->
-            <tbody class="table-group-divider">
-              <tr id="posicao-1">
-                <th scope="row">1</th>
-                <td data-time="0">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="0">
-                  <div></div>
-                </td>
-                <td data-pontos="0"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-0">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-2">
-                <th scope="row">2</th>
-                <td data-time="1">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="1">
-                  <div></div>
-                </td>
-                <td data-pontos="1"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-1">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-3">
-                <th scope="row">3</th>
-                <td data-time="2">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="2">
-                  <div></div>
-                </td>
-                <td data-pontos="2"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-2">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-4">
-                <th scope="row">4</th>
-                <td data-time="3">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="3">
-                  <div></div>
-                </td>
-                <td data-pontos="3"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-3">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-5">
-                <th scope="row">5</th>
-                <td data-time="4">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="4">
-                  <div></div>
-                </td>
-                <td data-pontos="4"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-4">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-6">
-                <th scope="row">6</th>
-                <td data-time="5">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="5">
-                  <div></div>
-                </td>
-                <td data-pontos="5"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-5">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-7">
-                <th scope="row">7</th>
-                <td data-time="6">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="6">
-                  <div></div>
-                </td>
-                <td data-pontos="6"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-6">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-8">
-                <th scope="row">8</th>
-                <td data-time="7">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="7">
-                  <div></div>
-                </td>
-                <td data-pontos="7"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-7">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-9">
-                <th scope="row">9</th>
-                <td data-time="8">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="8">
-                  <div></div>
-                </td>
-                <td data-pontos="8"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-8">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-10">
-                <th scope="row">10</th>
-                <td data-time="9">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="9">
-                  <div></div>
-                </td>
-                <td data-pontos="9"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-9">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-11">
-                <th scope="row">11</th>
-                <td data-time="10">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="10">
-                  <div></div>
-                </td>
-                <td data-pontos="10"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-10">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-12">
-                <th scope="row">12</th>
-                <td data-time="11">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="11">
-                  <div></div>
-                </td>
-                <td data-pontos="11"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-11">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-13">
-                <th scope="row">13</th>
-                <td data-time="12">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="12">
-                  <div></div>
-                </td>
-                <td data-pontos="12"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-12">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-14">
-                <th scope="row">14</th>
-                <td data-time="13">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="13">
-                  <div></div>
-                </td>
-                <td data-pontos="13"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-13">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-15">
-                <th scope="row">15</th>
-                <td data-time="14">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="14">
-                  <div></div>
-                </td>
-                <td data-pontos="14"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-14">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-16">
-                <th scope="row">16</th>
-                <td data-time="15">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="15">
-                  <div></div>
-                </td>
-                <td data-pontos="15"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-15">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-17">
-                <th scope="row">17</th>
-                <td data-time="16">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="16">
-                  <div></div>
-                </td>
-                <td data-pontos="16"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-16">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-18">
-                <th scope="row">18</th>
-                <td data-time="17">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="17">
-                  <div></div>
-                </td>
-                <td data-pontos="17"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-17">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-19">
-                <th scope="row">19</th>
-                <td data-time="18">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="18">
-                  <div></div>
-                </td>
-                <td data-pontos="18"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-18">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-              <tr id="posicao-20">
-                <th scope="row">20</th>
-                <td data-time="19">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="19">
-                  <div></div>
-                </td>
-                <td data-pontos="19"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-19">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div> 
-                </td>
-              </tr>
-            </tbody>
-          </table>
+  <main>
+    <!-- Tabelas Campeonatos -->
+    <section class="tabelas" id="ladoEsquerdo">
+      <h1 class="titulos-componentes">Principais Campeonatos</h1>
+      <div class="border border-primary" id="borda-tabela" data-tabela="1">
+        <!-- Loading -->
+        <div id="loading" style="display: flex">
+          <div class="spinner"></div>
         </div>
 
-        <!-- Tabela 2 -->
-        <div
-          class="border border-primary"
-          id="borda-tabela"
-          style="
+        <div class="cabecalho-tabela">
+          <div>
+            <h5>Rodada: <span id="rodadaNumber">Oitavas de final</span></h5>
+            <h1>UEFA Champions League</h1>
+          </div>
+          <div>
+            <img src="" class="camp-logo" alt="Campeonato" />
+          </div>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" colspan="2">
+                <span class="classificacao">Classificação</span>
+              </th>
+              <th scope="col">P</th>
+              <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
+            </tr>
+          </thead>
+
+          <!-- Tabela 1 -->
+          <tbody class="table-group-divider">
+            <tr id="posicao-1">
+              <th scope="row">1</th>
+              <td data-time="0">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="0">
+                <div></div>
+              </td>
+              <td data-pontos="0"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-0">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-2">
+              <th scope="row">2</th>
+              <td data-time="1">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="1">
+                <div></div>
+              </td>
+              <td data-pontos="1"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-1">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-3">
+              <th scope="row">3</th>
+              <td data-time="2">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="2">
+                <div></div>
+              </td>
+              <td data-pontos="2"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-2">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-4">
+              <th scope="row">4</th>
+              <td data-time="3">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="3">
+                <div></div>
+              </td>
+              <td data-pontos="3"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-3">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-5">
+              <th scope="row">5</th>
+              <td data-time="4">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="4">
+                <div></div>
+              </td>
+              <td data-pontos="4"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-4">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-6">
+              <th scope="row">6</th>
+              <td data-time="5">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="5">
+                <div></div>
+              </td>
+              <td data-pontos="5"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-5">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-7">
+              <th scope="row">7</th>
+              <td data-time="6">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="6">
+                <div></div>
+              </td>
+              <td data-pontos="6"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-6">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-8">
+              <th scope="row">8</th>
+              <td data-time="7">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="7">
+                <div></div>
+              </td>
+              <td data-pontos="7"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-7">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-9">
+              <th scope="row">9</th>
+              <td data-time="8">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="8">
+                <div></div>
+              </td>
+              <td data-pontos="8"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-8">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-10">
+              <th scope="row">10</th>
+              <td data-time="9">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="9">
+                <div></div>
+              </td>
+              <td data-pontos="9"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-9">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-11">
+              <th scope="row">11</th>
+              <td data-time="10">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="10">
+                <div></div>
+              </td>
+              <td data-pontos="10"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-10">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-12">
+              <th scope="row">12</th>
+              <td data-time="11">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="11">
+                <div></div>
+              </td>
+              <td data-pontos="11"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-11">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-13">
+              <th scope="row">13</th>
+              <td data-time="12">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="12">
+                <div></div>
+              </td>
+              <td data-pontos="12"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-12">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-14">
+              <th scope="row">14</th>
+              <td data-time="13">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="13">
+                <div></div>
+              </td>
+              <td data-pontos="13"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-13">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-15">
+              <th scope="row">15</th>
+              <td data-time="14">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="14">
+                <div></div>
+              </td>
+              <td data-pontos="14"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-14">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-16">
+              <th scope="row">16</th>
+              <td data-time="15">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="15">
+                <div></div>
+              </td>
+              <td data-pontos="15"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-15">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-17">
+              <th scope="row">17</th>
+              <td data-time="16">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="16">
+                <div></div>
+              </td>
+              <td data-pontos="16"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-16">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-18">
+              <th scope="row">18</th>
+              <td data-time="17">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="17">
+                <div></div>
+              </td>
+              <td data-pontos="17"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-17">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-19">
+              <th scope="row">19</th>
+              <td data-time="18">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="18">
+                <div></div>
+              </td>
+              <td data-pontos="18"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-18">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-20">
+              <th scope="row">20</th>
+              <td data-time="19">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="19">
+                <div></div>
+              </td>
+              <td data-pontos="19"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-19">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tabela 2 -->
+      <div class="border border-primary" id="borda-tabela" style="
             border-top: none !important;
             border-top-right-radius: 0px;
             border-top-left-radius: 0px;
-          "
-          data-tabela="2"
-        >
-          <div id="loading" style="display: flex">
-            <div class="spinner"></div>
+          " data-tabela="2">
+        <div id="loading" style="display: flex">
+          <div class="spinner"></div>
+        </div>
+        <div class="cabecalho-tabela">
+          <div>
+            <h5>Rodada <span id="rodadaNumber"></span></h5>
+            <h1>Ligue 1</h1>
           </div>
-          <div class="cabecalho-tabela">
-            <div>
-              <h5>Rodada <span id="rodadaNumber"></span></h5>
-              <h1>Ligue 1</h1>
-            </div>
-            <div>
-              <img src="" class="camp-logo" alt="Campeonato" />
-            </div>
+          <div>
+            <img src="" class="camp-logo" alt="Campeonato" />
           </div>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" colspan="2">
-                  <span class="classificacao">Classificação</span>
-                </th>
-                <th scope="col">P</th>
-                <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr id="posicao-1">
-                <th scope="row">1</th>
-                <td data-time="0">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="0">
-                  <div></div>
-                </td>
-                <td data-pontos="0"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-0">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-2">
-                <th scope="row">2</th>
-                <td data-time="1">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="1">
-                  <div></div>
-                </td>
-                <td data-pontos="1"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-1">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-3">
-                <th scope="row">3</th>
-                <td data-time="2">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="2">
-                  <div></div>
-                </td>
-                <td data-pontos="2"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-2">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-4">
-                <th scope="row">4</th>
-                <td data-time="3">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="3">
-                  <div></div>
-                </td>
-                <td data-pontos="3"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-3">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-5">
-                <th scope="row">5</th>
-                <td data-time="4">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="4">
-                  <div></div>
-                </td>
-                <td data-pontos="4"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-4">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
 
-        <!-- Tabela 3 -->
-        <div
-          class="border border-primary"
-          id="borda-tabela"
-          style="
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" colspan="2">
+                <span class="classificacao">Classificação</span>
+              </th>
+              <th scope="col">P</th>
+              <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr id="posicao-1">
+              <th scope="row">1</th>
+              <td data-time="0">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="0">
+                <div></div>
+              </td>
+              <td data-pontos="0"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-0">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-2">
+              <th scope="row">2</th>
+              <td data-time="1">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="1">
+                <div></div>
+              </td>
+              <td data-pontos="1"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-1">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-3">
+              <th scope="row">3</th>
+              <td data-time="2">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="2">
+                <div></div>
+              </td>
+              <td data-pontos="2"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-2">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-4">
+              <th scope="row">4</th>
+              <td data-time="3">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="3">
+                <div></div>
+              </td>
+              <td data-pontos="3"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-3">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-5">
+              <th scope="row">5</th>
+              <td data-time="4">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="4">
+                <div></div>
+              </td>
+              <td data-pontos="4"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-4">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tabela 3 -->
+      <div class="border border-primary" id="borda-tabela" style="
             border-top: none !important;
             border-top-right-radius: 0px;
             border-top-left-radius: 0px;
-          "
-          data-tabela="3"
-        >
-          <div id="loading" style="display: flex">
-            <div class="spinner"></div>
+          " data-tabela="3">
+        <div id="loading" style="display: flex">
+          <div class="spinner"></div>
+        </div>
+        <div class="cabecalho-tabela">
+          <div>
+            <h5>Rodada <span id="rodadaNumber"></span></h5>
+            <h1>La Liga</h1>
           </div>
-          <div class="cabecalho-tabela">
-            <div>
-              <h5>Rodada <span id="rodadaNumber"></span></h5>
-              <h1>La Liga</h1>
-            </div>
-            <div>
-              <img src="" class="camp-logo" alt="Campeonato" />
-            </div>
+          <div>
+            <img src="" class="camp-logo" alt="Campeonato" />
           </div>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" colspan="2">
-                  <span class="classificacao">Classificação</span>
-                </th>
-                <th scope="col">P</th>
-                <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr id="posicao-1">
-                <th scope="row">1</th>
-                <td data-time="0">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="0">
-                  <div></div>
-                </td>
-                <td data-pontos="0"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-0">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-2">
-                <th scope="row">2</th>
-                <td data-time="1">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="1">
-                  <div></div>
-                </td>
-                <td data-pontos="1"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-1">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-3">
-                <th scope="row">3</th>
-                <td data-time="2">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="2">
-                  <div></div>
-                </td>
-                <td data-pontos="2"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-2">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-4">
-                <th scope="row">4</th>
-                <td data-time="3">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="3">
-                  <div></div>
-                </td>
-                <td data-pontos="3"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-3">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-              <tr id="posicao-5">
-                <th scope="row">5</th>
-                <td data-time="4">
-                  <!-- Conteúdo inserido via Javascript -->
-                </td>
-                <td data-seta="4">
-                  <div></div>
-                </td>
-                <td data-pontos="4"></td>
-                <td class="circle">
-                  <div class="circle-container" id="time-4">
-                    <div class="circle" data-index="0"></div>
-                    <div class="circle" data-index="1"></div>
-                    <div class="circle" data-index="2"></div>
-                    <div class="circle" data-index="3"></div>
-                    <div class="circle" data-index="4"></div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
 
-        <button type="button" class="btn btn-outline-primary" id="verMais">
-          VER MAIS<img src="/assets/seta-pequena-para-baixo.png" />
-        </button>
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          href="/index.html#ladoEsquerdo"
-          id="verMenos"
-        >
-          VER MENOS<img src="/assets/seta-pequena-para-baixo.png" />
-        </button>
-      </section>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" colspan="2">
+                <span class="classificacao">Classificação</span>
+              </th>
+              <th scope="col">P</th>
+              <th scope="col"><span class="ult-jogos">Ult.Jogos</span></th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr id="posicao-1">
+              <th scope="row">1</th>
+              <td data-time="0">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="0">
+                <div></div>
+              </td>
+              <td data-pontos="0"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-0">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-2">
+              <th scope="row">2</th>
+              <td data-time="1">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="1">
+                <div></div>
+              </td>
+              <td data-pontos="1"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-1">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-3">
+              <th scope="row">3</th>
+              <td data-time="2">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="2">
+                <div></div>
+              </td>
+              <td data-pontos="2"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-2">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-4">
+              <th scope="row">4</th>
+              <td data-time="3">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="3">
+                <div></div>
+              </td>
+              <td data-pontos="3"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-3">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+            <tr id="posicao-5">
+              <th scope="row">5</th>
+              <td data-time="4">
+                <!-- Conteúdo inserido via Javascript -->
+              </td>
+              <td data-seta="4">
+                <div></div>
+              </td>
+              <td data-pontos="4"></td>
+              <td class="circle">
+                <div class="circle-container" id="time-4">
+                  <div class="circle" data-index="0"></div>
+                  <div class="circle" data-index="1"></div>
+                  <div class="circle" data-index="2"></div>
+                  <div class="circle" data-index="3"></div>
+                  <div class="circle" data-index="4"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      <!-- Jogos ao vivo -->
-      <section>
-        <h1 class="titulos-componentes">Jogos Ao Vivo</h1>
-        <div class="border border-primary" id="ao-vivo">
-          <!-- Em desenvolvimento -->
-          <div class="container">
-            <div class="organiza-ao-vivo">
-              <!-- Loading -->
-              <div id="loading">
-                <div class="spinner"></div>
-              </div>
-            </div>
-          </div>
+      <button type="button" class="btn btn-outline-primary" id="verMais">
+        VER MAIS<img src="/assets/seta-pequena-para-baixo.png" />
+      </button>
+      <button type="button" class="btn btn-outline-primary" href="/index.html#ladoEsquerdo" id="verMenos">
+        VER MENOS<img src="/assets/seta-pequena-para-baixo.png" />
+      </button>
+    </section>
+
+    <!-- Jogos ao vivo -->
+    <section>
+      <h1 class="titulos-componentes">Jogos Ao Vivo</h1>
+      <div class="border border-primary" id="ao-vivo-style">
+        <div class="search-container mb-3">
+          <input type="text" id="teamSearch" class="form-control" placeholder="Busque um jogo ao vivo...">
         </div>
-      </section>
-
-      <!-- Resultado das Rodadas -->
-      <section class="resultados" id="ladoEsquerdo">
-        <h1 class="titulos-componentes">Resultados</h1>
-        <div class="border border-primary" id="result-jogadas">
-          <h3>BRASILEIRO SÉRIE A</h3>
-          <div class="jogos-ao-vivo">
+        <div id="ao-vivo">
             <!-- Loading -->
             <div class="results-loading">
               <div class="spinner"></div>
             </div>
-          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Estatísticas do campeonato -->
-      <section class="estatisticas">
-        <h1 class="titulos-componentes">Estatísticas</h1>
-        <div class="border border-primary" id="estatisticas-camp">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="form-group">
-                <input
-                  type="text"
-                  id="search-input"
-                  class="form-control"
-                  placeholder="Digite o nome do campeonato..."
-                />
-                <select
-                  name="campeonatos"
-                  id="campeonatos"
-                  class="form-control input-lg"
-                  data-live-search="true"
-                  title="SELECIONE UM CAMPEONATO"
-                  style="display: none; font-size: 14px"
-                ></select>
-              </div>
-            </div>
-          </div>
-
+    <!-- Resultado das Rodadas -->
+    <section class="resultados" id="ladoEsquerdo">
+      <h1 class="titulos-componentes">Resultados</h1>
+      <div class="border border-primary" id="result-jogadas">
+        <div id="header-resultado" class="header-resultado d-flex">
+          <h3 style="font-size: 1.5rem;">BRASILEIRO SÉRIE A</h3>
+        </div>
+        <div class="jogos-ao-vivo" id="resultado-jogos">
           <!-- Loading -->
-          <div id="loading" class="loading">
+          <div class="results-loading">
             <div class="spinner"></div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div id="loadingClass" style="display: none">
-            <h1
-              style="margin-top: 13px; font-size: 1.4rem"
-              id="nomeLigaEstatisticas"
-            >
-              Ligue 1
-            </h1>
-            <h2>ARTILHEIROS</h2>
+    <!-- Estatísticas do campeonato -->
+    <section class="estatisticas">
+      <h1 class="titulos-componentes">Estatísticas</h1>
+      <div class="border border-primary" id="estatisticas-camp">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do campeonato..." />
+              <select name="campeonatos" id="campeonatos" class="form-control input-lg" data-live-search="true"
+                title="SELECIONE UM CAMPEONATO" style="display: none; font-size: 14px"></select>
+            </div>
+          </div>
+        </div>
 
-            <div class="primeiro-estatisticas">
-              <div class="posicao-estatisticas">
-                <p>1</p>
+        <!-- Loading -->
+        <div id="loading" class="loading">
+          <div class="spinner"></div>
+        </div>
+
+        <div id="loadingClass" style="display: none">
+          <h1 style="margin-top: 13px; font-size: 1.4rem" id="nomeLigaEstatisticas">
+            Ligue 1
+          </h1>
+          <h2>ARTILHEIROS</h2>
+
+          <div class="primeiro-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>1</p>
+            </div>
+
+            <div class="perfil-jogador-um">
+              <div style="position: relative">
+                <div class="nota">
+                  <p id="nota" data-nota="0"></p>
+                </div>
+                <img src="" class="img-jogador-um" alt="" data-img="0" />
               </div>
 
-              <div class="perfil-jogador-um">
-                <div style="position: relative">
-                  <div class="nota">
-                    <p id="nota" data-nota="0"></p>
-                  </div>
-                  <img src="" class="img-jogador-um" alt="" data-img="0" />
-                </div>
-
-                <div
-                  style="
+              <div style="
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                  "
-                >
-                  <img src="" alt="img jogador" id="logoTimeJogadorUm" />
-                  <h1 data-name="0"></h1>
-                </div>
-                <b style="font-size: 0.9rem">Atacante</b>
+                  ">
+                <img src="" alt="img jogador" id="logoTimeJogadorUm" />
+                <h1 data-name="0"></h1>
               </div>
-
-              <div class="barra-vertical"></div>
-
-              <table
-                class="table table-borderless"
-                id="table-result-um"
-                style="font-size: 10px"
-              >
-                <tbody>
-                  <tr>
-                    <td class="estatisticas-table-um">Jogos</td>
-                    <td id="jogosTd"></td>
-                  </tr>
-                  <tr>
-                    <td class="estatisticas-table-um">Gols</td>
-                    <td id="golsTd"></td>
-                  </tr>
-                  <tr>
-                    <td class="estatisticas-table-um">Assistências</td>
-                    <td id="assistenciasTd"></td>
-                  </tr>
-                  <tr>
-                    <td class="estatisticas-table-um">Conversão de gols</td>
-                    <td id="conversaoTd"></td>
-                  </tr>
-                  <tr>
-                    <td class="estatisticas-table-um">Cartões amarelos</td>
-                    <td id="cartoesTd"></td>
-                  </tr>
-                </tbody>
-              </table>
+              <b style="font-size: 0.9rem">Atacante</b>
             </div>
 
-            <!-- Segundo Lugar -->
-            <div class="tabela-estatisticas">
-              <div class="posicao-estatisticas">
-                <p>2</p>
-              </div>
-              <div class="perfil-jogador-estatisticas">
-                <img
-                  src=""
-                  class="img-jogador-estatisticas"
-                  alt="img jogador"
-                  data-img="1"
-                />
-                <p data-name="1"></p>
-              </div>
-              <div class="nota-tabela-estatisticas">
-                <p data-nota="1"></p>
-              </div>
-            </div>
+            <div class="barra-vertical"></div>
 
-            <!-- Terceiro Lugar -->
-            <div class="tabela-estatisticas">
-              <div class="posicao-estatisticas">
-                <p>3</p>
-              </div>
-              <div class="perfil-jogador-estatisticas">
-                <img
-                  src=""
-                  class="img-jogador-estatisticas"
-                  alt="img jogador"
-                  data-img="2"
-                />
-                <p data-name="2"></p>
-              </div>
-              <div class="nota-tabela-estatisticas">
-                <p data-nota="2"></p>
-              </div>
-            </div>
+            <table class="table table-borderless" id="table-result-um" style="font-size: 10px">
+              <tbody>
+                <tr>
+                  <td class="estatisticas-table-um">Jogos</td>
+                  <td id="jogosTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Gols</td>
+                  <td id="golsTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Assistências</td>
+                  <td id="assistenciasTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Conversão de gols</td>
+                  <td id="conversaoTd"></td>
+                </tr>
+                <tr>
+                  <td class="estatisticas-table-um">Cartões amarelos</td>
+                  <td id="cartoesTd"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-            <!-- Quarto Lugar -->
-            <div class="tabela-estatisticas">
-              <div class="posicao-estatisticas">
-                <p>4</p>
-              </div>
-              <div class="perfil-jogador-estatisticas">
-                <img
-                  src=""
-                  class="img-jogador-estatisticas"
-                  alt="img jogador"
-                  data-img="3"
-                />
-                <p data-name="3"></p>
-              </div>
-              <div class="nota-tabela-estatisticas">
-                <p data-nota="3"></p>
-              </div>
+          <!-- Segundo Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>2</p>
             </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="1" />
+              <p data-name="1"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="1"></p>
+            </div>
+          </div>
 
-            <!-- Quinto Lugar -->
-            <div class="tabela-estatisticas">
-              <div class="posicao-estatisticas">
-                <p>5</p>
-              </div>
-              <div class="perfil-jogador-estatisticas">
-                <img
-                  src=""
-                  class="img-jogador-estatisticas"
-                  alt="img jogador"
-                  data-img="4"
-                />
-                <p data-name="4"></p>
-              </div>
-              <div class="nota-tabela-estatisticas">
-                <p data-nota="4"></p>
-              </div>
+          <!-- Terceiro Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>3</p>
+            </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="2" />
+              <p data-name="2"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="2"></p>
+            </div>
+          </div>
+
+          <!-- Quarto Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>4</p>
+            </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="3" />
+              <p data-name="3"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="3"></p>
+            </div>
+          </div>
+
+          <!-- Quinto Lugar -->
+          <div class="tabela-estatisticas">
+            <div class="posicao-estatisticas">
+              <p>5</p>
+            </div>
+            <div class="perfil-jogador-estatisticas">
+              <img src="" class="img-jogador-estatisticas" alt="img jogador" data-img="4" />
+              <p data-name="4"></p>
+            </div>
+            <div class="nota-tabela-estatisticas">
+              <p data-nota="4"></p>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <!-- Bootstrap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Js -->
-    <script src="/js/credenciais.js"></script>
-    <script src="/js/tabela.js"></script>
-    <script src="/js/estatisticas.js"></script>
-    <script src="js/aoVivo.js"></script>
-    <script src="js/resultado.js"></script>
-    <script src="/js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/colorthief/2.3.2/color-thief.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <!-- Js -->
+  <script src="/js/credenciais.js"></script>
+  <script src="/js/tabela.js"></script>
+  <script src="/js/estatisticas.js"></script>
+  <script src="js/aoVivo.js"></script>
+  <script src="js/resultado.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/aoVivoSearch.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/colorthief/2.3.2/color-thief.min.js"></script>
 
-    <script>
-      // Obtém o token do localStorage
-      const token = localStorage.getItem("token");
+  <script>
+    // Obtém o token do localStorage
+    const token = localStorage.getItem("token");
 
-      // Verifica se o token está armazenado no localStorage
-      if (token) {
-        const modal = document.getElementById("modalAuth");
-        modal.style.setProperty("display", "none", "important"); // Esconde o modal
+    // Verifica se o token está armazenado no localStorage
+    if (token) {
+      const modal = document.getElementById("modalAuth");
+      modal.style.setProperty("display", "none", "important"); // Esconde o modal
 
-        // Decodifica o token JWT
-        const decodedToken = jwt_decode(token);
+      // Decodifica o token JWT
+      const decodedToken = jwt_decode(token);
 
-        // Seleciona a imagem do perfil pelo ID
-        const img = document.getElementById("profile");
+      // Seleciona a imagem do perfil pelo ID
+      const img = document.getElementById("profile");
 
-        // Remove os atributos 'data-bs-toggle' e 'data-bs-target' para desativar o modal no clique
-        img.removeAttribute("data-bs-toggle");
-        img.removeAttribute("data-bs-target");
+      // Remove os atributos 'data-bs-toggle' e 'data-bs-target' para desativar o modal no clique
+      img.removeAttribute("data-bs-toggle");
+      img.removeAttribute("data-bs-target");
 
-        // Acessa o nome do usuário através do claim "name"
-        const nomeArmazenado = decodedToken.name || "Usuário"; // Acessa o campo 'name' do token
-        document.getElementById("nomeUser").innerText = nomeArmazenado;
+      // Acessa o nome do usuário através do claim "name"
+      const nomeArmazenado = decodedToken.name || "Usuário"; // Acessa o campo 'name' do token
+      document.getElementById("nomeUser").innerText = nomeArmazenado;
 
-        // Exibe o conteúdo do payload decodificado no console
-        console.log("Token decodificado:", decodedToken);
+      // Exibe o conteúdo do payload decodificado no console
+      console.log("Token decodificado:", decodedToken);
 
-        const quadradoLogin = document.querySelector(".quadrado-completo");
+      const quadradoLogin = document.querySelector(".quadrado-completo");
 
-        img.addEventListener("click", () => {
-          quadradoLogin.style.display =
-            quadradoLogin.style.display == "block" ? "none" : "block";
-        });
-      } else {
-        const img = document.getElementById("profile");
-        if (img) {
-          img.style.display = "block"; // Esconde a imagem de perfil
-        }
-        console.log("Token não encontrado");
+      img.addEventListener("click", () => {
+        quadradoLogin.style.display =
+          quadradoLogin.style.display == "block" ? "none" : "block";
+      });
+    } else {
+      const img = document.getElementById("profile");
+      if (img) {
+        img.style.display = "block"; // Esconde a imagem de perfil
       }
-    </script>
-  </body>
+      console.log("Token não encontrado");
+    }
+  </script>
+</body>
+
 </html>

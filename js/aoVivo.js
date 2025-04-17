@@ -1245,6 +1245,16 @@ async function montaGridAoVivo() {
 // Função para organizar e exibir os dados no HTML
 function organizaInfos(matches) {
   const liveMatchesContainer = document.getElementById("ao-vivo");
+  
+  // Adiciona o input de busca se ainda não existir
+  if (!document.getElementById('teamSearch')) {
+    const searchContainer = document.createElement('div');
+    searchContainer.className = 'search-container mb-3';
+    searchContainer.innerHTML = `
+      <input type="text" id="teamSearch" class="form-control" placeholder="Buscar time nos jogos ao vivo...">
+    `;
+    liveMatchesContainer.parentNode.insertBefore(searchContainer, liveMatchesContainer);
+  }
 
   // Limpa o conteúdo anterior
   liveMatchesContainer.innerHTML = "";
@@ -1253,6 +1263,8 @@ function organizaInfos(matches) {
   matches.forEach((match, index) => {
     const matchElement = document.createElement("div");
     matchElement.classList.add("match-ao-vivo");
+    matchElement.setAttribute('data-home-team', match.teams.home.name.toLowerCase());
+    matchElement.setAttribute('data-away-team', match.teams.away.name.toLowerCase());
 
     // Trata o tempo do jogo
     let tempo = match.fixture.status.short;
@@ -1510,16 +1522,47 @@ function organizaInfos(matches) {
       return new bootstrap.Tooltip(tooltipTriggerEl);
     });
   });
+
+  // Adiciona o evento de busca
+  const searchInput = document.getElementById('teamSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const matches = document.querySelectorAll('.match-ao-vivo');
+      let hasVisibleMatches = false;
+
+      matches.forEach(match => {
+        const homeTeam = match.getAttribute('data-home-team');
+        const awayTeam = match.getAttribute('data-away-team');
+        const isVisible = homeTeam.includes(searchTerm) || awayTeam.includes(searchTerm);
+        match.style.display = isVisible ? '' : 'none';
+        if (isVisible) hasVisibleMatches = true;
+      });
+
+      // Mostra mensagem quando não há jogos encontrados
+      const noResultsMessage = document.querySelector('.no-results');
+      if (!hasVisibleMatches) {
+        if (!noResultsMessage) {
+          const message = document.createElement('div');
+          message.className = 'no-results text-center p-3';
+          message.textContent = 'Nenhum jogo encontrado com esse time';
+          liveMatchesContainer.appendChild(message);
+        }
+      } else if (noResultsMessage) {
+        noResultsMessage.remove();
+      }
+    });
+  }
 }
 
 // Chamada inicial
 montaGridAoVivo();
 
-setInterval(async () => {
-  const liveMatchesContainer = document.getElementById("ao-vivo");
+// setInterval(async () => {
+//   const liveMatchesContainer = document.getElementById("ao-vivo");
 
-  // Limpa o conteúdo anterior
-  liveMatchesContainer.innerHTML = "";
+//   // Limpa o conteúdo anterior
+//   liveMatchesContainer.innerHTML = "";
 
-  montaGridAoVivo();
-}, 60000);
+//   montaGridAoVivo();
+// }, 60000);

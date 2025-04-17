@@ -1,7 +1,6 @@
-function getFinishedMatches() {
+function getFinishedMatches(QTD_JOGOS) {
   const LEAGUE_ID = 71;
   const SEASON = 2024;
-  const QTD_JOGOS = 5;
 
   const url = `https://v3.football.api-sports.io/fixtures?league=${LEAGUE_ID}&season=${SEASON}&status=FT&last=${QTD_JOGOS}`;
 
@@ -46,7 +45,7 @@ async function getFixtureEvents(fixtureId) {
 
 async function displayMatches(matches) {
   return new Promise((resolve) => {
-    const matchesElement = document.getElementById("result-jogadas");
+    const matchesElement = document.getElementById("resultado-jogos");
 
     // Verifica se `matches` é válido
     if (!Array.isArray(matches) || matches.length === 0) {
@@ -59,7 +58,7 @@ async function displayMatches(matches) {
     // Cria e insere o título do campeonato
     const nomeCampElement = document.createElement("h3");
     if (matches[0].league && matches[0].league.name) {
-      nomeCampElement.innerText = "BRASILEIRO SÉRIE A";
+      // nomeCampElement.innerText = "BRASILEIRO SÉRIE A";
     } else {
       console.warn("Dados da liga não disponíveis ou array 'matches' vazio.");
       nomeCampElement.innerText = "Liga não disponível";
@@ -527,4 +526,39 @@ function setTeamColors(homeLogo, awayLogo, retanguloId) {
   }
 }
 
-getFinishedMatches();
+
+function insereSelect() {
+  const headerResultado = document.getElementById("header-resultado");
+  const select = document.createElement("select");
+  select.id = "matchCount";
+  select.className = "form-select";
+
+  // Criar as opções
+  const options = [1, 5, 10];
+  options.forEach(value => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = value;
+    
+    // Define 10 como padrão
+    if (value === 10) {
+      option.selected = true;
+    }
+
+    select.appendChild(option);
+  });
+
+  // Adicionar o evento de mudança
+  select.addEventListener("change", function () {
+    getFinishedMatches(this.value);
+  });
+
+  // Inserir o select no headerResultado
+  headerResultado.appendChild(select);
+}
+
+// Chamar a função após o carregamento do DOM
+document.addEventListener("DOMContentLoaded", function () {
+  insereSelect(); // Agora o select existe no DOM
+  getFinishedMatches(10); // Chamado após criar o select
+});
