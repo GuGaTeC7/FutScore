@@ -1233,7 +1233,7 @@ async function montaGridAoVivo() {
     const res = await fetch(url + endpoint + "?" + searchParams, options); // Faz a requisição à API
     const data = await res.json();
 
-    const liveMatches = data.response.slice(0, 20); // Pegue as 3 primeiras partidas mockadas
+    const liveMatches = data.response.slice(0, 30); // Pegue as 3 primeiras partidas mockadas
 
     // Chama a função para organizar e exibir as informações
     organizaInfos(liveMatches);
@@ -1245,7 +1245,7 @@ async function montaGridAoVivo() {
 // Função para organizar e exibir os dados no HTML
 function organizaInfos(matches) {
   const liveMatchesContainer = document.getElementById("ao-vivo");
-  
+
   // Adiciona o input de busca se ainda não existir
   if (!document.getElementById('teamSearch')) {
     const searchContainer = document.createElement('div');
