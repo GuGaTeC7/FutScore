@@ -1,5 +1,7 @@
 function sair() {
   localStorage.removeItem("token");
+  localStorage.removeItem("selectedTeam");
+  localStorage.removeItem("teamLogo");
   window.location.reload(true);
 }
 

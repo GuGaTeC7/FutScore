@@ -104,7 +104,12 @@ async function montaEstatisticas(liga) {
   try {
     const res = await fetch(url + endpoint + "?" + searchParams, options);
     const data = await res.json();
+    
+    console.log('API Response:', data);
+    console.log('First player data:', data.response[0]);
+    console.log('First player statistics:', data.response[0].statistics[0]);
 
+    // Mantém os dados dos 5 primeiros jogadores para a exibição inicial
     const ratings = [
       data.response[0].statistics[0].games.rating,
       data.response[1].statistics[0].games.rating,
@@ -145,27 +150,149 @@ async function montaEstatisticas(liga) {
     exibeImgJogador(imgs);
     exibeRating(ratings);
 
+    // Adiciona os jogadores restantes (6-20)
+    const loadingClass = document.getElementById("loadingClass");
+    console.log('Adding remaining players...');
+    data.response.slice(5).forEach((jogador, index) => {
+      console.log('Processing player:', index + 6, jogador);
+      console.log('Player rating:', jogador.statistics[0].games.rating);
+      
+      const jogadorHTML = `
+        <div class="tabela-estatisticas" style="display: none;">
+          <div class="posicao-estatisticas">
+            <p>${index + 6}</p>
+          </div>
+          <div class="perfil-jogador-estatisticas">
+            <img src="${jogador.player.photo}" class="img-jogador-estatisticas" alt="img jogador" />
+            <p>${jogador.player.name}</p>
+          </div>
+          <div class="nota-tabela-estatisticas">
+            <p>${Number(jogador.statistics[0].games.rating).toFixed(2)}</p>
+          </div>
+        </div>
+      `;
+      loadingClass.innerHTML += jogadorHTML;
+    });
+
     document.getElementById("loadingClass").style.display = "block";
 
-    // Erro de resposta HTTP
-    if (!res.ok) {
-      if (res.status === 404) {
-        throw new Error("Recurso não encontrado (404).");
-      } else if (res.status === 500) {
-        throw new Error("Erro interno do servidor (500).");
-      } else {
-        throw new Error(`Erro HTTP! status: ${res.status}`);
-      }
-    }
+    // Configura os eventos dos botões
+    const btnVerMais = document.getElementById('verMaisEstatisticas');
+    const btnVerMenos = document.getElementById('verMenosEstatisticas');
+    const artilheiros = document.querySelectorAll('.tabela-estatisticas');
 
-    //if (data) hideLoader(dataTabela);
-  } catch (error) {
-    // Erro de rede ou de resposta
-    if (error.message.includes("NetworkError")) {
-      console.error("Erro de rede. Verifique sua conexão.");
-    } else {
-      console.error("Erro ao buscar dados da API:", error);
+    // Remove event listeners antigos para evitar duplicação
+    btnVerMais.replaceWith(btnVerMais.cloneNode(true));
+    btnVerMenos.replaceWith(btnVerMenos.cloneNode(true));
+
+    // Adiciona os novos event listeners
+    document.getElementById('verMaisEstatisticas').addEventListener('click', () => {
+      artilheiros.forEach(artilheiro => {
+        artilheiro.style.display = 'flex';
+      });
+      document.getElementById('verMaisEstatisticas').style.display = 'none';
+      document.getElementById('verMenosEstatisticas').style.display = 'block';
+
+      // Verifica o time selecionado e aplica a estilização aos elementos
+      const selectedTeam = localStorage.getItem("selectedTeam");
+      if (selectedTeam === 'Corinthians') {
+        document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas').forEach(element => {
+          element.style.backgroundColor = 'rgb(186, 8, 37)';
+          element.style.border = '2.5px solid rgb(186, 8, 37)';
+        });
+        document.querySelectorAll('.posicao-estatisticas').forEach(element => {
+          element.style.backgroundColor = 'white';
+          element.style.border = '2.5px solid white';
+        });
+        document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+          element.style.color = 'black';
+        });
+        document.querySelectorAll('.img-jogador-estatisticas').forEach(element => {
+          element.style.border = '2.5px solid rgb(186, 8, 37)';
+        });
+      } else if (selectedTeam === 'Palmeiras') {
+        document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas').forEach(element => {
+          element.style.backgroundColor = '#5eb490';
+          element.style.border = '2.5px solid #5eb490';
+        });
+        document.querySelectorAll('.posicao-estatisticas').forEach(element => {
+          element.style.backgroundColor = 'white';
+          element.style.border = '2.5px solid white';
+        });
+        document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+          element.style.color = '#026336';
+        });
+        document.querySelectorAll('.img-jogador-estatisticas').forEach(element => {
+          element.style.border = '2.5px solid #5eb490';
+        });
+      }
+
+      // Explicitly set the initial color of the arrow icons after elements are in DOM
+      if (selectedTeam === 'Corinthians' || selectedTeam === 'Palmeiras') {
+        document.querySelectorAll('#verMais .fas, #verMenos .fas, #verMaisEstatisticas .fas, #verMenosEstatisticas .fas').forEach(icon => {
+            icon.style.color = 'white';
+        });
+      }
+
+    });
+
+    document.getElementById('verMenosEstatisticas').addEventListener('click', () => {
+      artilheiros.forEach((artilheiro, index) => {
+        if (index >= 4) {
+          artilheiro.style.display = 'none';
+        }
+      });
+      document.getElementById('verMaisEstatisticas').style.display = 'block';
+      document.getElementById('verMenosEstatisticas').style.display = 'none';
+
+      // Verifica o time selecionado e aplica a estilização aos elementos
+      const selectedTeam = localStorage.getItem("selectedTeam");
+      if (selectedTeam === 'Corinthians') {
+        document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas').forEach(element => {
+          element.style.backgroundColor = 'rgb(186, 8, 37)';
+          element.style.border = '2.5px solid rgb(186, 8, 37)';
+        });
+        document.querySelectorAll('.posicao-estatisticas').forEach(element => {
+          element.style.backgroundColor = 'white';
+          element.style.border = '2.5px solid white';
+        });
+        document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+          element.style.color = 'black';
+        });
+        document.querySelectorAll('.img-jogador-estatisticas').forEach(element => {
+          element.style.border = '2.5px solid rgb(186, 8, 37)';
+        });
+      } else if (selectedTeam === 'Palmeiras') {
+        document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas').forEach(element => {
+          element.style.backgroundColor = '#5eb490';
+          element.style.border = '2.5px solid #5eb490';
+        });
+        document.querySelectorAll('.posicao-estatisticas').forEach(element => {
+          element.style.backgroundColor = 'white';
+          element.style.border = '2.5px solid white';
+        });
+        document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+          element.style.color = '#026336';
+        });
+        document.querySelectorAll('.img-jogador-estatisticas').forEach(element => {
+          element.style.border = '2.5px solid #5eb490';
+        });
+      }
+
+      // Explicitly set the initial color of the arrow icons after elements are in DOM
+      if (selectedTeam === 'Corinthians' || selectedTeam === 'Palmeiras') {
+        document.querySelectorAll('#verMais .fas, #verMenos .fas, #verMaisEstatisticas .fas, #verMenosEstatisticas .fas').forEach(icon => {
+            icon.style.color = 'white';
+        });
+      }
+
+    });
+
+    if (!res.ok) {
+      throw new Error(`Erro HTTP! status: ${res.status}`);
     }
+  } catch (error) {
+    console.error("Erro ao buscar dados da API:", error);
     return null;
   }
 }
@@ -230,4 +357,4 @@ function exibeImgJogador(imgs) {
   });
 }
 
-montaEstatisticas(307);
+montaEstatisticas(13);

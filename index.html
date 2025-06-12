@@ -10,6 +10,50 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .team-option {
+      text-align: center;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .team-option:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    .team-grid p {
+      color: white;
+    }
+
+    .team-option img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .team-option p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    #profile {
+      width: 60px;
+      height: auto;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -52,11 +96,19 @@
             <div class="quadrado-login">
               <div>
                 <p id="nomeUser"></p>
-                <i class="fa-solid fa-pen" id="editar"></i>
+                <i class="fa-solid fa-pen" id="editar" data-bs-toggle="modal" data-bs-target="#teamSelectionModal"></i>
               </div>
-              <button type="button" class="btn btn-danger" onclick="sair()" style="font-size: 12px">
-                Sair
-              </button>
+              <div class="d-flex gap-2" style="
+              display: flex;
+              flex-direction: column;">
+                <button type="button" class="btn btn-success" id="trocar-img" data-bs-toggle="modal"
+                  data-bs-target="#teamSelectionModal" style="font-size: 12px">
+                  Alterar Foto
+                </button>
+                <button type="button" class="btn btn-danger" onclick="sair()" style="font-size: 12px">
+                  Sair
+                </button>
+              </div>
             </div>
           </div>
 
@@ -91,6 +143,35 @@
     </nav>
   </header>
 
+  <!-- Team Selection Modal -->
+  <div class="modal fade" id="teamSelectionModal" tabindex="-1" aria-labelledby="teamSelectionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="teamSelectionModalLabel">
+            Escolha seu Time
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="team-grid">
+            <div class="team-option" data-team="Corinthians">
+              <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/874.png" alt="Corinthians">
+              <p>Corinthians</p>
+            </div>
+            <div class="team-option" data-team="Palmeiras">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/250px-Palmeiras_logo.svg.png"
+                alt="Palmeiras">
+              <p>Palmeiras</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main>
     <!-- Tabelas Campeonatos -->
     <section class="tabelas" id="ladoEsquerdo">
@@ -103,8 +184,8 @@
 
         <div class="cabecalho-tabela">
           <div>
-            <h5>Rodada: <span id="rodadaNumber">Oitavas de final</span></h5>
-            <h1>UEFA Champions League</h1>
+            <h5>2024/2025 <span id="rodadaNumber"></span></h5>
+            <h1 class="h1-title">UEFA Champions League</h1>
           </div>
           <div>
             <img src="" class="camp-logo" alt="Campeonato" />
@@ -785,10 +866,10 @@
           <input type="text" id="teamSearch" class="form-control" placeholder="Busque um jogo ao vivo...">
         </div>
         <div id="ao-vivo">
-            <!-- Loading -->
-            <div class="results-loading">
-              <div class="spinner"></div>
-            </div>
+          <!-- Loading -->
+          <div class="results-loading">
+            <div class="spinner"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -829,7 +910,7 @@
         </div>
 
         <div id="loadingClass" style="display: none">
-          <h1 style="margin-top: 13px; font-size: 1.4rem" id="nomeLigaEstatisticas">
+          <h1 class="h1-title" style="margin-top: 13px; font-size: 1.4rem" id="nomeLigaEstatisticas">
             Ligue 1
           </h1>
           <h2>ARTILHEIROS</h2>
@@ -942,7 +1023,14 @@
             </div>
           </div>
         </div>
+
       </div>
+      <button type="button" class="btn btn-outline-primary" id="verMaisEstatisticas">
+        VER MAIS<img src="/assets/seta-pequena-para-baixo.png" />
+      </button>
+      <button type="button" class="btn btn-outline-primary" id="verMenosEstatisticas">
+        VER MENOS<img src="/assets/seta-pequena-para-baixo.png" />
+      </button>
     </section>
   </main>
 
@@ -964,6 +1052,248 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/colorthief/2.3.2/color-thief.min.js"></script>
 
   <script>
+    // Função para aplicar os estilos do Corinthians
+    function applyCorinthiansStyles() {
+      const nav = document.getElementById('nav');
+      nav.classList.remove('bg-primary');
+      nav.style.backgroundColor = 'black';
+
+      // Muda a cor dos títulos das seções
+      document.querySelectorAll('.h1-title').forEach(h1 => {
+        h1.style.color = '#ba0825';
+      });
+
+      document.querySelectorAll('#trocar-img').forEach(btn => {
+        btn.style.backgroundColor = "white";
+        btn.style.color = "black";
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-outline-dark');
+      });
+
+      // Remove border-primary de todos os elementos que têm border
+      document.querySelectorAll('.border.border-primary').forEach(element => {
+        element.classList.remove('border-primary');
+        element.style.borderColor = '#ba0825';
+      });
+
+      // Modifica os botões outline-primary
+      document.querySelectorAll('.btn.btn-outline-primary').forEach(button => {
+        button.classList.remove('btn-outline-primary');
+        button.style.backgroundColor = 'black';
+        button.style.borderColor = 'white';
+        button.style.color = 'white';
+      });
+
+      // Estiliza os ícones das setas nos botões
+      document.querySelectorAll('#verMais .fas, #verMenos .fas, #verMaisEstatisticas .fas, #verMenosEstatisticas .fas').forEach(icon => {
+        icon.style.color = 'white';
+      });
+
+      // Adiciona estilo para a scrollbar
+      const style = document.createElement('style');
+      style.textContent = `
+        ::-webkit-scrollbar-thumb {
+          background-color: black !important;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background-color: black !important;
+        }
+        .tempo {
+          background-color: rgb(186, 8, 37) !important;
+        }
+        .round {
+          color: rgb(186, 8, 37) !important;
+        }
+        #verMais:hover, #verMenos:hover, #verMaisEstatisticas:hover, #verMenosEstatisticas:hover {
+            background-color: rgb(186, 8, 37) !important;
+            border-color: rgb(186, 8, 37) !important;
+            color: white !important;
+        }
+        /* Ensure initial and hover arrow color is white */
+        #verMais.btn.btn-outline-primary .fas,
+        #verMenos.btn.btn-outline-primary .fas,
+        #verMaisEstatisticas.btn.btn-outline-primary .fas,
+        #verMenosEstatisticas.btn.btn-outline-primary .fas {
+            color: white !important;
+        }
+        #verMais.btn.btn-outline-primary:hover .fas,
+        #verMenos.btn.btn-outline-primary:hover .fas,
+        #verMaisEstatisticas.btn.btn-outline-primary:hover .fas,
+        #verMenosEstatisticas.btn.btn-outline-primary:hover .fas {
+            color: white !important;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Modifica os elementos posicao-estatisticas e nota-tabela-estatisticas
+      document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas, .nota').forEach(element => {
+        element.style.backgroundColor = 'rgb(186, 8, 37)';
+        element.style.border = '2.5px solid rgb(186, 8, 37)';
+      });
+      document.querySelectorAll('.posicao-estatisticas').forEach(element => {
+        element.style.backgroundColor = 'white';
+        element.style.border = '2.5px solid white';
+      });
+      document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+        element.style.color = 'black';
+      });
+      const quadradoCompleto = document.querySelector('.quadrado-login');
+      if (quadradoCompleto) {
+        quadradoCompleto.style.backgroundColor = 'black';
+        quadradoCompleto.style.border = '1px solid white';
+      }
+      document.querySelectorAll('.img-jogador-um, .img-jogador-estatisticas').forEach(element => {
+        element.style.border = '2.5px solid rgb(186, 8, 37)';
+      });
+    }
+
+    // Função para aplicar os estilos do Palmeiras
+    function applyPalmeirasStyles() {
+      const nav = document.getElementById('nav');
+      nav.classList.remove('bg-primary');
+      nav.style.backgroundColor = '#026336';
+
+      // Muda a cor dos títulos das seções
+      document.querySelectorAll('.h1-title').forEach(h1 => {
+        h1.style.color = '#5eb490';
+      });
+
+      // Remove border-primary de todos os elementos que têm border
+      document.querySelectorAll('.border.border-primary').forEach(element => {
+        element.classList.remove('border-primary');
+        element.style.borderColor = '#5eb490';
+      });
+
+      // Modifica os botões outline-primary
+      document.querySelectorAll('.btn.btn-outline-primary').forEach(button => {
+        button.classList.remove('btn-outline-primary');
+        button.style.backgroundColor = '#026336';
+        button.style.borderColor = 'white';
+        button.style.color = 'white';
+      });
+
+      // Estiliza os ícones das setas nos botões
+      document.querySelectorAll('#verMais .fas, #verMenos .fas, #verMaisEstatisticas .fas, #verMenosEstatisticas .fas').forEach(icon => {
+        icon.style.color = 'white';
+      });
+
+      // Adiciona estilo para a scrollbar
+      const style = document.createElement('style');
+      style.textContent = `
+        ::-webkit-scrollbar-thumb {
+          background-color: #026336 !important;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background-color: #026336 !important;
+        }
+        .tempo {
+          background-color: #5eb490 !important;
+        }
+        .round {
+          color: #5eb490 !important;
+        }
+        #verMais:hover, #verMenos:hover, #verMaisEstatisticas:hover, #verMenosEstatisticas:hover {
+            background-color: #5eb490 !important;
+            border-color: #5eb490 !important;
+            color: white !important;
+        }
+        /* Ensure initial and hover arrow color is white */
+        #verMais.btn.btn-outline-primary .fas,
+        #verMenos.btn.btn-outline-primary .fas,
+        #verMaisEstatisticas.btn.btn-outline-primary .fas,
+        #verMenosEstatisticas.btn.btn-outline-primary .fas {
+            color: white !important;
+        }
+        #verMais.btn.btn-outline-primary:hover .fas,
+        #verMenos.btn.btn-outline-primary:hover .fas,
+        #verMaisEstatisticas.btn.btn-outline-primary:hover .fas,
+        #verMenosEstatisticas.btn.btn-outline-primary:hover .fas {
+            color: white !important;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Modifica os elementos posicao-estatisticas e nota-tabela-estatisticas
+      document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas, .nota').forEach(element => {
+        element.style.backgroundColor = '#5eb490';
+        element.style.border = '2.5px solid #5eb490';
+      });
+      document.querySelectorAll('.posicao-estatisticas').forEach(element => {
+        element.style.backgroundColor = 'white';
+        element.style.border = '2.5px solid white';
+      });
+      document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+        element.style.color = '#026336';
+      });
+      const quadradoCompleto = document.querySelector('.quadrado-login');
+      if (quadradoCompleto) {
+        quadradoCompleto.style.backgroundColor = '#026336';
+        quadradoCompleto.style.border = '1px solid white';
+      }
+      document.querySelectorAll('.img-jogador-um, .img-jogador-estatisticas').forEach(element => {
+        element.style.border = '2.5px solid #5eb490';
+      });
+    }
+
+    // Função para remover os estilos do Corinthians
+    function removeStyles() {
+      const nav = document.getElementById('nav');
+      nav.classList.add('bg-primary');
+      nav.style.backgroundColor = '';
+
+      // Restaura os botões outline-primary
+      document.querySelectorAll('.btn').forEach(button => {
+        if (!button.classList.contains('btn-outline-primary')) {
+          button.classList.add('btn-outline-primary');
+          button.style.backgroundColor = '';
+          button.style.borderColor = '';
+          button.style.color = '';
+        }
+      });
+
+      // Remove o estilo da scrollbar
+      const scrollbarStyle = document.querySelector('style');
+      if (scrollbarStyle) {
+        scrollbarStyle.remove();
+      }
+
+      // Restaura os elementos para suas classes e estilos padrão
+      document.querySelectorAll('.posicao-estatisticas, .nota-tabela-estatisticas, .nota').forEach(element => {
+        element.style.backgroundColor = '';
+        element.style.border = '';
+      });
+
+      // Restaura os títulos das seções
+      document.querySelectorAll('.h1-title').forEach(h1 => {
+        h1.style.color = '';
+      });
+
+      // Restaura as bordas dos elementos
+      document.querySelectorAll('.border').forEach(element => {
+        element.classList.add('border-primary');
+        element.style.borderColor = '';
+      });
+
+      // Restaura as imagens dos jogadores
+      document.querySelectorAll('.img-jogador-um, .img-jogador-estatisticas').forEach(element => {
+        element.style.border = '';
+      });
+
+      // Restaura os textos dentro de posicao-estatisticas
+      document.querySelectorAll('.posicao-estatisticas p').forEach(element => {
+        element.style.color = '#026336';
+      });
+    }
+
+    // Verifica o time salvo e aplica os estilos correspondentes
+    const savedTeam = localStorage.getItem("selectedTeam");
+    if (savedTeam === 'Corinthians') {
+      applyCorinthiansStyles();
+    }
+    if (savedTeam === 'Palmeiras') {
+      applyPalmeirasStyles();
+    }
+
     // Obtém o token do localStorage
     const token = localStorage.getItem("token");
 
@@ -995,6 +1325,64 @@
         quadradoLogin.style.display =
           quadradoLogin.style.display == "block" ? "none" : "block";
       });
+
+      // Carrega a imagem do time do localStorage
+      const teamLogo = localStorage.getItem("teamLogo");
+      if (teamLogo) {
+        img.src = teamLogo;
+      }
+
+      // Inicializa todos os modais do Bootstrap
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        new bootstrap.Modal(modal);
+      });
+
+      // Adiciona eventos de clique para as opções de time
+      document.querySelectorAll('.team-option').forEach(option => {
+        option.addEventListener('click', () => {
+          const teamImg = option.querySelector('img');
+          const teamLogo = teamImg.src;
+          const selectedTeam = option.getAttribute('data-team');
+
+          // Salva a imagem do time no localStorage
+          localStorage.setItem("teamLogo", teamLogo);
+          localStorage.setItem("selectedTeam", selectedTeam);
+
+          // Atualiza a imagem do perfil
+          img.src = teamLogo;
+
+          // Aplica ou remove os estilos baseado no time selecionado
+          if (selectedTeam === 'Corinthians') {
+            applyCorinthiansStyles();
+          } else if (savedTeam === 'Palmeiras') {
+            applyPalmeirasStyles();
+          } else {
+            removeStyles();
+          }
+
+
+          // Fecha o modal
+          const teamSelectionModal = document.getElementById('teamSelectionModal');
+          const modalInstance = bootstrap.Modal.getInstance(teamSelectionModal);
+          if (modalInstance) {
+            modalInstance.hide();
+          }
+
+          window.location.reload();
+        });
+      });
+
+      // Adiciona evento de clique para o botão "Alterar Foto"
+      const alterarFotoBtn = document.querySelector('[data-bs-target="#teamSelectionModal"]');
+      if (alterarFotoBtn) {
+        alterarFotoBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const teamSelectionModal = document.getElementById('teamSelectionModal');
+          const modal = new bootstrap.Modal(teamSelectionModal);
+          modal.show();
+        });
+      }
     } else {
       const img = document.getElementById("profile");
       if (img) {
